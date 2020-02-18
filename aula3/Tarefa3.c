@@ -4,10 +4,8 @@
 
 
 void hex(int n){
-	int var = n - 4;
-	int a = n-1, algo, j=0;
+	int regulator = n - 4;
 	char caracter=' ';
-	int limit = (n * 2 + a);
 	//First line
 	for(int i=0;i<2;i++, caracter+=3){
 		for(int j=0;j<n;j++){
@@ -33,7 +31,7 @@ void hex(int n){
 			printf(" ");
 		}
 		printf("#");
-		for(int i=0;i<middleSpaces+var;i++){
+		for(int i=0;i<middleSpaces+regulator;i++){
 			printf(" ");
 		}
 		printf("#");
