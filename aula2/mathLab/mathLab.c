@@ -125,10 +125,11 @@ int main(){
 	printf("Welcome to mathLab! It's time to do some math! :)\n");
 	printf("Type in the desired math operation\n1 - Soma\n2 - Subtração\n3 - Multiplicacao\n4 - Divisao\n0 - quit\n");
 	scanf("%d", &option);
+	if (option == 0) return 0;
 	printf("Select your level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
 	scanf("%d", &level);
-	range = pow(10,level);
-	while(option != 0){
+	range = pow(10, level);
+	while(option != 0 && level > 0 && level < 4){
 		//Keeps printing menu and operating until quit
 		switch(option){
 			case 1:
@@ -153,6 +154,7 @@ int main(){
 				printf("Welcome to mathLab! It's time to do some math! :)\n");
 				printf("Type in the desired math operation\n1 - Soma\n2 - Subtração\n3 - Multiplicacao\n4 - Divisao\n0 - quit\n");
 				scanf("%d", &option);
+				printf("Select your level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
 				printf("Type in the desired level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
 				scanf("%d", &level);
 		}
