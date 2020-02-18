@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 
+//Generates one of the random 7 quotes
 char* randQuote(){	
 	char *quotes[] = {
 		"Good one!",
@@ -17,7 +18,7 @@ char* randQuote(){
 	return quotes[rand() % 7];
 }
 
-
+//Adding operation
 int soma(int range){
 	int attempt, answer, fstNumber, sndNumber;
 	srand(time(NULL));
@@ -41,7 +42,7 @@ int soma(int range){
 	return 0;
 
 }
-
+//Times operation
 int multiplicacao(int range){
 	int attempt, answer, fstNumber, sndNumber;
 	srand(time(NULL));
@@ -65,7 +66,7 @@ int multiplicacao(int range){
 	return 0;
 
 }
-
+//Subtraction  operation
 int subtracao(int range){
 	int attempt, answer, fstNumber, sndNumber;
 	srand(time(NULL));
@@ -89,7 +90,7 @@ int subtracao(int range){
 	return 0;
 
 }
-
+//Division operation
 int divisao(int range){
         float attempt, answer, fstNumber, sndNumber;
 	srand(time(NULL));
@@ -120,6 +121,7 @@ int divisao(int range){
 
 int main(){
 	int option=0, level=0, range=0;
+	//Prints menu for the first time
 	printf("Welcome to mathLab! It's time to do some math! :)\n");
 	printf("Type in the desired math operation\n1 - Soma\n2 - Subtração\n3 - Multiplicacao\n4 - Divisao\n0 - quit\n");
 	scanf("%d", &option);
@@ -127,6 +129,7 @@ int main(){
 	scanf("%d", &level);
 	range = pow(10,level);
 	while(option != 0){
+		//Keeps printing menu and operating until quit
 		switch(option){
 			case 1:
 				soma(range);
