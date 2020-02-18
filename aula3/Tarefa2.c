@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Ascending lines
 void ida(int size){
 	int i, j=0, k=0;
 	char c1='A', param='A';
@@ -30,7 +31,7 @@ void ida(int size){
 		c1='A';
 	}
 }
-
+//Descending lines
 void volta(int size){
 	int i, j=0, k=0;
 	char c1='A', param='A';
