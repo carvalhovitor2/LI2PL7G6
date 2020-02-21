@@ -19,20 +19,30 @@ char* randQuote(){
 }
 
 //Adding operation
-int soma(int range){
+int operation(int range, char op){
 	int attempt, answer, fstNumber, sndNumber;
 	srand(time(NULL));
 	printf("To quit press ctrl+C, to go back to menu type in -1\n");
 	do{	
 		fstNumber = rand() % range;
 		sndNumber = rand() % range;
-		answer = fstNumber + sndNumber;
-		printf("%d+%d=?\n", fstNumber, sndNumber);
+		switch(op){
+			case '+': answer = fstNumber + sndNumber;
+				  break;
+			case '-': answer = fstNumber - sndNumber;
+				  break;
+			case '*': answer = fstNumber * sndNumber;
+				  break;
+			case '/': answer = fstNumber / sndNumber;
+				  break;
+			
+		}
+		printf("%d %c %d=?\n", fstNumber, op, sndNumber);
 		scanf("%d", &attempt);
 		while( attempt != answer ) {
 			if ( attempt == (-1) ) return 0;
 			printf("Try again :(\n");
-			printf("%d + %d=?\n", fstNumber, sndNumber);
+			printf("%d %c %d=?\n", fstNumber, op, sndNumber);
 			scanf("%d", &attempt);
 		}
 		
@@ -42,82 +52,6 @@ int soma(int range){
 	return 0;
 
 }
-//Times operation
-int multiplicacao(int range){
-	int attempt, answer, fstNumber, sndNumber;
-	srand(time(NULL));
-	printf("To quit press ctrl+C, to go back to menu type in -1\n");
-	do{	
-		fstNumber = rand() % range;
-		sndNumber = rand() % range;
-		answer = fstNumber * sndNumber;
-		printf("%d x %d=?\n", fstNumber, sndNumber);
-		scanf("%d", &attempt);
-		while( attempt != answer ) {
-			if ( attempt == (-1) ) return 0;
-			printf("Try again :(\n");
-			printf("%d * %d=?\n", fstNumber, sndNumber);
-			scanf("%d", &attempt);
-		}
-		
-		printf("%s\n", randQuote());
-	}
-	while( answer != (-1) );
-	return 0;
-
-}
-//Subtraction  operation
-int subtracao(int range){
-	int attempt, answer, fstNumber, sndNumber;
-	srand(time(NULL));
-	printf("To quit press ctrl+C, to go back to menu type in -1\n");
-	do{	
-		fstNumber = rand() % range;
-		sndNumber = rand() % range; 
-		answer = fstNumber - sndNumber;
-		printf("%d - %d=?\n", fstNumber, sndNumber);
-		scanf("%d", &attempt);
-		while( attempt != answer ) {
-			if ( attempt == (-1) ) return 0;
-			printf("Try again :(\n");
-			printf("%d - %d=?\n", fstNumber, sndNumber);
-			scanf("%d", &attempt);
-		}
-		
-		printf("%s\n", randQuote());
-	}
-	while( answer != (-1) );
-	return 0;
-
-}
-//Division operation
-int divisao(int range){
-        float attempt, answer, fstNumber, sndNumber;
-	srand(time(NULL));
-	printf("To quit press ctrl+C, to go back to menu type in -1\n");
-	do{	
-		fstNumber = rand() % range;
-		sndNumber = rand() % (range-1) + 1;
-		answer = fstNumber / sndNumber;
-		answer = roundf(answer * 100)/100;
-		printf("%.2f / %.2f=?\n", fstNumber, sndNumber);
-		scanf("%f", &attempt);
-		while( attempt != answer ) {
-			if ( attempt == (-1) ) return 0;
-			printf("Try again :(\n");
-			printf("%.2f / %.2f=?\n", fstNumber, sndNumber);
-			scanf("%f", &attempt);
-		}
-		
-		printf("%s\n", randQuote());
-	}
-	while( answer != (-1) );
-	return 0;
-
-}
-
-
-
 
 int main(){
 	int option=0, level=0, range=0;
@@ -129,23 +63,23 @@ int main(){
 	printf("Select your level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
 	scanf("%d", &level);
 	range = pow(10, level);
-	while(option != 0 && level > 0 && level < 4){
+	while(option != 0 && level > 0 && level <= 4){
 		//Keeps printing menu and operating until quit
 		switch(option){
 			case 1:
-				soma(range);
+				operation(range, '+');
 				option=-1;
 				break;
 			case 2:
-				subtracao(range);
+				operation(range, '-');
 				option=-1;
 				break;
 			case 3:
-				multiplicacao(range);
+				operation(range, '*');
 				option=-1;
 				break;
 			case 4:
-				divisao(range);
+				operation(range, '/');
 				option=-1;
 				break;
 			case 0:
@@ -155,7 +89,6 @@ int main(){
 				printf("Type in the desired math operation\n1 - Soma\n2 - Subtração\n3 - Multiplicacao\n4 - Divisao\n0 - quit\n");
 				scanf("%d", &option);
 				printf("Select your level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
-				printf("Type in the desired level\n1 - Sandbox\n2 - Easy\n3 - Medium\n4 - Hard\n0 - quit\n");
 				scanf("%d", &level);
 		}
 	}
