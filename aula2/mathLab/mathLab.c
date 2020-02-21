@@ -13,7 +13,8 @@ char* randQuote(){
 		"You're a genius!",
 		"Are you the new Einstein?",
 		"Noice!",
-		"Toit!"
+		"Toit!",
+		NULL
 	};
 	return quotes[rand() % 7];
 }
@@ -21,7 +22,6 @@ char* randQuote(){
 //Adding operation
 int operation(int range, char op){
 	int attempt, answer, fstNumber, sndNumber;
-	srand(time(NULL));
 	printf("To quit press ctrl+C, to go back to menu type in -1\n");
 	do{	
 		fstNumber = rand() % range;
@@ -30,6 +30,11 @@ int operation(int range, char op){
 			case '+': answer = fstNumber + sndNumber;
 				  break;
 			case '-': answer = fstNumber - sndNumber;
+				  while ( answer == -1 ) {  
+					fstNumber = rand() % range;
+					sndNumber = rand() % range;
+					answer = fstNumber - sndNumber;
+				  }
 				  break;
 			case '*': answer = fstNumber * sndNumber;
 				  break;
@@ -55,6 +60,7 @@ int operation(int range, char op){
 
 int main(){
 	int option=0, level=0, range=0;
+	srand(time(NULL));
 	//Prints menu for the first time
 	printf("Welcome to mathLab! It's time to do some math! :)\n");
 	printf("Type in the desired math operation\n1 - Soma\n2 - Subtração\n3 - Multiplicacao\n4 - Divisao\n0 - quit\n");
@@ -65,6 +71,9 @@ int main(){
 	range = pow(10, level);
 	while(option != 0 && level > 0 && level <= 4){
 		//Keeps printing menu and operating until quit
+		oper = "+-*/";
+		operaation(range, oper[option - 1]);
+
 		switch(option){
 			case 1:
 				operation(range, '+');
