@@ -33,7 +33,9 @@ void horizontal(int size){
 
 
 int main(){
-	int i=4;
-	horizontal(i);
+	int size=4;
+	printf("Insira o tamanho do triangulo:\n");
+	scanf("%d", &size);
+	horizontal(size);
 	return 0;
 }
