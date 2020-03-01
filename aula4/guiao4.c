@@ -40,7 +40,7 @@ int remove_menores(int *arr, int dim, int valor){
 				*(arr+i) = *(arr+i+1);
 			}
 			*(arr+dim-1) = aux;
-			j++;
+			dim--;
 		}
 	}
 	return dim;
