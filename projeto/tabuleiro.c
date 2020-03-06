@@ -25,6 +25,7 @@ int main(){
 
 		}
 	}
+	//BLAH
 	print_tabuleiro(tabuleiro);
 	return 0;
 }
