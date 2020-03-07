@@ -35,7 +35,6 @@ void preenche_inicial(char tabuleiro[8][8]){
 
 		}
 	}
-<<<<<<< HEAD
 }
 
 
@@ -48,9 +47,7 @@ int main(){
 //	//preenche_inicial(tabuleiro);
 //	gr(tabuleiro);
 //	print_tabuleiro(tabuleiro);
-=======
 	//BLAH
 	print_tabuleiro(tabuleiro);
->>>>>>> c52036a5140c25bf5146a688b24c17a730156a58
 	return 0;
 }
