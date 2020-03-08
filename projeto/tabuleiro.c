@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "game.h"
 
 void print_tabuleiro(char matriz[8][8]){
@@ -39,15 +40,29 @@ void preenche_inicial(char tabuleiro[8][8]){
 
 
 int main(){
-	struct coordenada a;
-	scanf("%c", &a.linha);
-	printf("linha = %c", a.linha);
-	//print tabuleiro
-//	char tabuleiro[8][8];
-//	//preenche_inicial(tabuleiro);
-//	gr(tabuleiro);
-//	print_tabuleiro(tabuleiro);
-	//BLAH
-	print_tabuleiro(tabuleiro);
-	return 0;
+        char ch;
+
+        move *moves = malloc(sizeof(move));
+        if(!moves)
+            exit(1);
+
+        scanf("%c%d", &moves->line, &moves->collumn);
+        printf("Move 1 = %c%d\n", moves->line, moves->collumn);
+
+        moves = (move*)realloc(moves, sizeof(move)*2);
+        if(!moves)
+            exit(1);
+
+       while(ch=getchar()!='\n'&&ch!=EOF);
+       scanf("%c%d", &(moves+1)->line, &(moves+1)->collumn);
+       printf("Move 2 = %c%d\n", (moves+1)->line, (moves+1)->collumn);
+       
+       
+       for(int i=0; i < 2 ; i++){
+	       printf("Move %d = %c%d\n", i+1, (moves+i)->line, (moves+i)->collumn);
+       
+       }
+       
+       return 0;
+
 }
