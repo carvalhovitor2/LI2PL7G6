@@ -2,3 +2,25 @@
 #include "functions.h"
 
 
+//Making a move
+int jogar(ESTADO *e, COORDENADA *c){
+	
+}
+
+
+void mostrar_tabuleiro(ESTADO *e){
+
+
+}
+
+
+ESTADO *inicializar_estado(){
+	
+
+}
+
+
+int interpretador(ESTADO *e){
+
+
+}
