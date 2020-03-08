@@ -16,6 +16,7 @@ typedef struct {
 
 typedef JOGADA JOGADAS[32];
 
+//Estado do jogo
 typedef struct {
 	CASA tab[8][8];
 	JOGADAS jogadas;
