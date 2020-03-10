@@ -18,7 +18,7 @@ ESTADO *inicializar_estado(){
 	//Inicializa a matriz do tabuleiro
 	for(int linha = 0; linha < 8; linha++){
 		for(int coluna = 0; coluna < 8; coluna++){
-			e->tab[linha][coluna] = 0;
+			e->tab[linha][coluna] = VAZIO;
 		}
 	}
 }
