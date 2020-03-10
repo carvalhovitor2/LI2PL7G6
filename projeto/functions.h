@@ -1,6 +1,5 @@
 #include "data.h"
 //Declare the functions that are defined in functions.c
-//oi
 
 
 int jogar(ESTADO *e, COORDENADA *c);
