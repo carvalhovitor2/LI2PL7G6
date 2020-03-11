@@ -4,6 +4,7 @@
 #include "functions.h"
 
 int main(){
-	inicializar_estado();
+	ESTADO *e=inicializar_estado();
+	mostrar_tabuleiro(e);	
 	return 0;
 }
