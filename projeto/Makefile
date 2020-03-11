@@ -1,3 +1,3 @@
 
 all:
-	gcc -o game main_game.c functions.c
+	gcc -o game main_game.c data/data.c interface/interface.c logic/logic.c
