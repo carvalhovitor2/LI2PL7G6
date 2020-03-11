@@ -5,9 +5,16 @@
 
 //Making a move
 int jogar(ESTADO *e, COORDENADA *c){
+
 }
 
 void mostrar_tabuleiro(ESTADO *e){
+        for(int linha = 0; linha < 8; linha++){
+                for(int coluna = 0; coluna < 8; coluna++){
+                        printf("%d ", e->tab[linha][coluna]);
+                }
+		printf("\n");
+        } 
 }
 
 
@@ -21,7 +28,9 @@ ESTADO *inicializar_estado(){
 			e->tab[linha][coluna] = VAZIO;
 		}
 	}
+	return e;
 }
+
 
 int interpretador(ESTADO *e){
 }
