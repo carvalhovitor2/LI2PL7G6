@@ -10,7 +10,7 @@ LI2 - PL7
 
 
 Modus Operandi
-------------
+------------  
 
 As alterações devem ser feitas sempre nos modulos destinados para tais funções, ou seja:  
 
@@ -18,4 +18,10 @@ Funções que mexem com a lógica do programa ficam em DEFINIDAS logic/logic.c e
   
 Funções que mexem com a interface do programa ficam em DEFINIDAS interface/interface.c e DECLARADAS em interface/interface.h  
   
-Funções que mexem com os dados do programa ficam em DEFINIDAS data/data.c e DECLARADAS em data/data.h  
+Funções que mexem com os dados do programa ficam em DEFINIDAS data/data.c e DECLARADAS em data/data.h 
+
+
+Compilação
+------------  
+
+Para compilar, execute o comando 'make' de dentro do diretorio base do projeto. Isto é, em LI2/projeto.   
