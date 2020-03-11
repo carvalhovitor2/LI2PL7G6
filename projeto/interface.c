@@ -1,4 +1,4 @@
-//This file is designed to store the definition of the functions used in main_game.c
+//This file is designed to store the definition of the interface functions
 #include "functions.h"
 #include <stdlib.h>
 #include <stdio.h>
