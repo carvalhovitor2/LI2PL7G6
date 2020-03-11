@@ -6,7 +6,7 @@
 int jogar(ESTADO *e, COORDENADA c){
     int column = c.coluna;
     int line = c.linha;
-    e-> tab[line][column] = BRANCA;
+    e-> tab[line-1][column-1] = BRANCA;
     if (e-> jogador_atual == 1) {
         e-> jogadas[e-> num_jogadas].jogador1 = c;
         e-> jogador_atual = 2;
