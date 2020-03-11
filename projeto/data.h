@@ -24,5 +24,6 @@ typedef struct {
 	int jogador_atual;
 } ESTADO;
 
-
+ESTADO *inicializar_estado();
+void mostrar_tabuleiro(ESTADO *e);
 #endif
