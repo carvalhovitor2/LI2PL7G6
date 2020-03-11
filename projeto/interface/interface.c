@@ -12,3 +12,8 @@ void mostrar_tabuleiro(ESTADO *e){
 		printf("\n");
         } 
 }
+
+int interpretador(ESTADO *e){
+
+}
+
