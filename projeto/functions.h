@@ -2,7 +2,6 @@
 //Declare the functions that are defined in functions.c
 
 
-
 int jogar(ESTADO *e, COORDENADA *c);
 
 
