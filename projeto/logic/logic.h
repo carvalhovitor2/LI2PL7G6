@@ -3,6 +3,7 @@
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
+int jogar(ESTADO *e, COORDENADA c);
 int interpretador(ESTADO *e);
 
 
