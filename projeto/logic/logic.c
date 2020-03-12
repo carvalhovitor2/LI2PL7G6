@@ -6,8 +6,6 @@
 int jogar(ESTADO *e, COORDENADA c){
     int column = c.coluna;
     int line = c.linha;
-    //Checks if it's a valid move. Returns false if it's not a valid move.
-  
     changePiece(e, c, BRANCA);
     if (obter_jogador_atual(e) == 1) {
         e-> jogadas[e-> num_jogadas].jogador1 = c;
