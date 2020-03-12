@@ -5,6 +5,16 @@
 
 int jogar(ESTADO *e, COORDENADA c) {
     changePiece(e, c, BRANCA);
-    printf("jogar %d %d\n", c.coluna, c.linha);
+    if (obter_jogador_atual(e) == 1) {
+        coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
+        changePlayer(e);
+    }
+    else
+    {
+        coloca_jogada(e,obter_numero_de_jogadas(e),c,2);
+        changePlayer(e);
+        incrJogada(e);
+    }
+    printf("jogar %d %d\n", c.linha+1, c.coluna+1);
     return 1;
 }
