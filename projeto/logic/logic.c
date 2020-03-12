@@ -11,12 +11,12 @@ int jogar(ESTADO *e, COORDENADA c){
     e-> tab[line-1][column-1] = BRANCA;
     if (getCurrentPlayer(e) == 1) {
         e-> jogadas[e-> num_jogadas].jogador1 = c;
-        e-> jogador_atual = 2;
+        changePlayer(e);
     }
     else
     {
         e-> jogadas[e-> num_jogadas].jogador2 = c;
-        e-> jogador_atual = 1;
+        changePlayer(e);
         e-> num_jogadas++;
     }
     return 1;
