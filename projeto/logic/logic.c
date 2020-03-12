@@ -3,20 +3,8 @@
 #include <stdlib.h>
 #include "logic.h"
 
-int jogar(ESTADO *e, COORDENADA c){
-    int column = c.coluna;
-    int line = c.linha;
+int jogar(ESTADO *e, COORDENADA c) {
     changePiece(e, c, BRANCA);
-    if (obter_jogador_atual(e) == 1) {
-        e-> jogadas[e-> num_jogadas].jogador1 = c;
-        changePlayer(e);
-    }
-    else
-    {
-        e-> jogadas[e-> num_jogadas].jogador2 = c;
-        changePlayer(e);
-        e-> num_jogadas++;
-    }
+    printf("jogar %d %d\n", c.coluna, c.linha);
     return 1;
 }
-
