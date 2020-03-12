@@ -21,11 +21,17 @@ int getNumberOfMoves(ESTADO *e){
 	return e->num_jogadas;	
 }
 
+//Alternates current player
 void changePlayer(ESTADO *e){
 	if ( e->jogador_atual == 1) e->jogador_atual = 2;
 	else e->jogador_atual = 1;
 }
 
+
+//Changes a board piece
+void changePiece(ESTADO *e, COORDENADA c, CASA piece){
+	e->tab[c.linha][c.coluna] = piece;
+}
 
 //Initializes the state
 ESTADO *inicializar_estado(){
