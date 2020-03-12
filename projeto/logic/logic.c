@@ -7,8 +7,8 @@ int jogar(ESTADO *e, COORDENADA c){
     int column = c.coluna;
     int line = c.linha;
     //Checks if it's a valid move. Returns false if it's not a valid move.
-    if ( line < 1 || line > 8 || column < 1 || column > 8 ) return 0; 
-    e-> tab[line-1][column-1] = BRANCA;
+    if ( line < 1 || line > 8 || column < 1 || column > 8 || getCurrentPiece(e, &c) == BRANCA || getCurrentPiece(e, &c) == PRETA ) return 0; 
+    changePiece(e, c, BRANCA);
     if (getCurrentPlayer(e) == 1) {
         e-> jogadas[e-> num_jogadas].jogador1 = c;
         changePlayer(e);
