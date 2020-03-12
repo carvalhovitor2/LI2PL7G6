@@ -30,7 +30,7 @@ void changePlayer(ESTADO *e){
 
 //Changes a board piece
 void changePiece(ESTADO *e, COORDENADA c, CASA piece){
-	e->tab[c.linha][c.coluna] = piece;
+	e->tab[c.linha-1][c.coluna-1] = piece;
 }
 
 //Initializes the state
