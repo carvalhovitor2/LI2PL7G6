@@ -5,21 +5,25 @@
 
 
 
-//Gets current player
-int getCurrentPiece(ESTADO *e, COORDENADA *c){
-	return e->tab[c->linha-1][c->coluna-1];
+//Gets current piece
+CASA obter_estado_casa(ESTADO *e, COORDENADA c){
+	int line = c.linha - 1;
+	int column = c.coluna - 1;
+	return ((*e).tab[line][column]);
 }
 
+
 //Gets current player
-int getCurrentPlayer(ESTADO *e){
-	return e->jogador_atual;	
+int obter_jogador_atual(ESTADO *estado){
+	return ((*estado).jogador_atual);
 }
 
 
 //Gets current number of moves
-int getNumberOfMoves(ESTADO *e){
-	return e->num_jogadas;	
+int obter_numero_de_jogadas(ESTADO *estado){
+	return ((*estado).num_jogadas);
 }
+
 
 //Alternates current player
 void changePlayer(ESTADO *e){
@@ -32,6 +36,13 @@ void changePlayer(ESTADO *e){
 void changePiece(ESTADO *e, COORDENADA c, CASA piece){
 	e->tab[c.linha-1][c.coluna-1] = piece;
 }
+
+
+//Incrementa o nº de jogadas
+void incrJogada(ESTADO *e){
+	(e-> num_jogadas) ++;
+}
+
 
 //Initializes the state
 ESTADO *inicializar_estado(){
@@ -50,7 +61,7 @@ ESTADO *inicializar_estado(){
 }
 
 //Verifies a move
-int validate(ESTADO *e, COORDENADA c){
-	if ( line < 1 || line > 8 || column < 1 || column > 8 || getCurrentPiece(e, &c) == BRANCA || getCurrentPiece(e, &c) == PRETA ) return 0;
-	return 1;
-}
+//int validate(ESTADO *e, COORDENADA c){
+//	if ( line < 1 || line > 8 || column < 1 || column > 8 || getCurrentPiece(e, &c) == BRANCA || getCurrentPiece(e, &c) == PRETA ) return 0;
+//	return 1;
+//}
