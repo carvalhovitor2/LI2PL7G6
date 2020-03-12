@@ -21,6 +21,11 @@ int getNumberOfMoves(ESTADO *e){
 	return e->num_jogadas;	
 }
 
+void changePlayer(ESTADO *e){
+	if ( e->jogador_atual == 1) e->jogador_atual = 2;
+	else e->jogador_atual = 1;
+}
+
 
 //Initializes the state
 ESTADO *inicializar_estado(){
