@@ -5,9 +5,27 @@
 
 //Print the game board
 void mostrar_tabuleiro(ESTADO *e){
+	int boardPiece = 0;
         for(int linha = 0; linha < 8; linha++){
                 for(int coluna = 0; coluna < 8; coluna++){
-                        printf("%d ", e->tab[linha][coluna]);
+			//Translate enum to chars
+                        boardPiece = e->tab[linha][coluna];
+			if(linha == 7 && coluna == 0) boardPiece = 3;
+			if(linha == 0 && coluna == 7) boardPiece = 4;
+			switch (boardPiece){
+				case 0: printf(". ");
+					break;
+				case 1: printf("# ");
+					break;
+				case 2: printf("* ");
+					break;
+				case 3: printf("1 ");
+					break;
+				case 4: printf("2 ");
+					break;
+				default: break;	
+
+			}
                 }
 		printf("\n");
         } 
