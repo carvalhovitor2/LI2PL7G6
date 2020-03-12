@@ -4,16 +4,34 @@
 #include <stdio.h>
 
 
-//Inicializa o estado do tabuleiro
+
+//Gets current player
+int getCurrentPiece(ESTADO *e, COORDENADA *c){
+	return e->tab[c->linha-1][c->coluna-1];
+}
+
+//Gets current player
+int getCurrentPlayer(ESTADO *e){
+	return e->jogador_atual;	
+}
+
+
+//Gets current number of moves
+int getNumberOfMoves(ESTADO *e){
+	return e->num_jogadas;	
+}
+
+
+//Initializes the state
 ESTADO *inicializar_estado(){
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
 	e->jogador_atual=1;
 	e->num_jogadas=0;
-	//Percorre linhas
+	//Iterates through lines
 	for(int linha = 0; linha < 8; linha++){
-		//Percorre colunas
+		//Iterates through columns
 		for(int coluna = 0; coluna < 8; coluna++){
-			//Inicializa o elemento da matriz
+			//Initializes boardPiece;
 			e->tab[linha][coluna] = VAZIO;
 		}
 	}
