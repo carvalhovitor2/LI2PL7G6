@@ -2,6 +2,9 @@
 #include "interface.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
+#define BUF_SIZE 1024
 
 //Print the game board
 void mostrar_tabuleiro(ESTADO *e){
@@ -31,19 +34,21 @@ void mostrar_tabuleiro(ESTADO *e){
         } 
 }
 
-//int interpretador(ESTADO *e){
-//	char linha[BUF_SIZE];
-//	char col[2], lin[2];
+int interpretador(ESTADO *e){
+	char linha[BUF_SIZE];
+	char col[2], lin[2];
 
-//	if(fgets(linha, BUF_SIZE, stdin) == NULL)
-//		return 0;
+	fgets(linha, BUF_SIZE, stdin);
 
-//	if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
-//		COORDENADA coord = {*col - 'a', *lin - '1'};
-//		jogar(e, coord);
-//		mostrar_tabuleiro(e);
-//	}
+	if(fgets(linha, BUF_SIZE, stdin) == NULL)
+		return 0;
 
-//	return 1;
-//}
+	if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
+		COORDENADA coord = {*lin - 'a', *col - '1'};
+		jogar(e, coord);
+		mostrar_tabuleiro(e);
+	}
+
+	return 1;
+}
 
