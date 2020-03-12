@@ -24,6 +24,10 @@ int obter_numero_de_jogadas(ESTADO *estado){
 	return ((*estado).num_jogadas);
 }
 
+void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
+    if (num_player==1) e->jogadas[num_jogadas].jogador1 = c;
+    else  e->jogadas[num_jogadas].jogador2 = c;
+}
 
 //Alternates current player
 void changePlayer(ESTADO *e){
