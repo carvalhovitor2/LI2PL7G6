@@ -9,7 +9,7 @@ int jogar(ESTADO *e, COORDENADA c){
     //Checks if it's a valid move. Returns false if it's not a valid move.
   
     changePiece(e, c, BRANCA);
-    if (getCurrentPlayer(e) == 1) {
+    if (obter_jogador_atual(e) == 1) {
         e-> jogadas[e-> num_jogadas].jogador1 = c;
         changePlayer(e);
     }
