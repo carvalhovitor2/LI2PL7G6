@@ -48,3 +48,9 @@ ESTADO *inicializar_estado(){
 	}
 	return e;
 }
+
+//Verifies a move
+int validate(ESTADO *e, COORDENADA c){
+	if ( line < 1 || line > 8 || column < 1 || column > 8 || getCurrentPiece(e, &c) == BRANCA || getCurrentPiece(e, &c) == PRETA ) return 0;
+	return 1;
+}
