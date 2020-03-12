@@ -38,13 +38,11 @@ int interpretador(ESTADO *e){
 	char linha[BUF_SIZE];
 	char col[2], lin[2];
 
-	fgets(linha, BUF_SIZE, stdin);
-
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
 	if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
-		COORDENADA coord = {*lin - 'a' + 1 , *col - '1' + 1 };
+		COORDENADA coord = {*lin - 'a', *col - '1'};
 		jogar(e, coord);
 		mostrar_tabuleiro(e);
 	}
