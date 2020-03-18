@@ -31,7 +31,7 @@ void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
 
 //Alternates current player
 void changePlayer(ESTADO *e){
-	if ( e->jogador_atual == 1) e->jogador_atual = 2;
+	if (e->jogador_atual == 1) e->jogador_atual = 2;
 	else e->jogador_atual = 1;
 }
 
