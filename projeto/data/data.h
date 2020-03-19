@@ -24,6 +24,7 @@ typedef struct {
 	int jogador_atual;
 } ESTADO;
 void incrJogada(ESTADO *e);
+void coloca_preta (ESTADO *e);
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
