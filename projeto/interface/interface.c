@@ -18,9 +18,9 @@ void mostrar_tabuleiro(ESTADO *e){
 			switch (boardPiece){
 				case 0: printf(". ");
 					break;
-				case 1: printf("# ");
+				case 1: printf("* ");
 					break;
-				case 2: printf("* ");
+				case 2: printf("# ");
 					break;
 				case 3: printf("1 ");
 					break;
