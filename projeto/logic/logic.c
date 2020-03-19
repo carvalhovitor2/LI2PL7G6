@@ -77,6 +77,33 @@ int jogar(ESTADO *e, COORDENADA c) {
 
 //Validates a move
 int jogadaValida(ESTADO *e, COORDENADA c){
-	
+	//Declaring used variables
+	int num_jogadas; JOGADA jogada; COORDENADA current = {3,4};
 
+	//Assigning values to declared variables
+	num_jogadas = (e->num_jogadas); jogada = e->jogadas[num_jogadas-1];
+
+	//Verifiy if its the first move. If it is, assume the gamer position is the first position. If not, use last move.
+	if (num_jogadas != 0 && obter_jogador_atual(e) == 1 ) current = jogada.jogador1;
+	if (num_jogadas != 0 && obter_jogador_atual(e) == 2 ) current = jogada.jogador2;
+
+	//Here goes the actual function purpose
+	//Ensures move is in a maximum of 8x8 range
+	if ( c.linha > 7 || c.linha < 0 || c.coluna > 7 || c.coluna < 0){
+		return 0;
+	}
+
+	//Ensures player is going to a piece that is a valid distance (only 1 piece distance)
+	if( (abs(c.linha - current.linha) > 1) || (abs(c.coluna - current.coluna) > 1)){
+	       	return 0;
+	}
+
+	//Ensures going piece is not BLACK
+	c.linha++;
+	c.coluna++;
+	if ( obter_estado_casa(e, c) == PRETA ){
+	       	return 0;
+	}
+
+	return 1;
 }

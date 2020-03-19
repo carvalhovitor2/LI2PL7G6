@@ -9,7 +9,6 @@
 //Print the game board
 void mostrar_tabuleiro(ESTADO *e){
 	int boardPiece = 0;
-    
     for(int linha = 0; linha < 8; linha++){
     	char a = 'a' + linha;
     	putchar(a);
@@ -37,7 +36,7 @@ void mostrar_tabuleiro(ESTADO *e){
 		printf("\n");
         } 
 
-    printf("  1 2 3 4 5 6 7 8\n");
+    printf("\r  1 2 3 4 5 6 7 8\n");
 }
 
 int interpretador(ESTADO *e){
