@@ -53,6 +53,9 @@ int interpretador(ESTADO *e){
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
+	if(strlen(linha) == 2 && sscanf(linha, "Q"))
+		return 0;
+
 	return 1;
 }
 
