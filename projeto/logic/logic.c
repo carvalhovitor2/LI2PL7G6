@@ -3,6 +3,15 @@
 #include <stdlib.h>
 #include "logic.h"
 
+void coloca_preta (ESTADO *e){
+    COORDENADA c = {3,5}; //Posição inicial no tabuleiro.
+    if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) == 0) //caso seja a primeira jogada vai colocar a peça preta na posição 4,4
+        changePiece (e,c,PRETA);
+    else if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) > 0)
+        changePiece (e,e->jogadas[obter_numero_de_jogadas(e)-1].jogador2,PRETA);
+    else changePiece (e,e->jogadas[obter_numero_de_jogadas(e)].jogador1,PRETA);
+}
+
 
 COORDENADA findPreta(ESTADO *e){
     int i = 0, j = 0, bool = 1;
@@ -46,6 +55,7 @@ int gameOver(ESTADO *e){
 
 int jogar(ESTADO *e, COORDENADA c) {
     changePiece(e, c, BRANCA);
+    coloca_preta(e);
     if (obter_jogador_atual(e) == 1) {
         coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
         changePlayer(e);
