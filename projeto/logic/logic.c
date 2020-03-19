@@ -4,7 +4,7 @@
 #include "logic.h"
 
 void coloca_preta (ESTADO *e){
-    COORDENADA c = {3,5}; //Posição inicial no tabuleiro.
+    COORDENADA c = {3,4}; //Posição inicial no tabuleiro.
     if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) == 0) //caso seja a primeira jogada vai colocar a peça preta na posição 4,4
         changePiece (e,c,PRETA);
     else if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) > 0)
