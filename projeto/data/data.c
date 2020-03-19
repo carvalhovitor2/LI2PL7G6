@@ -29,6 +29,16 @@ void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     else  e->jogadas[num_jogadas].jogador2 = c;
 }
 
+//Puts a black piece in a desired coordinate
+void coloca_preta (ESTADO *e){
+    COORDENADA c = {3,4}; //Posição inicial no tabuleiro.
+    if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) == 0) //caso seja a primeira jogada vai colocar a peça preta na posição 4,4
+        changePiece (e,c,PRETA);
+    else if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) > 0)
+        changePiece (e,e->jogadas[obter_numero_de_jogadas(e)-1].jogador2,PRETA);
+    else changePiece (e,e->jogadas[obter_numero_de_jogadas(e)].jogador1,PRETA);
+}
+
 //Alternates current player
 void changePlayer(ESTADO *e){
 	if (e->jogador_atual == 1) e->jogador_atual = 2;
@@ -50,6 +60,7 @@ void incrJogada(ESTADO *e){
 
 //Initializes the state
 ESTADO *inicializar_estado(){
+	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
 	e->jogador_atual=1;
 	e->num_jogadas=0;
@@ -61,6 +72,7 @@ ESTADO *inicializar_estado(){
 			e->tab[linha][coluna] = VAZIO;
 		}
 	}
+	changePiece(e, coordenadaInicial, BRANCA); 
 	return e;
 }
 
