@@ -3,15 +3,6 @@
 #include <stdlib.h>
 #include "logic.h"
 
-void coloca_preta (ESTADO *e){
-    COORDENADA c = {3,4}; //Posição inicial no tabuleiro.
-    if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) == 0) //caso seja a primeira jogada vai colocar a peça preta na posição 4,4
-        changePiece (e,c,PRETA);
-    else if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) > 0)
-        changePiece (e,e->jogadas[obter_numero_de_jogadas(e)-1].jogador2,PRETA);
-    else changePiece (e,e->jogadas[obter_numero_de_jogadas(e)].jogador1,PRETA);
-}
-
 
 COORDENADA findPreta(ESTADO *e){
     int i = 0, j = 0, bool = 1;
@@ -29,6 +20,25 @@ COORDENADA findPreta(ESTADO *e){
         j = 0;
     }
     return preta;
+}
+
+
+COORDENADA findBranca(ESTADO *e){
+    int i = 0, j = 0, bool = 1;
+    COORDENADA branca;
+    while(i != 8 && bool){
+        while(j != 8 && bool){
+            if (e-> tab[i][j] == BRANCA){
+                branca.linha = i;
+                branca.coluna = j;
+                bool = 0;
+            }
+            j ++;
+        }
+        i ++;
+        j = 0;
+    }
+    return branca;
 }
 
 
@@ -76,7 +86,7 @@ int jogar(ESTADO *e, COORDENADA c) {
 
 
 //Validates a move
-int jogadaValida(ESTADO *e, COORDENADA c){
+int jogadaValida(ESTADO *e, COORDENADA going){
 	//Declaring used variables
 	int num_jogadas; JOGADA jogada; COORDENADA current = {3,4};
 
@@ -84,24 +94,23 @@ int jogadaValida(ESTADO *e, COORDENADA c){
 	num_jogadas = (e->num_jogadas); jogada = e->jogadas[num_jogadas-1];
 
 	//Verifiy if its the first move. If it is, assume the gamer position is the first position. If not, use last move.
-	if (num_jogadas != 0 && obter_jogador_atual(e) == 1 ) current = jogada.jogador1;
-	if (num_jogadas != 0 && obter_jogador_atual(e) == 2 ) current = jogada.jogador2;
+	current = findBranca(e);
 
 	//Here goes the actual function purpose
 	//Ensures move is in a maximum of 8x8 range
-	if ( c.linha > 7 || c.linha < 0 || c.coluna > 7 || c.coluna < 0){
+	if ( going.linha > 7 || going.linha < 0 || going.coluna > 7 || going.coluna < 0){
 		return 0;
 	}
 
 	//Ensures player is going to a piece that is a valid distance (only 1 piece distance)
-	if( (abs(c.linha - current.linha) > 1) || (abs(c.coluna - current.coluna) > 1)){
+	if( (abs(going.linha - current.linha) > 1) || (abs(going.coluna - current.coluna) > 1)){
 	       	return 0;
 	}
 
 	//Ensures going piece is not BLACK
-	c.linha++;
-	c.coluna++;
-	if ( obter_estado_casa(e, c) == PRETA ){
+	going.linha++;
+	going.coluna++;
+	if ( obter_estado_casa(e, going) == PRETA ){
 	       	return 0;
 	}
 
