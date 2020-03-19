@@ -9,7 +9,6 @@
 //Print the game board
 void mostrar_tabuleiro(ESTADO *e){
 	int boardPiece = 0;
-	printf("  1 2 3 4 5 6 7 8\n");
     
     for(int linha = 0; linha < 8; linha++){
     	char a = 'a' + linha;
@@ -37,6 +36,8 @@ void mostrar_tabuleiro(ESTADO *e){
                 }
 		printf("\n");
         } 
+
+    printf("  1 2 3 4 5 6 7 8\n");
 }
 
 int interpretador(ESTADO *e){
@@ -46,10 +47,11 @@ int interpretador(ESTADO *e){
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
-	if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
+	while(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 		COORDENADA coord = {*lin - 'a', *col - '1'};
 		jogar(e, coord);
 		mostrar_tabuleiro(e);
+		fgets(linha, BUF_SIZE, stdin);
 	}
 
 	return 1;
