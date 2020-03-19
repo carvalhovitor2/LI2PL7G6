@@ -52,20 +52,31 @@ int gameOver(ESTADO *e){
     return 0;
 }
 
-
+//Receives a coordinate and makes a move. (e.g changes the position of a player and leaves a black piece in its current position)
 int jogar(ESTADO *e, COORDENADA c) {
-    changePiece(e, c, BRANCA);
-    coloca_preta(e);
-    if (obter_jogador_atual(e) == 1) {
-        coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
-        changePlayer(e);
+    if (jogadaValida(e, c)){
+	    changePiece(e, c, BRANCA);
+            coloca_preta(e);
+            if (obter_jogador_atual(e) == 1) {
+                coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
+                changePlayer(e);
+            }
+            else
+            {
+                coloca_jogada(e,obter_numero_de_jogadas(e),c,2);
+                changePlayer(e);
+                incrJogada(e);
+            }
+            printf("jogar %d %d\n", c.linha+1, c.coluna+1);
+            return 1;
     }
-    else
-    {
-        coloca_jogada(e,obter_numero_de_jogadas(e),c,2);
-        changePlayer(e);
-        incrJogada(e);
-    }
-    printf("jogar %d %d\n", c.linha+1, c.coluna+1);
-    return 1;
+    else printf("Jogada invalida\n");
+    return 0;
+}
+
+
+//Validates a move
+int jogadaValida(ESTADO *e, COORDENADA c){
+	
+
 }

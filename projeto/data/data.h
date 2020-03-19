@@ -23,12 +23,12 @@ typedef struct {
 	int num_jogadas;
 	int jogador_atual;
 } ESTADO;
-
+void incrJogada(ESTADO *e);
 ESTADO *inicializar_estado();
 int obter_jogador_atual(ESTADO *estado);
 int obter_numero_de_jogadas(ESTADO *estado);
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
-
+void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player);
 void changePlayer(ESTADO *e);
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
 

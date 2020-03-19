@@ -2,11 +2,8 @@
 
 #include "../logic/logic.h"
 
-#ifndef HEADER_FILE
-#define HEADER_FILE
 
 void mostrar_tabuleiro(ESTADO *e);
 int interpretador(ESTADO *e);
 
-#endif
 
