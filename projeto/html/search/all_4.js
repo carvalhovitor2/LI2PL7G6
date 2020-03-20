@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['jogada_9',['JOGADA',['../struct_j_o_g_a_d_a.html',1,'']]],
-  ['jogadas_10',['jogadas',['../struct_e_s_t_a_d_o.html#a0e44ff9e999c7573f4b87cb8a7aba6c2',1,'ESTADO::jogadas()'],['../data_8h.html#a94c221d29a1760f008b7834093259b7d',1,'JOGADAS():&#160;data.h']]],
-  ['jogador_5fatual_11',['jogador_atual',['../struct_e_s_t_a_d_o.html#a6f3701db06762a60333719d94aa4d28c',1,'ESTADO']]]
+  ['incrjogada',['incrJogada',['../data_8h.html#a7165dae099a6650cab9974eb7de161e8',1,'data.c']]],
+  ['inicializar_5festado',['inicializar_estado',['../data_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f',1,'data.c']]],
+  ['interface_2eh',['interface.h',['../interface_8h.html',1,'']]],
+  ['interpretador',['interpretador',['../interface_8h.html#a24da95ebeede4a540e37790ce8be359b',1,'interface.c']]]
 ];
