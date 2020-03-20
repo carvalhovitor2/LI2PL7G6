@@ -1,4 +1,8 @@
-//Declare the functions that are defined in interface.c
+/**
+@file interface.h
+Declare the functions that are defined in interface.c
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../logic/logic.h"

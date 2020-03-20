@@ -1,4 +1,8 @@
-//This file is supposed to store the declarations of the logic functions used in our project
+/**
+@file logic.h
+This file is supposed to store the declarations of the logic functions used in our project
+*/
+
 #include "../data/data.h"
 
 /**

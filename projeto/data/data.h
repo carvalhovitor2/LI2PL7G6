@@ -1,3 +1,8 @@
+/**
+@file data.h
+Definição do estado e das funções que o manipulam
+*/
+
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
