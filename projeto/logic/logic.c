@@ -110,7 +110,7 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 	//Ensures going piece is not BLACK
 	going.linha++;
 	going.coluna++;
-	if ( obter_estado_casa(e, going) == PRETA ){
+	if ( obter_estado_casa(e, going) == PRETA){ //|| obter_estado_casa(e, going) == BRANCA){
 	       	return 0;
 	}
 
