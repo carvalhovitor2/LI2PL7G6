@@ -7,36 +7,36 @@
 #define BUF_SIZE 1024
 
 //Print the game board
-void mostrar_tabuleiro(ESTADO *e){
+void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 	int boardPiece = 0;
     for(int linha = 0; linha < 8; linha++){
     	char a = 'a' + linha;
-    	putchar(a);
-    	putchar(' ');
+    	fprintf(whereToPrint, "%c", a);
+    	fprintf(whereToPrint, " ");
         for(int coluna = 0; coluna < 8; coluna++){
 		//Translate enum to chars
                     boardPiece = e->tab[linha][coluna];
 			if(linha == 7 && coluna == 0) boardPiece = 3;
 			if(linha == 0 && coluna == 7) boardPiece = 4;
 			switch (boardPiece){
-				case 0: printf(". ");
+				case 0: fprintf(whereToPrint, ". ");
 					break;
-				case 1: printf("* ");
+				case 1: fprintf(whereToPrint, "* ");
 					break;
-				case 2: printf("# ");
+				case 2: fprintf(whereToPrint, "# ");
 					break;
-				case 3: printf("1 ");
+				case 3: fprintf(whereToPrint, "1 ");
 					break;
-				case 4: printf("2 ");
+				case 4: fprintf(whereToPrint, "2 ");
 					break;
 				default: break;	
 
 			}
                 }
-		printf("\n");
+		fprintf(whereToPrint, "\n");
         } 
 
-    printf("  1 2 3 4 5 6 7 8\n");
+    fprintf(whereToPrint, "  1 2 3 4 5 6 7 8\n");
 }
 
 
@@ -60,7 +60,7 @@ int interpretador(ESTADO *e){
 	while(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 		COORDENADA coord = {*lin - 'a', *col - '1'};
 		jogar(e, coord);
-		mostrar_tabuleiro(e);
+		mostrar_tabuleiro(stdout, e);
 		prompt(e,x);
 		x ++;
 

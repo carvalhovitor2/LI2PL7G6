@@ -5,7 +5,7 @@
 int main(){
 	COORDENADA c = {2,5};
 	ESTADO *e=inicializar_estado();
-	mostrar_tabuleiro(e);
+	mostrar_tabuleiro(stdout, e);
 	interpretador(e);
 	return 0;
 }
