@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Código-Fonte de LI2.git/trunk/projeto/data/data.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_951a07075514cd376816b6067ef6fd84.html">LI2.git</a></li><li class="navelem"><a class="el" href="dir_1813af8467f43cc6b24241bfd96c4557.html">trunk</a></li><li class="navelem"><a class="el" href="dir_b72e4ada0c328bcb046483681ecc28f7.html">projeto</a></li><li class="navelem"><a class="el" href="dir_2c2faf8fb89982a829e98690d9649dd5.html">data</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">data.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="data_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef HEADER_FILE</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define HEADER_FILE</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {VAZIO, BRANCA, PRETA} CASA;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_c_o_o_r_d_e_n_a_d_a.html">   14</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> linha;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> coluna;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;} <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_j_o_g_a_d_a.html">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogador1;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogador2;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <a class="code" href="struct_j_o_g_a_d_a.html">JOGADA</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="data_8h.html#a94c221d29a1760f008b7834093259b7d">   30</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="struct_j_o_g_a_d_a.html">JOGADA</a> <a class="code" href="data_8h.html#a94c221d29a1760f008b7834093259b7d">JOGADAS</a>[32];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="struct_e_s_t_a_d_o.html">   35</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="struct_e_s_t_a_d_o.html#a00c6ffee9c6e637d4178cb6e8846a578">   37</a></span>&#160;    CASA tab[8][8];</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="struct_e_s_t_a_d_o.html#a0e44ff9e999c7573f4b87cb8a7aba6c2">   39</a></span>&#160;    <a class="code" href="data_8h.html#a94c221d29a1760f008b7834093259b7d">JOGADAS</a> <a class="code" href="struct_e_s_t_a_d_o.html#a0e44ff9e999c7573f4b87cb8a7aba6c2">jogadas</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="struct_e_s_t_a_d_o.html#a06af1e846368d0fc9525e78f4d86faa3">   41</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct_e_s_t_a_d_o.html#a06af1e846368d0fc9525e78f4d86faa3">num_jogadas</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="struct_e_s_t_a_d_o.html#a6f3701db06762a60333719d94aa4d28c">   43</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct_e_s_t_a_d_o.html#a6f3701db06762a60333719d94aa4d28c">jogador_atual</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a7165dae099a6650cab9974eb7de161e8">incrJogada</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a1bd71f1a0a5697f526ba3ff9c6b02f98">coloca_preta</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *<a class="code" href="data_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">int</span> <a class="code" href="data_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> <a class="code" href="data_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;CASA <a class="code" href="data_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> c);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a36f08da8c5096985e8b369c447c30039">coloca_jogada</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e,<span class="keywordtype">int</span> num_jogadas,<a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> c,<span class="keywordtype">int</span> num_player);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a7df9c53e22befe94327ee92135e5c152">changePlayer</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a9d446372f8976c1b36da43d550c2207d">changePiece</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> c, CASA piece);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> gr(<span class="keywordtype">char</span> *fileName, <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="adata_8h_html_a7df9c53e22befe94327ee92135e5c152"><div class="ttname"><a href="data_8h.html#a7df9c53e22befe94327ee92135e5c152">changePlayer</a></div><div class="ttdeci">void changePlayer(ESTADO *e)</div><div class="ttdoc">Alter o jogador atual.</div><div class="ttdef"><b>Definition:</b> data.c:41</div></div>
+<div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdoc">Tipo de dados para as coordenadas.</div><div class="ttdef"><b>Definition:</b> data.h:14</div></div>
+<div class="ttc" id="astruct_j_o_g_a_d_a_html"><div class="ttname"><a href="struct_j_o_g_a_d_a.html">JOGADA</a></div><div class="ttdoc">Tipo de dados para a jogada.</div><div class="ttdef"><b>Definition:</b> data.h:22</div></div>
+<div class="ttc" id="adata_8h_html_a7e0c7e26fb685d9ab501e19b05e6954f"><div class="ttname"><a href="data_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a></div><div class="ttdeci">ESTADO * inicializar_estado()</div><div class="ttdoc">Cria o estado inicial do jogo.</div><div class="ttdef"><b>Definition:</b> data.c:60</div></div>
+<div class="ttc" id="adata_8h_html_a9d446372f8976c1b36da43d550c2207d"><div class="ttname"><a href="data_8h.html#a9d446372f8976c1b36da43d550c2207d">changePiece</a></div><div class="ttdeci">void changePiece(ESTADO *e, COORDENADA c, CASA piece)</div><div class="ttdoc">Altera a peça da casa.</div><div class="ttdef"><b>Definition:</b> data.c:48</div></div>
+<div class="ttc" id="astruct_e_s_t_a_d_o_html_a6f3701db06762a60333719d94aa4d28c"><div class="ttname"><a href="struct_e_s_t_a_d_o.html#a6f3701db06762a60333719d94aa4d28c">ESTADO::jogador_atual</a></div><div class="ttdeci">int jogador_atual</div><div class="ttdef"><b>Definition:</b> data.h:43</div></div>
+<div class="ttc" id="adata_8h_html_a6cd0b387bdee9e18003c78852394aa63"><div class="ttname"><a href="data_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a></div><div class="ttdeci">int obter_numero_de_jogadas(ESTADO *estado)</div><div class="ttdoc">Devolve o número de jogadas do estado.</div><div class="ttdef"><b>Definition:</b> data.c:21</div></div>
+<div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdoc">Tipo de dados para o estado.</div><div class="ttdef"><b>Definition:</b> data.h:35</div></div>
+<div class="ttc" id="adata_8h_html_a6faa68373203923729ed38657aa0f768"><div class="ttname"><a href="data_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a></div><div class="ttdeci">CASA obter_estado_casa(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Obtém o estado atual da casa.</div><div class="ttdef"><b>Definition:</b> data.c:7</div></div>
+<div class="ttc" id="adata_8h_html_a94c221d29a1760f008b7834093259b7d"><div class="ttname"><a href="data_8h.html#a94c221d29a1760f008b7834093259b7d">JOGADAS</a></div><div class="ttdeci">JOGADA JOGADAS[32]</div><div class="ttdoc">Tipo de dados para as jogadas.</div><div class="ttdef"><b>Definition:</b> data.h:30</div></div>
+<div class="ttc" id="astruct_e_s_t_a_d_o_html_a0e44ff9e999c7573f4b87cb8a7aba6c2"><div class="ttname"><a href="struct_e_s_t_a_d_o.html#a0e44ff9e999c7573f4b87cb8a7aba6c2">ESTADO::jogadas</a></div><div class="ttdeci">JOGADAS jogadas</div><div class="ttdef"><b>Definition:</b> data.h:39</div></div>
+<div class="ttc" id="adata_8h_html_ad6e326e4ffa57ca1ae0c75377ecefc8c"><div class="ttname"><a href="data_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a></div><div class="ttdeci">int obter_jogador_atual(ESTADO *estado)</div><div class="ttdoc">Devolve o jogador atual a jogar.</div><div class="ttdef"><b>Definition:</b> data.c:15</div></div>
+<div class="ttc" id="astruct_e_s_t_a_d_o_html_a06af1e846368d0fc9525e78f4d86faa3"><div class="ttname"><a href="struct_e_s_t_a_d_o.html#a06af1e846368d0fc9525e78f4d86faa3">ESTADO::num_jogadas</a></div><div class="ttdeci">int num_jogadas</div><div class="ttdef"><b>Definition:</b> data.h:41</div></div>
+<div class="ttc" id="adata_8h_html_a1bd71f1a0a5697f526ba3ff9c6b02f98"><div class="ttname"><a href="data_8h.html#a1bd71f1a0a5697f526ba3ff9c6b02f98">coloca_preta</a></div><div class="ttdeci">void coloca_preta(ESTADO *e)</div><div class="ttdoc">Muda o valor de uma casa.</div><div class="ttdef"><b>Definition:</b> data.c:31</div></div>
+<div class="ttc" id="adata_8h_html_a36f08da8c5096985e8b369c447c30039"><div class="ttname"><a href="data_8h.html#a36f08da8c5096985e8b369c447c30039">coloca_jogada</a></div><div class="ttdeci">void coloca_jogada(ESTADO *e, int num_jogadas, COORDENADA c, int num_player)</div><div class="ttdoc">coloca na posição num_jogadas do array JOGADAS no determinado jogador a coordenada c</div><div class="ttdef"><b>Definition:</b> data.c:25</div></div>
+<div class="ttc" id="adata_8h_html_a7165dae099a6650cab9974eb7de161e8"><div class="ttname"><a href="data_8h.html#a7165dae099a6650cab9974eb7de161e8">incrJogada</a></div><div class="ttdeci">void incrJogada(ESTADO *e)</div><div class="ttdoc">incrementa o valor do número de jogadas</div><div class="ttdef"><b>Definition:</b> data.c:54</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
