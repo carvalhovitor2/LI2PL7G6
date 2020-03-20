@@ -32,5 +32,5 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player);
 void changePlayer(ESTADO *e);
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
-
+void gr(char *fileName, ESTADO *e);
 #endif

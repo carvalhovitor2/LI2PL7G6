@@ -40,13 +40,14 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 }
 
 
-void prompt(ESTADO *e, int x){
+int prompt(ESTADO *e, int x){
 	int gamer = obter_jogador_atual(e);
 	int jogada = obter_numero_de_jogadas(e);
 	if (x<10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada);
 	else 
 		printf("# %d PL%d (%d)> ", x, gamer, jogada);
+	return 1;
 }
 
 int interpretador(ESTADO *e){
@@ -54,8 +55,10 @@ int interpretador(ESTADO *e){
 	char col[2], lin[2];
 	int x = 1;
 
+	prompt(e,x);
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
+
 
 	while(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 		COORDENADA coord = {*lin - 'a', *col - '1'};
@@ -63,10 +66,10 @@ int interpretador(ESTADO *e){
 		mostrar_tabuleiro(stdout, e);
 		prompt(e,x);
 		x ++;
-
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
+	//Quits game
 	if(strlen(linha) == 2 && sscanf(linha, "Q"))
 		return 0;
 

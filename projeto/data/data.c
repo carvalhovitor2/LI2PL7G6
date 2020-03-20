@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
 	int line = c.linha - 1;
@@ -76,8 +74,8 @@ ESTADO *inicializar_estado(){
 	return e;
 }
 
-//Verifies a move
-//int validate(ESTADO *e, COORDENADA c){
-//	if ( line < 1 || line > 8 || column < 1 || column > 8 || getCurrentPiece(e, &c) == BRANCA || getCurrentPiece(e, &c) == PRETA ) return 0;
-//	return 1;
-//}
+//Writes in a file
+void gr(char *fileName, ESTADO *e){
+	FILE *file = fopen(fileName, "w");
+	mostrar_tabuleiro(file, e);
+}
