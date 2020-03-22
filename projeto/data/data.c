@@ -76,6 +76,40 @@ ESTADO *inicializar_estado(){
 
 //Writes in a file
 void gr(char *fileName, ESTADO *e){
+	//Removes \n from string
+	fileName[strlen(fileName)-1] = 0;
+
+	//Opens the file
 	FILE *file = fopen(fileName, "w+");
+
+	//Writes the board in the file instead of stdout
 	mostrar_tabuleiro(file, e);
+}
+
+
+void ler(char *fileName, ESTADO *e){
+	//Removes \n from string
+	fileName[strlen(fileName)-1] = 0;
+
+	//Opens the file
+	FILE *file = fopen(fileName, "r");
+
+	//Auxiliar char to translate chars to integers
+	char *c;
+
+	//Iterates through lines
+	for(int linha = 0; linha < 8; linha++){
+		//Discarding columns with letters (a, b, c ...)
+		fscanf(file, "%c ", c);
+
+		//Iterates through columns
+		for(int coluna = 0; coluna < 8; coluna++){
+
+			//Reads a piece and stores it in game state
+			fscanf(file, "%c ", c);
+			if( *c == '.') e->tab[linha][coluna] = VAZIO;
+			if( *c == '#') e->tab[linha][coluna] = PRETA;
+			if( *c == '*') e->tab[linha][coluna] = BRANCA;
+		}
+	}
 }
