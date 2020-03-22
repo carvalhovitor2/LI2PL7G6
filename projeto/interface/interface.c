@@ -93,36 +93,36 @@ int interpretador(ESTADO *e){
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
-	if (strlen(linha) > 4){
-		if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
-			char* filename = remStr(4,linha);
-			ler(filename,e);
-			mostrar_tabuleiro(stdout, e);
-			prompt(e,x);
-			fgets(linha, BUF_SIZE, stdin);
-			x ++;
-			}
-	}
 
-	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)
-		  ){
+
+	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2) ||
+		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
 			mostrar_tabuleiro(stdout, e);
-			prompt(e,x);
 			x ++;
 		}
 
+		else if (strlen(linha) > 3){
+
+			 if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
+				char* filename = remStr(4,linha);
+				ler(filename,e);
+				mostrar_tabuleiro(stdout, e);
+				x ++;
+				}
+			}
+
+		prompt(e,x);
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
 	if (!strcmp(linha, addStr("gr ",remStr(3,linha)))){
-			char* filename = remStr(3,linha);
-			gr(filename,e);
-		}
-
+		char* fileName = remStr(3,linha);
+		gr(fileName,e);
+	}
 
 	//Quits game
 	if (!strcmp(linha, "Q\n"))
