@@ -88,8 +88,6 @@ void gr(char *fileName, ESTADO *e){
 
 
 void ler(char *fileName, ESTADO *e){
-
-
 	//Removes \n from string
 	fileName[strlen(fileName)-1] = 0;
 
