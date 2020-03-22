@@ -76,6 +76,6 @@ ESTADO *inicializar_estado(){
 
 //Writes in a file
 void gr(char *fileName, ESTADO *e){
-	FILE *file = fopen(fileName, "w");
+	FILE *file = fopen(fileName, "w+");
 	mostrar_tabuleiro(file, e);
 }

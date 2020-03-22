@@ -50,27 +50,79 @@ int prompt(ESTADO *e, int x){
 	return 1;
 }
 
+char* remStr(int x, char* s){
+	char* ret = malloc(strlen(s) - x);
+	int i = 3;
+
+	while(s[i]){
+		ret[i - x] = s[i];
+		i ++;
+	}
+
+	ret[i] = '\0';
+
+	return ret;
+}
+
+
+char* addStr(char* s, char* v){
+	char* ret = malloc(strlen(s) + strlen(v));
+	int i, j = 0;
+
+	for(i = 0; s[i]; i ++)
+		ret[i] = s[i];
+
+	while(v[j]){
+		ret[i] = v[j];
+		j ++;
+		i ++;
+	}
+	ret[i] = '\0';
+
+	return ret;
+}
+
+
 int interpretador(ESTADO *e){
 	char linha[BUF_SIZE];
 	char col[2], lin[2];
 	int x = 1;
 
 	prompt(e,x);
+
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
 
-	while(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
-		COORDENADA coord = {*lin - 'a', *col - '1'};
-		jogar(e, coord);
-		mostrar_tabuleiro(stdout, e);
-		prompt(e,x);
-		x ++;
+	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)
+		  ){
+		
+		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
+			COORDENADA coord = {*lin - 'a', *col - '1'};
+			jogar(e, coord);
+			mostrar_tabuleiro(stdout, e);
+			prompt(e,x);
+			x ++;
+		}
+
+		char* filename = linha;
+		gr(filename,e);
+
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
+	if (!strcmp(linha, addStr("gr ",remStr(3,linha)))){
+			char* filename = remStr(3,linha);
+			gr(filename,e);
+		}
+
+	if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
+			printf("COMPLETAR COM A FUNÇÃO LER\n");
+		}
+
+
 	//Quits game
-	if(strlen(linha) == 2 && sscanf(linha, "Q"))
+	if (!strcmp(linha, "Q\n"))
 		return 0;
 
 	return 1;
