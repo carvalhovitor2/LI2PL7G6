@@ -93,6 +93,16 @@ int interpretador(ESTADO *e){
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
+	if (strlen(linha) > 4){
+		if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
+			char* filename = remStr(4,linha);
+			ler(filename,e);
+			mostrar_tabuleiro(stdout, e);
+			prompt(e,x);
+			fgets(linha, BUF_SIZE, stdin);
+			x ++;
+			}
+	}
 
 	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)
 		  ){
@@ -105,19 +115,12 @@ int interpretador(ESTADO *e){
 			x ++;
 		}
 
-		char* filename = linha;
-		gr(filename,e);
-
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
 	if (!strcmp(linha, addStr("gr ",remStr(3,linha)))){
 			char* filename = remStr(3,linha);
 			gr(filename,e);
-		}
-
-	if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
-			printf("COMPLETAR COM A FUNÇÃO LER\n");
 		}
 
 
