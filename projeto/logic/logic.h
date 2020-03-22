@@ -18,3 +18,5 @@ int jogar(ESTADO *e, COORDENADA c);
 @param c A coordenada
 */
 int jogadaValida(ESTADO *e, COORDENADA c);
+
+COORDENADA findBranca(ESTADO *e);

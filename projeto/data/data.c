@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "../logic/logic.h"
+#include "../interface/interface.h"
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
 	int line = c.linha - 1;
@@ -29,12 +31,7 @@ void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
 
 //Puts a black piece in a desired coordinate
 void coloca_preta (ESTADO *e){
-    COORDENADA c = {3,4}; //Posição inicial no tabuleiro.
-    if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) == 0) //caso seja a primeira jogada vai colocar a peça preta na posição 4,4
-        changePiece (e,c,PRETA);
-    else if (obter_jogador_atual(e) == 1 && obter_numero_de_jogadas(e) > 0)
-        changePiece (e,e->jogadas[obter_numero_de_jogadas(e)-1].jogador2,PRETA);
-    else changePiece (e,e->jogadas[obter_numero_de_jogadas(e)].jogador1,PRETA);
+	changePiece(e, findBranca(e), PRETA);
 }
 
 //Alternates current player
@@ -115,4 +112,5 @@ void ler(char *fileName, ESTADO *e){
 			if( *c == '*') e->tab[linha][coluna] = BRANCA;
 		}
 	}
+	
 }

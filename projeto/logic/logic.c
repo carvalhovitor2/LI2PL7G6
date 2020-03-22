@@ -119,11 +119,9 @@ int winner(ESTADO *e){
 //Receives a coordinate and makes a move. (e.g changes the position of a player and leaves a black piece in its current position)
 int jogar(ESTADO *e, COORDENADA c) {
     int x;
-
-    
     if (jogadaValida(e, c) && !gameOver(e)){
+	    coloca_preta(e);
 	    changePiece(e, c, BRANCA);
-        coloca_preta(e);
         if (obter_jogador_atual(e) == 1) {
             coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
             changePlayer(e);
@@ -152,8 +150,6 @@ int jogar(ESTADO *e, COORDENADA c) {
         else 
             printf("Jogada inválida.\n");
     }
-    
-
     return 0;
 }
 
