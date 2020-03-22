@@ -2,7 +2,7 @@
 #include "data.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
 	int line = c.linha - 1;
