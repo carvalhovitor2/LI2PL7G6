@@ -88,6 +88,8 @@ void gr(char *fileName, ESTADO *e){
 
 
 void ler(char *fileName, ESTADO *e){
+
+
 	//Removes \n from string
 	fileName[strlen(fileName)-1] = 0;
 
@@ -99,6 +101,9 @@ void ler(char *fileName, ESTADO *e){
 
 	//Iterates through lines
 	for(int linha = 0; linha < 8; linha++){
+
+		//Please note that scanf functions read something and moves the reading pointer to the next thing to be read.
+		//That is why you can iterate it like this
 		//Discarding columns with letters (a, b, c ...)
 		fscanf(file, "%c ", c);
 
