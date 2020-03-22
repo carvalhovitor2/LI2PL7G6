@@ -92,6 +92,13 @@ void changePlayer(ESTADO *e);
 @param c A coordenada
 @param piece A casa que vamos trocar pela que está naquela coordenada
 */
+
+//Altera uma peca
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
+
+//Grava o estado de jogo num ficheiro
 void gr(char *fileName, ESTADO *e);
+
+//Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo
+void ler(char *fileName, ESTADO *e);
 #endif
