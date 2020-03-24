@@ -40,15 +40,41 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 }
 
 
-int prompt(ESTADO *e, int x){
+void prompt(ESTADO *e, int x){
 	int gamer = obter_jogador_atual(e);
 	int jogada = obter_numero_de_jogadas(e);
 	if (x<10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada);
 	else 
 		printf("# %d PL%d (%d)> ", x, gamer, jogada);
-	return 1;
 }
+
+void movs(FILE *whereToPrint,ESTADO *e){
+	int i = 0, x;
+	char l1, l2;
+	int col1, col2;
+	COORDENADA c1, c2;
+
+	x = obter_numero_de_jogadas(e);
+
+	while (i != x){
+		c1 = e-> jogadas[i].jogador1;
+		c2 = e-> jogadas[i].jogador2;
+		l1 = 'a' + c1.linha;
+		l2 = 'a' + c2.linha;
+		col1 = c1.coluna + 1;
+		col2 = c2.coluna + 1;
+		if (i < 10){
+			fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+		}
+		else
+			fprintf(whereToPrint, "%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+		i ++;
+	}
+
+	
+}
+
 
 char* remStr(int x, char* s){
 	char* ret = malloc(strlen(s) - x);
@@ -105,7 +131,7 @@ int interpretador(ESTADO *e){
 			x ++;
 		}
 
-		else if (strlen(linha) > 3){
+		else if (strlen(linha) > 4){
 
 			 if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
 				char* filename = remStr(4,linha);

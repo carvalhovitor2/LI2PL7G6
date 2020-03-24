@@ -24,15 +24,18 @@ int obter_numero_de_jogadas(ESTADO *estado){
 	return ((*estado).num_jogadas);
 }
 
+
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) e->jogadas[num_jogadas].jogador1 = c;
     else  e->jogadas[num_jogadas].jogador2 = c;
 }
 
+
 //Puts a black piece in a desired coordinate
 void coloca_preta (ESTADO *e){
 	changePiece(e, findBranca(e), PRETA);
 }
+
 
 //Alternates current player
 void changePlayer(ESTADO *e){
@@ -46,10 +49,21 @@ void changePiece(ESTADO *e, COORDENADA c, CASA piece){
 	e->tab[c.linha][c.coluna] = piece;
 }
 
+//Muda a jogada atual
+void changeJogada(ESTADO *e, int x){
+	(e-> num_jogadas) = x;
+}
 
-//Incrementa o nº de jogadas
+
+//Incrementa a jogada atual
 void incrJogada(ESTADO *e){
 	(e-> num_jogadas) ++;
+}
+
+
+//Diminui a jogada atual
+void dimJogada(ESTADO *e){
+	(e-> num_jogadas) --;
 }
 
 
