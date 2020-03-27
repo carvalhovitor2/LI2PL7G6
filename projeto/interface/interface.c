@@ -122,25 +122,28 @@ int interpretador(ESTADO *e){
 
 
 	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2) ||
-		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
+		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))                     ||
+		  (!strcmp(linha,"movs\n"))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
 			mostrar_tabuleiro(stdout, e);
-			x ++;
 		}
 
-		else if (strlen(linha) > 4){
+		if (!strcmp(linha,"movs\n"))
+			movs(stdout,e);
+
+		if (strlen(linha) > 4){
 
 			 if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
 				char* filename = remStr(4,linha);
 				ler(filename,e);
 				mostrar_tabuleiro(stdout, e);
-				x ++;
-				}
 			}
+		}
 
+		x ++;
 		prompt(e,x);
 		fgets(linha, BUF_SIZE, stdin);
 	}

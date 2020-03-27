@@ -95,6 +95,8 @@ void gr(char *fileName, ESTADO *e){
 
 	//Writes the board in the file instead of stdout
 	mostrar_tabuleiro(file, e);
+	fputc('\n', file);
+	movs(file,e);
 }
 
 
