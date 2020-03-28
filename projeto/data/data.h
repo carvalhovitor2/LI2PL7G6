@@ -93,12 +93,20 @@ void changePlayer(ESTADO *e);
 @param piece A casa que vamos trocar pela que está naquela coordenada
 */
 
-//Altera uma peca
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
 
-//Grava o estado de jogo num ficheiro
+/**
+\brief Grava o estado de jogo num ficheiro
+@param e Apontador para o estado
+@param fileName o nome do ficheiro onde gravar o estado
+*/
 void gr(char *fileName, ESTADO *e);
 
-//Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo
+
+/**
+\brief Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo
+@param e Apontador para o estado
+@param fileName o nome do ficheiro onde gravar o estado
+*/
 void ler(char *fileName, ESTADO *e);
 #endif
