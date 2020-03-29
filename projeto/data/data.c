@@ -95,11 +95,8 @@ void gr(char *fileName, ESTADO *e){
 
 	//Writes the board in the file instead of stdout
 	mostrar_tabuleiro(file, e);
-	fputc('\n', file);
 	movs(file,e);
 }
-
-
 void ler(char *fileName, ESTADO *e){
 	//Removes \n from string
 	fileName[strlen(fileName)-1] = 0;
@@ -108,14 +105,14 @@ void ler(char *fileName, ESTADO *e){
 	FILE *file = fopen(fileName, "r");
 
 	//Auxiliar char to translate chars to integers
-	char *c;
+	char *c, *b;
 
 	//Iterates through lines
 	for(int linha = 0; linha < 8; linha++){
 
 		//Please note that scanf functions read something and moves the reading pointer to the next thing to be read.
 		//That is why you can iterate it like this
-		//Discarding columns with letters (a, b, c ...)
+		//Discarding column with letters (a, b, c ...)
 		fscanf(file, "%c ", c);
 
 		//Iterates through columns
@@ -129,4 +126,36 @@ void ler(char *fileName, ESTADO *e){
 		}
 	}
 	
+	//Discarding number line of the board (1, 2, 3 ...)
+	fscanf(file, "1 2 3 4 5 6 7 8 ");
+	char jogada, p1Linha, p1Coluna, p2Linha, p2Coluna;
+//	while(fscanf(file, "%c", c) == 1 )printf("%c", *c);
+	for(int buffer = 0, linha = 0;linha < 90 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
+		switch(buffer){
+			case 1: jogada = *c;
+				break;
+			case 4: p1Linha = *c;
+				break;
+			case 5: p1Coluna = *c;
+				break;
+			case 7: p2Linha = *c;
+				break;
+			case 8: p2Coluna = *c;
+				break;
+			default:
+				break;
+		
+		}
+		if (buffer == 8){
+			printf("jogada = %c -- p1 = %c%c p2 = %c%c\n", jogada, p1Linha, p1Coluna, p2Linha, p2Coluna);
+		//	j1.linha = (int)(p1Linha);
+//			j1.linha = p1Linha;
+			
+//			e->jogadas[jogada-1].jogador1 = j1;
+//			e->jogadas[jogada-1].jogador2 = j2;
+			//Discards newline
+			fscanf(file, " ");
+//		
+		}
+	}
 }
