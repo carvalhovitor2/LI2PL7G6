@@ -184,9 +184,9 @@ void pos(ESTADO *e, int x){
 		c.linha = 8; 
 		c.coluna = 8;
 
-		changeJogada(e,x);
+		changeJogada(e,x + 1);
 
-		for(i; i != x; i --){
+		while (i != x){
 		l1 = e -> jogadas[i].jogador1.linha;
 		l2 = e -> jogadas[i].jogador2.linha;
 		c1 = e -> jogadas[i].jogador1.coluna;
@@ -196,6 +196,8 @@ void pos(ESTADO *e, int x){
 		e -> tab[l2][c2] = VAZIO;
 		e -> jogadas[i].jogador1 = c;
 		e -> jogadas[i].jogador2 = c;
+
+		i --;
 		}
 
 	}
