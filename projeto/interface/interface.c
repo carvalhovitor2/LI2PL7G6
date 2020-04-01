@@ -134,36 +134,47 @@ int interpretador(ESTADO *e){
 
 
 
-	while((strlen(linha) > 2)                                                  
-		  &&
-		  ((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2) ||
-		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))                     ||
-		  (!strcmp(linha,"movs\n")))){
+	while((strlen(linha) > 2)                                  &&
+		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       ||
+		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
+	      (!strcmp(linha,"movs\n"))                            ||
+	      (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
-			mostrar_tabuleiro(stdout, e);
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
 			movs(stdout,e);
 
-		if (strlen(linha) > 4){
-
-			 if (!strcmp(linha, addStr("ler ",remStr(4,linha)))){
+		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 				char* filename = remStr(4,linha);
 				ler(filename,e);
-				mostrar_tabuleiro(stdout, e);
-			}
+		}
+
+		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
+			char* newLinha;
+
+			newLinha = remStr(4,linha);
+			newLinha[strlen(newLinha)-1] = 0;
+			
+			int posJogada = atoi(newLinha);
+
+			if (pos(e,posJogada))
+				if (posJogada == obter_numero_de_jogadas(e))
+					printf("Comando inválido. %d já é a jogada atual.\n", posJogada);
+				else
+					printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 		}
 
 		x ++;
+		mostrar_tabuleiro(stdout, e);
 		prompt(e,x);
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
-	if (strlen(linha) > 3 && !strcmp(linha, addStr("gr ",remStr(3,linha)))){
+	if ((strlen(linha) > 3) && (!strcmp(linha, addStr("gr ",remStr(3,linha))))){
 		char* fileName = remStr(3,linha);
 		gr(fileName,e);
 	}

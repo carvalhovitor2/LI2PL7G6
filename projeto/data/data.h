@@ -109,4 +109,6 @@ void gr(char *fileName, ESTADO *e);
 @param fileName o nome do ficheiro onde gravar o estado
 */
 void ler(char *fileName, ESTADO *e);
+
+int pos(ESTADO *e, int x);
 #endif
