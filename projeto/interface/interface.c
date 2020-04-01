@@ -57,18 +57,31 @@ void movs(FILE *whereToPrint,ESTADO *e){
 
 	x = obter_numero_de_jogadas(e);
 
-	while (i != x){
+	if (e -> jogadas[x].jogador1.linha == 8)
+		x --;
+
+	while (i <= x){
 		c1 = e-> jogadas[i].jogador1;
 		c2 = e-> jogadas[i].jogador2;
 		l1 = 'a' + c1.linha;
 		l2 = 'a' + c2.linha;
 		col1 = c1.coluna + 1;
 		col2 = c2.coluna + 1;
-		if (i < 10){
-			fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+
+		if (e -> jogadas[i].jogador2.coluna < 8){
+			if (i < 9)
+				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+			else
+				fprintf(whereToPrint, "%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
 		}
-		else
-			fprintf(whereToPrint, "%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+
+		else{
+			if (i < 9)
+				fprintf(whereToPrint, "0%d: %c%d \n", i + 1, l1, col1);
+			else
+				fprintf(whereToPrint, "%d: %c%d \n", i + 1, l1, col1);
+		}
+
 		i ++;
 	}
 
@@ -121,9 +134,11 @@ int interpretador(ESTADO *e){
 
 
 
-	while((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2) ||
+	while((strlen(linha) > 2)                                                  
+		  &&
+		  ((strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2) ||
 		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))                     ||
-		  (!strcmp(linha,"movs\n"))){
+		  (!strcmp(linha,"movs\n")))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
@@ -131,7 +146,7 @@ int interpretador(ESTADO *e){
 			mostrar_tabuleiro(stdout, e);
 		}
 
-		if (!strcmp(linha,"movs\n"))
+		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
 			movs(stdout,e);
 
 		if (strlen(linha) > 4){
@@ -148,7 +163,7 @@ int interpretador(ESTADO *e){
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
-	if (!strcmp(linha, addStr("gr ",remStr(3,linha)))){
+	if (strlen(linha) > 3 && !strcmp(linha, addStr("gr ",remStr(3,linha)))){
 		char* fileName = remStr(3,linha);
 		gr(fileName,e);
 	}

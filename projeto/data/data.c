@@ -67,12 +67,25 @@ void dimJogada(ESTADO *e){
 }
 
 
+void arrayJogadas(ESTADO *e){
+	COORDENADA c;
+	c.linha = 8; 
+	c.coluna = 8;
+
+	for(int i = 0; i<30 ;i ++){
+		e -> jogadas[i].jogador1 = c;
+		e -> jogadas[i].jogador2 = c; 
+	}
+}
+
+
 //Initializes the state
 ESTADO *inicializar_estado(){
 	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
 	e->jogador_atual=1;
 	e->num_jogadas=0;
+	arrayJogadas(e);
 	//Iterates through lines
 	for(int linha = 0; linha < 8; linha++){
 		//Iterates through columns
@@ -97,6 +110,8 @@ void gr(char *fileName, ESTADO *e){
 	mostrar_tabuleiro(file, e);
 	movs(file,e);
 }
+
+
 void ler(char *fileName, ESTADO *e){
 	//Removes \n from string
 	fileName[strlen(fileName)-1] = 0;
