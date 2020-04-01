@@ -175,31 +175,28 @@ void ler(char *fileName, ESTADO *e){
 	}
 }
 
-int pos(ESTADO *e, int x){
+void pos(ESTADO *e, int x){
 	int i = obter_numero_de_jogadas(e);
 
 	if (x <= i){
 		int l1, l2, c1, c2;
-		l1 = e -> jogadas[i].jogador1.linha;
-		l2 = e -> jogadas[i].jogador1.coluna;
-		c1 = e -> jogadas[i].jogador1.coluna;
-		c2 = e -> jogadas[i].jogador2.coluna;
+		COORDENADA c;
+		c.linha = 8; 
+		c.coluna = 8;
 
 		changeJogada(e,x);
 
-		for(i; i == x; i --){
-			e -> tab[l1][c1] = VAZIO;
-			e -> tab[l2][c2] = VAZIO;
-			e -> jogadas[i].jogador1.linha = 8;
-			e -> jogadas[i].jogador1.coluna = 8;
-		    e -> jogadas[i].jogador1.coluna = 8;
-			e -> jogadas[i].jogador2.coluna = 8;
+		for(i; i != x; i --){
+		l1 = e -> jogadas[i].jogador1.linha;
+		l2 = e -> jogadas[i].jogador2.linha;
+		c1 = e -> jogadas[i].jogador1.coluna;
+		c2 = e -> jogadas[i].jogador2.coluna;
+
+		e -> tab[l1][c1] = VAZIO;
+		e -> tab[l2][c2] = VAZIO;
+		e -> jogadas[i].jogador1 = c;
+		e -> jogadas[i].jogador2 = c;
 		}
 
 	}
-
-	else
-		return 1;
-
-	return 0;
 }

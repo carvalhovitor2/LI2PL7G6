@@ -44,9 +44,9 @@ void prompt(ESTADO *e, int x){
 	int gamer = obter_jogador_atual(e);
 	int jogada = obter_numero_de_jogadas(e);
 	if (x<10)
-		printf("# 0%d PL%d (%d)> ", x, gamer, jogada);
+		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
 	else 
-		printf("# %d PL%d (%d)> ", x, gamer, jogada);
+		printf("# %d PL%d (%d)> ", x, gamer, jogada + 1);
 }
 
 void movs(FILE *whereToPrint,ESTADO *e){
@@ -159,13 +159,15 @@ int interpretador(ESTADO *e){
 			newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			
-			int posJogada = atoi(newLinha);
+			int posJogada = atoi(newLinha) - 1;
 
-			if (pos(e,posJogada))
-				if (posJogada == obter_numero_de_jogadas(e))
-					printf("Comando inválido. %d já é a jogada atual.\n", posJogada);
-				else
-					printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
+			pos(e,posJogada);
+
+			//if (pos(e,posJogada))
+			//	if (posJogada == obter_numero_de_jogadas(e))
+			//		printf("Comando inválido. %d já é a jogada atual.\n", posJogada);
+			//	else
+			//		printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 		}
 
 		x ++;

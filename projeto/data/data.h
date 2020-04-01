@@ -110,5 +110,5 @@ void gr(char *fileName, ESTADO *e);
 */
 void ler(char *fileName, ESTADO *e);
 
-int pos(ESTADO *e, int x);
+void pos(ESTADO *e, int x);
 #endif
