@@ -261,7 +261,7 @@ void ler(char *fileName, ESTADO *e){
             	coord1->coluna = p2Coluna - '1';
 		e->jogadas[jogada-'1'].jogador1 = *coord;
 		e->jogadas[jogada-'1'].jogador2 = *coord1;
-
+		incrJogada(e);
             //Discards newline
             fscanf(file, " ");
 //
