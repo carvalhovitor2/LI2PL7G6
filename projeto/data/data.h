@@ -35,10 +35,16 @@ typedef JOGADA JOGADAS[32];
 typedef struct {
     /** O tabuleiro */
 	CASA tab[8][8];
+	/** Tabuleiro alternativo para auxiliar o comando pos */
+	CASA tabOLD[8][8];
     /** As jogadas */
 	JOGADAS jogadas;
+    /** Réplica do array de jogadas para auxiliar o comando pos*/
+    JOGADAS jogadasOLD;
     /** O número das jogadas*/
     int num_jogadas;
+    /** Número de jogadas alternativo para auxiliar o comando pos */
+	int num_jogadasOLD;
     /** O jogador atual */
     int jogador_atual;
 } ESTADO;

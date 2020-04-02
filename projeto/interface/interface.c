@@ -42,7 +42,7 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 
 void prompt(ESTADO *e, int x){
 	int gamer = obter_jogador_atual(e);
-	int jogada = obter_numero_de_jogadas(e);
+	int jogada = obter_numero_de_jogadasOLD(e);
 	if (x<10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
 	else 
@@ -143,6 +143,7 @@ int interpretador(ESTADO *e){
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
+			replicaEstado(e);
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
@@ -266,30 +267,49 @@ void ler(char *fileName, ESTADO *e){
 }
 
 void pos(ESTADO *e, int x){
-    int i = obter_numero_de_jogadas(e);
+    int i = obter_numero_de_jogadasOLD(e);
+    int j = obter_numero_de_jogadas(e);
 
-    if (x <= i){
-        int l1, l2, c1, c2;
-        COORDENADA c;
-        c.linha = 8;
-        c.coluna = 8;
+    int l1, l2, c1, c2;
+    COORDENADA std, pl1, pl2;
+    std.linha = 8;
+    std.coluna = 8;
+
+
+    if (j < x && x <= i){
+    	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
+        pl2.linha = e -> jogadasOLD[i].jogador2.linha;
+        pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
+        pl2.coluna = e -> jogadasOLD[i].jogador2.coluna;
+
+        changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
+        changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
+    }
+
+    else if (x <= i){
 
         changeJogada(e,x + 1);
 
-        while (i != x){
-            l1 = e -> jogadas[i].jogador1.linha;
-            l2 = e -> jogadas[i].jogador2.linha;
-            c1 = e -> jogadas[i].jogador1.coluna;
-            c2 = e -> jogadas[i].jogador2.coluna;
+		if (obter_jogador_atual(e) == 2)
+			changePlayer(e);
 
-            e -> tab[l1][c1] = VAZIO;
-            e -> tab[l2][c2] = VAZIO;
-            e -> jogadas[i].jogador1 = c;
-            e -> jogadas[i].jogador2 = c;
+        while (i != x){
+            pl1.linha = e -> jogadas[i].jogador1.linha;
+            pl2.linha = e -> jogadas[i].jogador2.linha;
+            pl1.coluna = e -> jogadas[i].jogador1.coluna;
+            pl2.coluna = e -> jogadas[i].jogador2.coluna;
+
+            changePiece(e, pl1, VAZIO);
+            changePiece(e, pl2, VAZIO);
+
+            coloca_jogada(e, i, std, 1);
+            coloca_jogada(e, i, std, 2);
 
             i --;
         }
-        changePiece(e,e->jogadas[x])
+
+        printf("%d %d \n",i,j);
+        //changePiece(e,e->jogadas[x]);
     }
 
 }

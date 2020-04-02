@@ -25,6 +25,11 @@ int obter_numero_de_jogadas(ESTADO *estado){
 }
 
 
+int obter_numero_de_jogadasOLD(ESTADO *estado){
+	return ((*estado).num_jogadasOLD);
+}
+
+
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) e->jogadas[num_jogadas].jogador1 = c;
     else  e->jogadas[num_jogadas].jogador2 = c;
@@ -72,7 +77,7 @@ void arrayJogadas(ESTADO *e){
 	c.linha = 8; 
 	c.coluna = 8;
 
-	for(int i = 0; i<30 ;i ++){
+	for(int i = 0; i < 32 ;i ++){
 		e -> jogadas[i].jogador1 = c;
 		e -> jogadas[i].jogador2 = c; 
 	}
@@ -83,8 +88,8 @@ void arrayJogadas(ESTADO *e){
 ESTADO *inicializar_estado(){
 	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
-	e->jogador_atual=1;
-	e->num_jogadas=0;
+	e->jogador_atual = 1;
+	e->num_jogadas = 0;
 	arrayJogadas(e);
 	//Iterates through lines
 	for(int linha = 0; linha < 8; linha++){
@@ -96,5 +101,14 @@ ESTADO *inicializar_estado(){
 	}
 	changePiece(e, coordenadaInicial, BRANCA); 
 	return e;
+}
+
+void replicaEstado(ESTADO *e){
+	for(int i = 0; i != 32; i ++)
+		e -> jogadasOLD[i] = e -> jogadas[i];
+	for(int k = 0; k != 8; k ++)
+		for (int n = 0; n != 8; n ++)
+			e -> tabOLD[k][n] = e -> tab[k][n];
+	e -> num_jogadasOLD = e -> num_jogadas;
 }
 
