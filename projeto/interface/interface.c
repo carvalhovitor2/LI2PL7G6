@@ -55,20 +55,20 @@ void movs(FILE *whereToPrint,ESTADO *e){
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	x = obter_numero_de_jogadas(e);
+	x = obter_numero_de_jogadasOLD(e);
 
 	if (e -> jogadas[x].jogador1.linha == 8)
 		x --;
 
 	while (i <= x){
-		c1 = e-> jogadas[i].jogador1;
-		c2 = e-> jogadas[i].jogador2;
+		c1 = e-> jogadasOLD[i].jogador1;
+		c2 = e-> jogadasOLD[i].jogador2;
 		l1 = 'a' + c1.linha;
 		l2 = 'a' + c2.linha;
 		col1 = c1.coluna + 1;
 		col2 = c2.coluna + 1;
 
-		if (e -> jogadas[i].jogador2.coluna < 8){
+		if (e -> jogadasOLD[i].jogador2.coluna < 8){
 			if (i < 9)
 				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
 			else
@@ -266,17 +266,23 @@ void ler(char *fileName, ESTADO *e){
     }
 }
 
+
+//void pos2
+
+
 void pos(ESTADO *e, int x){
-    int i = obter_numero_de_jogadasOLD(e);
+    int k = obter_numero_de_jogadasOLD(e);
     int j = obter_numero_de_jogadas(e);
+    int i = k;
 
     int l1, l2, c1, c2;
     COORDENADA std, pl1, pl2;
     std.linha = 8;
     std.coluna = 8;
 
+    printf("%d %d\n",k,j);
 
-    if (j < x && x <= i){
+    if (j < i && x <= i){
     	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
         pl2.linha = e -> jogadasOLD[i].jogador2.linha;
         pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
@@ -284,6 +290,13 @@ void pos(ESTADO *e, int x){
 
         changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
+
+        changeJogada(e,x + 1);
+
+        k = obter_numero_de_jogadasOLD(e);
+        j = obter_numero_de_jogadas(e);
+
+        printf("YO %d %d\n",k,j);
     }
 
     else if (x <= i){
@@ -308,8 +321,17 @@ void pos(ESTADO *e, int x){
             i --;
         }
 
-        printf("%d %d \n",i,j);
+
+        k = obter_numero_de_jogadasOLD(e);
+        j = obter_numero_de_jogadas(e);
+        printf("BLAH %d %d\n",k,j);
         //changePiece(e,e->jogadas[x]);
     }
+    
+
+    k = obter_numero_de_jogadasOLD(e);
+    j = obter_numero_de_jogadas(e);
+    printf("%d %d\n",k,j);
+
 
 }
