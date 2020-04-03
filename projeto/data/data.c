@@ -30,6 +30,38 @@ int obter_numero_de_jogadasOLD(ESTADO *estado){
 }
 
 
+int getLastPiece(ESTADO *e, int bool){
+	int r;
+	int i = obter_numero_de_jogadas(e);
+
+	int l1 = e -> jogadas[i].jogador1.linha;
+	int l2 = e -> jogadas[i].jogador2.linha;
+	int c1 = e -> jogadas[i].jogador1.coluna;
+	int c2 = e -> jogadas[i].jogador2.coluna;
+
+	if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
+		i --;
+
+	l2 = e -> jogadas[i].jogador2.linha;
+	c2 = e -> jogadas[i].jogador2.coluna;
+
+	if (l2 != 8 && c2 != 8){
+		if (bool)
+			r = c2;
+		else
+			r = l2;
+	}
+	else{
+		if (bool)
+			r = c1;
+		else
+			r = l1;
+	}
+
+	return r;
+}
+
+
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) e->jogadas[num_jogadas].jogador1 = c;
     else  e->jogadas[num_jogadas].jogador2 = c;
@@ -104,11 +136,18 @@ ESTADO *inicializar_estado(){
 }
 
 void replicaEstado(ESTADO *e){
+	int k = 0, n = 0;
+
 	for(int i = 0; i != 32; i ++)
 		e -> jogadasOLD[i] = e -> jogadas[i];
-	for(int k = 0; k != 8; k ++)
-		for (int n = 0; n != 8; n ++)
+	while(k != 8){
+		while(n != 8){
 			e -> tabOLD[k][n] = e -> tab[k][n];
+			n ++;
+		}
+		n = 0;
+		k ++;
+	}
 	e -> num_jogadasOLD = e -> num_jogadas;
 }
 

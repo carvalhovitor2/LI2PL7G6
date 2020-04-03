@@ -274,32 +274,34 @@ void ler(char *fileName, ESTADO *e){
 
 
 void pos(ESTADO *e, int x){
-    int k = obter_numero_de_jogadasOLD(e);
+    int i = obter_numero_de_jogadasOLD(e);
     int j = obter_numero_de_jogadas(e);
-    int i = k;
 
     int l1, l2, c1, c2;
     COORDENADA std, pl1, pl2;
     std.linha = 8;
     std.coluna = 8;
 
-    printf("%d %d\n",k,j);
+    if (j < x && x <= i){
+        changeJogada(e,x + 1);
 
-    if (j < i && x <= i){
-    	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
+        while(j != i){
+        	    	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
         pl2.linha = e -> jogadasOLD[i].jogador2.linha;
         pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
         pl2.coluna = e -> jogadasOLD[i].jogador2.coluna;
 
+
+                            if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
+        	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
+        else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
+        	printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
+        	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
+
         changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
-
-        changeJogada(e,x + 1);
-
-        k = obter_numero_de_jogadasOLD(e);
-        j = obter_numero_de_jogadas(e);
-
-        printf("YO %d %d\n",k,j);
+        j ++;
+        }  
     }
 
     else if (x <= i){
@@ -321,20 +323,13 @@ void pos(ESTADO *e, int x){
             coloca_jogada(e, i, std, 1);
             coloca_jogada(e, i, std, 2);
 
-            i --;
+        	i --;
         }
-
-
-        k = obter_numero_de_jogadasOLD(e);
-        j = obter_numero_de_jogadas(e);
-        printf("BLAH %d %d\n",k,j);
         //changePiece(e,e->jogadas[x]);
     }
-    
 
-    k = obter_numero_de_jogadasOLD(e);
-    j = obter_numero_de_jogadas(e);
-    printf("%d %d\n",k,j);
-
-
+    COORDENADA novaBranca;
+    novaBranca.linha = getLastPiece(e,0);
+    novaBranca.coluna = getLastPiece(e,1);
+    changePiece(e,novaBranca,BRANCA);
 }
