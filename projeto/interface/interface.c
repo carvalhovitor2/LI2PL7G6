@@ -344,8 +344,6 @@ void pos(ESTADO *e, int x){
         			//else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
         			//		printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
         			//	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
-        			printf("BLAH\n");
-
         			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
 
