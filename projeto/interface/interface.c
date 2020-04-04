@@ -40,9 +40,15 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 }
 
 
-void prompt(ESTADO *e, int x){
+void prompt(ESTADO *e, int x, int bool){
 	int gamer = obter_jogador_atual(e);
-	int jogada = obter_numero_de_jogadasOLD(e);
+	int jogada;
+
+	if (bool)
+		jogada = obter_numero_de_jogadas(e);
+	else
+		jogada = obter_numero_de_jogadasOLD(e);
+
 	if (x<10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
 	else 
@@ -55,20 +61,21 @@ void movs(FILE *whereToPrint,ESTADO *e){
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	x = obter_numero_de_jogadasOLD(e);
+	x = obter_numero_de_jogadas(e);
 
 	if (e -> jogadas[x].jogador1.linha == 8)
 		x --;
 
+
 	while (i <= x){
-		c1 = e-> jogadasOLD[i].jogador1;
-		c2 = e-> jogadasOLD[i].jogador2;
+		c1 = e-> jogadas[i].jogador1;
+		c2 = e-> jogadas[i].jogador2;
 		l1 = 'a' + c1.linha;
 		l2 = 'a' + c2.linha;
 		col1 = c1.coluna + 1;
 		col2 = c2.coluna + 1;
 
-		if (e -> jogadasOLD[i].jogador2.coluna < 8){
+		if (e -> jogadas[i].jogador2.coluna < 8){
 			if (i < 9)
 				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
 			else
@@ -84,8 +91,6 @@ void movs(FILE *whereToPrint,ESTADO *e){
 
 		i ++;
 	}
-
-	
 }
 
 
@@ -126,8 +131,9 @@ int interpretador(ESTADO *e){
 	char linha[BUF_SIZE];
 	char col[2], lin[2];
 	int x = 1;
+	int boolPrompt = 1;
 
-	prompt(e,x);
+	prompt(e,x,1);
 
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
@@ -144,6 +150,7 @@ int interpretador(ESTADO *e){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
 			replicaEstado(e);
+			boolPrompt = 1;
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
@@ -160,9 +167,10 @@ int interpretador(ESTADO *e){
 			newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			
-			int posJogada = atoi(newLinha) - 1;
+			int posJogada = atoi(newLinha);
 
 			pos(e,posJogada);
+			boolPrompt = 0;
 
 			//if (pos(e,posJogada))
 			//	if (posJogada == obter_numero_de_jogadas(e))
@@ -173,7 +181,7 @@ int interpretador(ESTADO *e){
 
 		x ++;
 		mostrar_tabuleiro(stdout, e);
-		prompt(e,x);
+		prompt(e,x,boolPrompt);
 		fgets(linha, BUF_SIZE, stdin);
 	}
 
@@ -282,14 +290,50 @@ void pos(ESTADO *e, int x){
     std.linha = 8;
     std.coluna = 8;
 
-    if (j < x && x <= i){
-        changeJogada(e,x + 1);
+    if (x == 0){
 
-        while(j != i){
-        	    	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
-        pl2.linha = e -> jogadasOLD[i].jogador2.linha;
-        pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
-        pl2.coluna = e -> jogadasOLD[i].jogador2.coluna;
+    	int k;
+    	COORDENADA inicial, PL;
+    	inicial.linha = 3;
+    	inicial.coluna = 4;
+
+    	for(k = 0; k != 8; k ++)
+    		for(int l = 0; l != 8; l ++){
+    			PL.linha = l;
+    			PL.coluna = k;
+
+    			changePiece(e, PL, VAZIO);
+    		}
+
+    	for(int t = 0; t != 32; t ++){
+    		coloca_jogada(e, t, std, 1);
+        	coloca_jogada(e, t, std, 2);
+        }
+
+    	changePiece(e,inicial,BRANCA);
+    	changeJogada(e,0);
+
+    	if (e->jogador_atual == 2)
+    		changePlayer(e);
+     
+    }
+
+	else{
+    if (x < i){
+
+    	if (j < x){
+
+        	changeJogada(e,x);
+
+        	if (obter_jogador_atual(e) == 2)
+    			changePlayer(e);
+
+        	while(j != x){
+       		    	
+       		    pl1.linha = e -> jogadasOLD[j].jogador1.linha;
+       			pl1.linha = e -> jogadasOLD[j].jogador1.linha;
+       			pl1.coluna = e -> jogadasOLD[j].jogador1.coluna;
+        		pl2.coluna = e -> jogadasOLD[j].jogador2.coluna;
 
 
                             if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
@@ -298,20 +342,19 @@ void pos(ESTADO *e, int x){
         	printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
         	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
 
-        changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
-        changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
-        j ++;
-        }  
-    }
+        	changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
+        	changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
+        	
+        	j ++;
+        	}  
+    	}
 
-    else if (x <= i){
+    else if (x < i){
 
-        changeJogada(e,x + 1);
+        changeJogada(e,x);
 
-		if (obter_jogador_atual(e) == 2)
-			changePlayer(e);
+        while (i + 1 != x){
 
-        while (i != x){
             pl1.linha = e -> jogadas[i].jogador1.linha;
             pl2.linha = e -> jogadas[i].jogador2.linha;
             pl1.coluna = e -> jogadas[i].jogador1.coluna;
@@ -324,12 +367,38 @@ void pos(ESTADO *e, int x){
             coloca_jogada(e, i, std, 2);
 
         	i --;
+
+        	if (obter_jogador_atual(e) == 2)
+				changePlayer(e);
         }
-        //changePiece(e,e->jogadas[x]);
     }
+
+    //i = obter_numero_de_jogadasOLD(e);
+
+    //while(x <= i){
+    	
+    //	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
+    //    pl2.linha = e -> jogadasOLD[i].jogador2.linha;
+    //    pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
+   //     pl2.coluna = e -> jogadasOLD[i].jogador2.coluna;
+
+
+     //   	                            if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
+    //    	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
+    //    else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
+    //    	printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
+    //    	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
+
+    //    	i --;
+    //}
+
 
     COORDENADA novaBranca;
     novaBranca.linha = getLastPiece(e,0);
     novaBranca.coluna = getLastPiece(e,1);
     changePiece(e,novaBranca,BRANCA);
+
+	}
+	}
+
 }

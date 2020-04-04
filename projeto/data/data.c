@@ -39,32 +39,38 @@ int getLastPiece(ESTADO *e, int bool){
 	int c1 = e -> jogadas[i].jogador1.coluna;
 	int c2 = e -> jogadas[i].jogador2.coluna;
 
-	if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
-		i --;
+		if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
+			i --;
 
-	l2 = e -> jogadas[i].jogador2.linha;
-	c2 = e -> jogadas[i].jogador2.coluna;
+		l1 = e -> jogadas[i].jogador1.linha;
+		l2 = e -> jogadas[i].jogador2.linha;
+		c1 = e -> jogadas[i].jogador1.coluna;
+		c2 = e -> jogadas[i].jogador2.coluna;
 
-	if (l2 != 8 && c2 != 8){
-		if (bool)
-			r = c2;
-		else
-			r = l2;
-	}
-	else{
-		if (bool)
-			r = c1;
-		else
-			r = l1;
-	}
+		if (l2 != 8 && c2 != 8){
+			if (bool)
+				r = c2;
+			else
+				r = l2;
+		}
+
+		else{
+			if (bool)
+				r = c1;
+			else
+				r = l1;
+		}
+	
 
 	return r;
 }
 
 
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
-    if (num_player==1) e->jogadas[num_jogadas].jogador1 = c;
-    else  e->jogadas[num_jogadas].jogador2 = c;
+    if (num_player==1) 
+    	e->jogadas[num_jogadas].jogador1 = c;
+    else  
+    	e->jogadas[num_jogadas].jogador2 = c;
 }
 
 
