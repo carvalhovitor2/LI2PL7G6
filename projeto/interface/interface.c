@@ -319,59 +319,66 @@ void pos(ESTADO *e, int x){
     }
 
 	else{
-    if (x < i){
 
-    	if (j < x){
+    	if (x <= i){
 
-        	changeJogada(e,x);
+    		if (j < x){
 
-        	if (obter_jogador_atual(e) == 2)
-    			changePlayer(e);
+        		changeJogada(e,x);
 
-        	while(j != x){
+        		if (obter_jogador_atual(e) == 2)
+    				changePlayer(e);
+
+    			coloca_preta(e);
+
+        		while(j != x){
        		    	
-       		    pl1.linha = e -> jogadasOLD[j].jogador1.linha;
-       			pl1.linha = e -> jogadasOLD[j].jogador1.linha;
-       			pl1.coluna = e -> jogadasOLD[j].jogador1.coluna;
-        		pl2.coluna = e -> jogadasOLD[j].jogador2.coluna;
+       		    	pl1.linha = e -> jogadasOLD[j].jogador1.linha;
+       				pl2.linha = e -> jogadasOLD[j].jogador2.linha;
+       				pl1.coluna = e -> jogadasOLD[j].jogador1.coluna;
+        			pl2.coluna = e -> jogadasOLD[j].jogador2.coluna;
 
 
-                            if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
-        	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
-        else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
-        	printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
-        	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
+					//if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
+        			//	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
+        			//else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
+        			//		printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
+        			//	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
+        			printf("BLAH\n");
 
-        	changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
-        	changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
+        			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
+        			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
+
+        			coloca_jogada(e, j, pl1, 1);
+            		coloca_jogada(e, j, pl2, 2);
         	
-        	j ++;
-        	}  
-    	}
+        			j ++;
+        			}  
+    			}
 
-    else if (x < i){
+    		else{
 
-        changeJogada(e,x);
+        		changeJogada(e,x);
 
-        while (i + 1 != x){
+        		while (j + 1 != x){
 
-            pl1.linha = e -> jogadas[i].jogador1.linha;
-            pl2.linha = e -> jogadas[i].jogador2.linha;
-            pl1.coluna = e -> jogadas[i].jogador1.coluna;
-            pl2.coluna = e -> jogadas[i].jogador2.coluna;
+            		pl1.linha = e -> jogadas[j].jogador1.linha;
+            		pl2.linha = e -> jogadas[j].jogador2.linha;
+            		pl1.coluna = e -> jogadas[j].jogador1.coluna;
+            		pl2.coluna = e -> jogadas[j].jogador2.coluna;
 
-            changePiece(e, pl1, VAZIO);
-            changePiece(e, pl2, VAZIO);
+            		changePiece(e, pl1, VAZIO);
+            		changePiece(e, pl2, VAZIO);
 
-            coloca_jogada(e, i, std, 1);
-            coloca_jogada(e, i, std, 2);
+            		coloca_jogada(e, j, std, 1);
+            		coloca_jogada(e, j, std, 2);
 
-        	i --;
+        			j --;
 
-        	if (obter_jogador_atual(e) == 2)
-				changePlayer(e);
-        }
-    }
+        			if (obter_jogador_atual(e) == 2)
+						changePlayer(e);
+        		}
+			}
 
     //i = obter_numero_de_jogadasOLD(e);
 
