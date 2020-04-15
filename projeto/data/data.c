@@ -157,3 +157,12 @@ void replicaEstado(ESTADO *e){
 	e -> num_jogadasOLD = e -> num_jogadas;
 }
 
+
+LISTA insere_cabeca(LISTA L, void *valor){
+	LISTA r = malloc(sizeof(LISTA));
+	
+	r -> proximo = L;
+	r -> valor = valor;
+
+	return r;
+}

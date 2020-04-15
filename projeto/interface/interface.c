@@ -338,12 +338,6 @@ void pos(ESTADO *e, int x){
        				pl1.coluna = e -> jogadasOLD[j].jogador1.coluna;
         			pl2.coluna = e -> jogadasOLD[j].jogador2.coluna;
 
-
-					//if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
-        			//	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
-        			//else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
-        			//		printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
-        			//	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
         			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
 
@@ -377,26 +371,6 @@ void pos(ESTADO *e, int x){
 						changePlayer(e);
         		}
 			}
-
-    //i = obter_numero_de_jogadasOLD(e);
-
-    //while(x <= i){
-    	
-    //	pl1.linha = e -> jogadasOLD[i].jogador1.linha;
-    //    pl2.linha = e -> jogadasOLD[i].jogador2.linha;
-    //    pl1.coluna = e -> jogadasOLD[i].jogador1.coluna;
-   //     pl2.coluna = e -> jogadasOLD[i].jogador2.coluna;
-
-
-     //   	                            if (e -> tabOLD[pl1.linha][pl1.coluna] == PRETA)
-    //    	printf("PRETA %d %d\n",pl1.linha,pl1.coluna);
-    //    else if (e -> tabOLD[pl1.linha][pl1.coluna] == BRANCA)
-    //    	printf("BRANCA %d %d\n",pl1.linha,pl1.coluna);
-    //    	else printf("VAZIO %d %d\n",pl1.linha,pl1.coluna);
-
-    //    	i --;
-    //}
-
 
     COORDENADA novaBranca;
     novaBranca.linha = getLastPiece(e,0);
