@@ -11,8 +11,10 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 	int boardPiece = 0;
     for(int linha = 0; linha < 8; linha++){
     	char a = 'a' + linha;
-    	fprintf(whereToPrint, "%c", a);
-    	fprintf(whereToPrint, " ");
+	if ( whereToPrint == stdout ){
+		fprintf(whereToPrint, "%c", a);
+		fprintf(whereToPrint, " ");
+	}
         for(int coluna = 0; coluna < 8; coluna++){
 		//Translate enum to chars
                     boardPiece = e->tab[linha][coluna];
@@ -36,7 +38,9 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 		fprintf(whereToPrint, "\n");
         } 
 
-    fprintf(whereToPrint, "  1 2 3 4 5 6 7 8\n");
+	if ( whereToPrint == stdout ){
+		fprintf(whereToPrint, "  1 2 3 4 5 6 7 8\n");
+	}
 }
 
 
@@ -228,7 +232,7 @@ void ler(char *fileName, ESTADO *e){
         //Please note that scanf functions read something and moves the reading pointer to the next thing to be read.
         //That is why you can iterate it like this
         //Discarding column with letters (a, b, c ...)
-        fscanf(file, "%c ", c);
+        //fscanf(file, "%c ", c);
 
         //Iterates through columns
         for(int coluna = 0; coluna < 8; coluna++){
@@ -242,7 +246,7 @@ void ler(char *fileName, ESTADO *e){
     }
 
     //Discarding number line of the board (1, 2, 3 ...)
-    fscanf(file, "1 2 3 4 5 6 7 8 ");
+    //fscanf(file, "1 2 3 4 5 6 7 8 ");
     char jogada, p1Linha, p1Coluna, p2Linha, p2Coluna;
 //	while(fscanf(file, "%c", c) == 1 )printf("%c", *c);
     for(int buffer = 0, linha = 0;linha < 90 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
