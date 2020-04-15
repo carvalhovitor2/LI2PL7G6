@@ -21,15 +21,20 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 			if(linha == 7 && coluna == 0) boardPiece = 3;
 			if(linha == 0 && coluna == 7) boardPiece = 4;
 			switch (boardPiece){
-				case 0: fprintf(whereToPrint, ". ");
+				case 0: fprintf(whereToPrint, ".");
+				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
-				case 1: fprintf(whereToPrint, "* ");
+				case 1: fprintf(whereToPrint, "*");
+				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
-				case 2: fprintf(whereToPrint, "# ");
+				case 2: fprintf(whereToPrint, "#");
+				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
-				case 3: fprintf(whereToPrint, "1 ");
+				case 3: fprintf(whereToPrint, "1");
+				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
-				case 4: fprintf(whereToPrint, "2 ");
+				case 4: fprintf(whereToPrint, "2");
+				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
 				default: break;	
 
