@@ -158,6 +158,14 @@ void replicaEstado(ESTADO *e){
 }
 
 
+LISTA criar_lista(){
+	LISTA r = malloc(sizeof(LISTA));
+
+	r = NULL;
+
+	return r;
+}
+
 LISTA insere_cabeca(LISTA L, void *valor){
 	LISTA r = malloc(sizeof(LISTA));
 	
@@ -165,4 +173,31 @@ LISTA insere_cabeca(LISTA L, void *valor){
 	r -> valor = valor;
 
 	return r;
+}
+
+void *devolve_cabeca(LISTA L){
+	return (L -> valor);
+}
+
+LISTA proximo(LISTA L){
+	return (L -> proximo);
+}
+
+LISTA remove_cabeca(LISTA L){
+	LISTA r = malloc(sizeof(LISTA));
+
+	r = L;
+	L = L -> proximo;
+
+	r -> proximo = NULL;
+	free(r);
+
+	return L;
+}
+
+int lista_esta_vazia(LISTA L){
+	if (L == NULL)
+		return 1;
+	else
+		return 0;
 }

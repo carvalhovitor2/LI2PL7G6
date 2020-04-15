@@ -49,6 +49,7 @@ typedef struct {
     int jogador_atual;
 } ESTADO;
 
+
 typedef struct nodo {
    void *valor;
    struct nodo *proximo;
