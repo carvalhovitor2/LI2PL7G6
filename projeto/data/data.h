@@ -136,6 +136,9 @@ void gr(char *fileName, ESTADO *e);
 @param fileName o nome do ficheiro onde gravar o estado
 */
 void ler(char *fileName, ESTADO *e);
-
+int obter_numero_de_jogadasOLD(ESTADO *estado);
 void pos(ESTADO *e, int x);
+void replicaEstado(ESTADO *e);
+void changeJogada(ESTADO *e, int x);
+int getLastPiece(ESTADO *e, int bool);
 #endif

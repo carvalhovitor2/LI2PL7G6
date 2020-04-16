@@ -239,9 +239,6 @@ void ler(char *fileName, ESTADO *e){
 
         //Please note that scanf functions read something and moves the reading pointer to the next thing to be read.
         //That is why you can iterate it like this
-        //Discarding column with letters (a, b, c ...)
-        //fscanf(file, "%c ", c);
-
         //Iterates through columns
         for(int coluna = 0; coluna < 8; coluna++){
 
@@ -256,8 +253,8 @@ void ler(char *fileName, ESTADO *e){
     //Discarding number line of the board (1, 2, 3 ...)
     //fscanf(file, "1 2 3 4 5 6 7 8 ");
     char jogada, p1Linha, p1Coluna, p2Linha, p2Coluna;
-//	while(fscanf(file, "%c", c) == 1 )printf("%c", *c);
-    for(int buffer = 0, linha = 0;linha < 90 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
+    //Reads first 10 movs
+    for(int buffer = 0, linha = 0;linha < 81 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
         switch(buffer){
             case 1: jogada = *c;
                 break;
@@ -273,20 +270,52 @@ void ler(char *fileName, ESTADO *e){
                 break;
 
         }
-        if (buffer == 8){
-            printf("jogada = %c -- p1 = %c%c p2 = %c%c\n", jogada, p1Linha, p1Coluna, p2Linha, p2Coluna);
+        if (buffer == 6){
             	coord->linha = p1Linha - 'a';
             	coord->coluna = p1Coluna - '1';
-            	coord1->linha = p2Linha - 'a';
-            	coord1->coluna = p2Coluna - '1';
 		e->jogadas[jogada-'1'].jogador1 = *coord;
-		e->jogadas[jogada-'1'].jogador2 = *coord1;
-		incrJogada(e);
-            //Discards newline
-            fscanf(file, " ");
-//
         }
+	if (buffer == 8){
+                coord1->linha = p2Linha - 'a';
+                coord1->coluna = p2Coluna - '1';
+                e->jogadas[jogada-'1'].jogador2 = *coord1;
+		incrJogada(e);
+		//Discards newline
+                fscanf(file, " ");
+	}
     }
+    //Reads other 20 movs
+        for(int buffer = 0, linha = 0;linha < 200 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
+	        switch(buffer){
+	            case 1: jogada = *c;
+	                break;
+	            case 4: p1Linha = *c;
+	                break;
+	            case 5: p1Coluna = *c;
+	                break;
+	            case 7: p2Linha = *c;
+	                break;
+	            case 8: p2Coluna = *c;
+	                break;
+	            default:
+	                break;
+	        }
+	        if (buffer == 6){
+	                coord->linha = p1Linha - 'a';
+	                coord->coluna = p1Coluna - '1'; 
+	                e->jogadas[jogada-'1'+10].jogador1 = *coord;
+			changePlayer(e);
+	        }
+	        if (buffer == 8){
+	                coord1->linha = p2Linha - 'a';
+	                coord1->coluna = p2Coluna - '1';
+	                e->jogadas[jogada-'1'+10].jogador2 = *coord1;
+			changePlayer(e);
+	                incrJogada(e);
+	                //Discards newline
+	                fscanf(file, " ");
+	        }
+	    }
 }
 
 
