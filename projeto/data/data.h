@@ -6,6 +6,11 @@ Definição do estado e das funções que o manipulam
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
+typedef struct nodo {
+   void *valor;
+   struct nodo *proximo;
+} NODO, *LISTA;
+
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
 /**
@@ -47,13 +52,10 @@ typedef struct {
 	int num_jogadasOLD;
     /** O jogador atual */
     int jogador_atual;
+    /**  */
+    LISTA possivel_jogada;
 } ESTADO;
 
-
-typedef struct nodo {
-   void *valor;
-   struct nodo *proximo;
-} NODO, *LISTA;
 
 // Cria uma lista vazia
 LISTA criar_lista();

@@ -184,15 +184,14 @@ LISTA proximo(LISTA L){
 }
 
 LISTA remove_cabeca(LISTA L){
-	LISTA r = malloc(sizeof(LISTA));
+	LISTA r = NULL;
 
-	r = L;
-	L = L -> proximo;
+	if(L){
+		r = L -> proximo;
+		free(L);
+	}
 
-	r -> proximo = NULL;
-	free(r);
-
-	return L;
+	return r;
 }
 
 int lista_esta_vazia(LISTA L){
@@ -200,4 +199,107 @@ int lista_esta_vazia(LISTA L){
 		return 1;
 	else
 		return 0;
+}
+
+int nr_coord_around(COORDENADA c, ESTADO *e){
+	int r = 0,
+		j = -1,
+		border = 1;
+
+	if (c.coluna == 7)
+		border = 0;
+
+	while(c.linha != 0 && j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha - 1][c.coluna + j] == VAZIO)
+				r ++;
+		}
+		j ++;
+	}
+
+	j = -1;
+
+	while(j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha][c.coluna + j] == VAZIO)
+				r ++;
+		}
+		j ++;
+	}
+
+	j = -1;
+
+	while(c.linha != 7 && j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha + 1][c.coluna + j] == VAZIO)
+				r ++;
+		}
+		j ++;
+	}
+
+	return r;
+}
+
+void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
+	int r = 0,
+		j = -1,
+		border = 1;
+	COORDENADA fake;
+
+	if (c.coluna == 7)
+		border = 0;
+
+	while(c.linha != 0 && j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha - 1][c.coluna + j] == VAZIO){
+				fake.linha = c.linha - 1;
+				fake.coluna = c.coluna + j;
+				A[r] = fake;
+				r ++;
+			}
+		}
+		j ++;
+	}
+
+	j = -1;
+
+	while(j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha][c.coluna + j] == VAZIO){
+				fake.linha = c.linha;
+				fake.coluna = c.coluna + j;
+				A[r] = fake;
+				r ++;
+			}
+		}
+		j ++;
+	}
+
+	j = -1;
+
+	while(c.linha != 7 && j <= border){
+		if (c.coluna + j != -1){
+			if(e-> tab[c.linha + 1][c.coluna + j] == VAZIO){
+				fake.linha = c.linha + 1;
+				fake.coluna = c.coluna + j;
+				A[r] = fake;
+				r ++;
+			}
+		}
+		j ++;
+	}	
+}
+
+void printArrayCoord(COORDENADA *A, int N){
+	int i = 0;
+
+	while (i < N){
+
+		i ++;
+	}
+	putchar('\n');
+}
+
+void atualiza_lista(ESTADO *e){
+	COORDENADA A[nr_coord_around(findBranca(e),e)];
 }

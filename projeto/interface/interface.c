@@ -188,6 +188,9 @@ int interpretador(ESTADO *e){
 			//		printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 		}
 
+		int coord_around;
+		coord_around = nr_coord_around(findBranca(e), e);
+		printf("%d \n", coord_around);
 		x ++;
 		mostrar_tabuleiro(stdout, e);
 		prompt(e,x,boolPrompt);
