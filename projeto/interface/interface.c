@@ -236,9 +236,6 @@ void ler(char *fileName, ESTADO *e){
 
         //Please note that scanf functions read something and moves the reading pointer to the next thing to be read.
         //That is why you can iterate it like this
-        //Discarding column with letters (a, b, c ...)
-        //fscanf(file, "%c ", c);
-
         //Iterates through columns
         for(int coluna = 0; coluna < 8; coluna++){
 
@@ -281,7 +278,6 @@ void ler(char *fileName, ESTADO *e){
 		incrJogada(e);
             //Discards newline
             fscanf(file, " ");
-//
         }
     }
     //Reads other 20 movs
@@ -311,7 +307,6 @@ void ler(char *fileName, ESTADO *e){
                 incrJogada(e);
             //Discards newline
             fscanf(file, " ");
-//
         }
     }
 
