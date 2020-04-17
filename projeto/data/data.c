@@ -5,6 +5,8 @@
 #include <string.h>
 #include "../logic/logic.h"
 #include "../interface/interface.h"
+#include "../listas_ligadas/listas_ligadas.h"
+
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
 	int line = c.linha - 1;
@@ -158,50 +160,6 @@ void replicaEstado(ESTADO *e){
 	e -> num_jogadasOLD = e -> num_jogadas;
 }
 
-
-LISTA criar_lista(){
-	LISTA r = malloc(sizeof(LISTA));
-
-	r = NULL;
-
-	return r;
-}
-
-LISTA insere_cabeca(LISTA L, void *valor){
-	LISTA r = malloc(sizeof(LISTA));
-	
-	r -> proximo = L;
-	r -> valor = valor;
-
-	return r;
-}
-
-void *devolve_cabeca(LISTA L){
-	return (L -> valor);
-}
-
-LISTA proximo(LISTA L){
-	return (L -> proximo);
-}
-
-LISTA remove_cabeca(LISTA L){
-	LISTA r = NULL;
-
-	if(L){
-		r = L -> proximo;
-		free(L);
-	}
-
-	return r;
-}
-
-int lista_esta_vazia(LISTA L){
-	if (L == NULL)
-		return 1;
-	else
-		return 0;
-}
-
 int nr_coord_around(COORDENADA c, ESTADO *e){
 	int r = 0,
 		j = -1,
@@ -330,23 +288,4 @@ LISTA fromArray2(int *A, int N){
 
 void atualiza_lista(ESTADO *e){
 	COORDENADA A[nr_coord_around(findBranca(e),e)];
-}
-
-void printArrayCoord(COORDENADA *A, int N){
-	int i = 0;
-
-	while (i < N){
-		char l = 'a' + A[i].linha;
-		printf("%c%d ", l, A[i].coluna);
-		i ++;
-	}
-	putchar('\n');
-}
-
-void printListaCoord(LISTA L){
-	while(L){
-		printf("%d ", L-> valor);
-		L = L-> proximo;
-	}
-	putchar('\n');
 }

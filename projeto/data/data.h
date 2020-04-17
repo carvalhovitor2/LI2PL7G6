@@ -6,11 +6,6 @@ Definição do estado e das funções que o manipulam
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
-typedef struct nodo {
-   void *valor;
-   struct nodo *proximo;
-} NODO, *LISTA;
-
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
 /** 
@@ -56,19 +51,6 @@ typedef struct {
     LISTA lista_jogadas;
 } ESTADO;
 
-
-// Cria uma lista vazia
-LISTA criar_lista();
-// Insere um valor na cabeça da lista
-LISTA insere_cabeca(LISTA L, void *valor);
-// Devolve a cabeça da lista
-void *devolve_cabeca(LISTA L);
-// Devolve a cauda da lista
-LISTA proximo(LISTA L);
-// Remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda
-LISTA remove_cabeca(LISTA L);
-// Devolve verdareiro se a lista é vazia
-int lista_esta_vazia(LISTA L);
 
 /**
 \brief incrementa o valor do número de jogadas
@@ -141,4 +123,5 @@ void pos(ESTADO *e, int x);
 void replicaEstado(ESTADO *e);
 void changeJogada(ESTADO *e, int x);
 int getLastPiece(ESTADO *e, int bool);
+
 #endif
