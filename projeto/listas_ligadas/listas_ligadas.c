@@ -67,7 +67,7 @@ void printArrayCoord(COORDENADA *A, int N){
 
 void printListaCoord(LISTA L){
 	while(L){
-		printf("%d ", L-> valor);
+		printf("%d ", L->valor);
 		L = L-> proximo;
 	}
 	putchar('\n');
