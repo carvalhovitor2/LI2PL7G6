@@ -1,5 +1,6 @@
 //This file is designed to store the definition of the interface functions
 #include "interface.h"
+#include "../listas_ligadas/listas_ligadas.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

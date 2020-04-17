@@ -19,3 +19,5 @@ LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 // Devolve verdareiro se a lista é vazia
 int lista_esta_vazia(LISTA L);
+//Print lista ligadas
+void printListaCoord(LISTA L);

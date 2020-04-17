@@ -128,5 +128,6 @@ void pos(ESTADO *e, int x);
 void replicaEstado(ESTADO *e);
 void changeJogada(ESTADO *e, int x);
 int getLastPiece(ESTADO *e, int bool);
-
+void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
+int nr_coord_around(COORDENADA c, ESTADO *e);
 #endif
