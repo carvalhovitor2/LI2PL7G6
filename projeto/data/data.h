@@ -13,7 +13,7 @@ typedef struct nodo {
 
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
-/**
+/** 
 \brief Tipo de dados para as coordenadas
 */
 typedef struct {
@@ -53,7 +53,7 @@ typedef struct {
     /** O jogador atual */
     int jogador_atual;
     /**  */
-    LISTA possivel_jogada;
+    LISTA lista_jogadas;
 } ESTADO;
 
 

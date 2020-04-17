@@ -178,19 +178,41 @@ int interpretador(ESTADO *e){
 			
 			int posJogada = atoi(newLinha);
 
-			pos(e,posJogada);
-			boolPrompt = 0;
-
-			//if (pos(e,posJogada))
-			//	if (posJogada == obter_numero_de_jogadas(e))
-			//		printf("Comando inválido. %d já é a jogada atual.\n", posJogada);
-			//	else
-			//		printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
+			if (posJogada > obter_numero_de_jogadasOLD(e))
+				printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
+			else{
+				pos(e,posJogada);
+				boolPrompt = 0;
+			}
 		}
 
 		int coord_around;
 		coord_around = nr_coord_around(findBranca(e), e);
-		printf("%d \n", coord_around);
+		COORDENADA A[coord_around];
+		array_coord_around(findBranca(e), A, e);
+
+	LISTA l;
+	int V[4] = {40,30,20,10};
+	//l = malloc(sizeof(LISTA));
+	l = criar_lista();
+	//l = fromArray(V, 4, l);
+	//int *blah = malloc(sizeof(int));
+	//blah = devolve_cabeca(l);
+	//int y = 0;
+	//while(y < coord_around){
+	//	COORDENADA *blah = A[y];
+	//	l = insere_cabeca(l, blah);
+	//	y ++;
+	//}
+	//l = insere_cabeca(l,40);
+	//l = insere_cabeca(l,30);
+	//l = insere_cabeca(l,20);
+	//l = insere_cabeca(l,10);
+
+	printListaCoord(l);
+	//printf("%d %d\n",l-> valor, l-> proximo-> valor);
+
+
 		x ++;
 		mostrar_tabuleiro(stdout, e);
 		prompt(e,x,boolPrompt);

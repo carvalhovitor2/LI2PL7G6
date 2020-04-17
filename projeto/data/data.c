@@ -126,6 +126,7 @@ void arrayJogadas(ESTADO *e){
 ESTADO *inicializar_estado(){
 	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
+	e-> lista_jogadas = malloc(sizeof(LISTA));
 	e->jogador_atual = 1;
 	e->num_jogadas = 0;
 	arrayJogadas(e);
@@ -290,16 +291,62 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 	}	
 }
 
+
+LISTA lista_de_coord(COORDENADA *A, int N, LISTA L){
+	int i = 0;
+
+	while(i < N){
+		L = insere_cabeca(L,A + i);
+		i ++;
+	}
+
+	return L;
+}
+
+LISTA fromArray(int *A, int N){
+	LISTA l = NULL;
+	int i = 0;
+	int *blah = malloc(sizeof(int));
+	while(i < N){
+		blah = A[i];
+		l = insere_cabeca(l, blah);
+		i ++;
+	}
+	return l;
+}
+
+LISTA fromArray2(int *A, int N){
+	LISTA l = NULL;
+	int i = 0;
+	int *blah; //= malloc(sizeof(int));
+	while(i < N){
+		blah = A[i];
+		l = insere_cabeca(l, blah);
+		i ++;
+	}
+	return l;
+}
+
+
+void atualiza_lista(ESTADO *e){
+	COORDENADA A[nr_coord_around(findBranca(e),e)];
+}
+
 void printArrayCoord(COORDENADA *A, int N){
 	int i = 0;
 
 	while (i < N){
-
+		char l = 'a' + A[i].linha;
+		printf("%c%d ", l, A[i].coluna);
 		i ++;
 	}
 	putchar('\n');
 }
 
-void atualiza_lista(ESTADO *e){
-	COORDENADA A[nr_coord_around(findBranca(e),e)];
+void printListaCoord(LISTA L){
+	while(L){
+		printf("%d ", L-> valor);
+		L = L-> proximo;
+	}
+	putchar('\n');
 }
