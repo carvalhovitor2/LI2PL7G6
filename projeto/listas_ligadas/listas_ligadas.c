@@ -72,3 +72,20 @@ void printListaCoord(LISTA L){
 	}
 	putchar('\n');
 }
+
+LISTA fromArray(COORDENADA *A, int N, int decider){
+	LISTA l = NULL;
+	int i = 0;
+	int *blah;
+	while(i < N){
+		if (decider)
+			blah = A[i].linha;
+		else
+			blah = A[i].coluna
+		l = insere_cabeca(l, blah);
+		i ++;
+	}
+	return l;
+}
+
+LISTA 
