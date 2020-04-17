@@ -266,7 +266,7 @@ LISTA fromArray(int *A, int N){
 	int i = 0;
 	int *blah = malloc(sizeof(int));
 	while(i < N){
-		blah = A[i];
+		blah = &A[i];
 		l = insere_cabeca(l, blah);
 		i ++;
 	}
@@ -278,7 +278,7 @@ LISTA fromArray2(int *A, int N){
 	int i = 0;
 	int *blah; //= malloc(sizeof(int));
 	while(i < N){
-		blah = A[i];
+		blah = &A[i];
 		l = insere_cabeca(l, blah);
 		i ++;
 	}
