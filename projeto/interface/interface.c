@@ -210,7 +210,7 @@ int interpretador(ESTADO *e){
 	//l = insere_cabeca(l,20);
 	//l = insere_cabeca(l,10);
 
-	printListaCoord(l);
+	//printListaCoord(l);
 	//printf("%d %d\n",l-> valor, l-> proximo-> valor);
 
 

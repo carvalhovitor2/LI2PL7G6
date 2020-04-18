@@ -81,11 +81,25 @@ LISTA fromArray(COORDENADA *A, int N, int decider){
 		if (decider)
 			blah = A[i].linha;
 		else
-			blah = A[i].coluna
+			blah = A[i].coluna;
 		l = insere_cabeca(l, blah);
 		i ++;
 	}
 	return l;
 }
 
-LISTA 
+LISTA lista_estados_possiveis(int N, int L[], int C[], ESTADO *e){
+	LISTA l = NULL;
+	ESTADO *fake;
+	COORDENADA jog;
+
+	for(int i = 0; i < N; i++){
+		fake = e;
+		jog.linha = L[i];
+		jog.coluna = C[i];
+		jogar(fake, jog);
+		l = insere_cabeca(l,fake);
+	}
+
+	return l;
+}

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "../logic/logic.h"
 #include "../interface/interface.h"
 #include "../listas_ligadas/listas_ligadas.h"
@@ -128,7 +129,7 @@ void arrayJogadas(ESTADO *e){
 ESTADO *inicializar_estado(){
 	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
-	e-> lista_jogadas = malloc(sizeof(LISTA));
+	e-> lista_jogadas_possiveis = malloc(sizeof(NODO));
 	e->jogador_atual = 1;
 	e->num_jogadas = 0;
 	arrayJogadas(e);
@@ -261,17 +262,6 @@ LISTA lista_de_coord(COORDENADA *A, int N, LISTA L){
 	return L;
 }
 
-LISTA fromArray(int *A, int N){
-	LISTA l = NULL;
-	int i = 0;
-	int *blah = malloc(sizeof(int));
-	while(i < N){
-		blah = &A[i];
-		l = insere_cabeca(l, blah);
-		i ++;
-	}
-	return l;
-}
 
 LISTA fromArray2(int *A, int N){
 	LISTA l = NULL;
@@ -288,4 +278,27 @@ LISTA fromArray2(int *A, int N){
 
 void atualiza_lista(ESTADO *e){
 	COORDENADA A[nr_coord_around(findBranca(e),e)];
+}
+
+void calcula_dist_dest(ESTADO *e){
+	int dist;
+	int player = obter_jogador_atual(e);
+
+	COORDENADA c = findBranca(e);
+	int x = c.linha,
+		y = c.coluna;
+
+	if (player == 1)
+		dist = sqrt(pow(7 - x, 2) + pow(0 - y, 2));
+	else
+		dist = sqrt(pow(0 - x, 2) + pow(7 - y, 2));
+
+	e-> dist_destino = dist;
+}
+
+LISTA atualiza_LISTAS(ESTADO *e){
+	LISTA L;
+	L = e-> lista_jogadas_possiveis;
+	void *yo = devolve_cabeca(L);
+	ESTADO *yos = (ESTADO *)yo;
 }
