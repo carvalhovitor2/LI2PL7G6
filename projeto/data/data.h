@@ -52,10 +52,10 @@ typedef struct {
 	int num_jogadasOLD;
     /** O jogador atual */
     int jogador_atual;
-    /** Lista de estados com  */
-    LISTA lista_jogadas_possiveis;
-    /** Distância à casa de destino do jogador atual */
-    int dist_destino;
+    ///** Lista de estados com  */
+    //LISTA lista_jogadas_possiveis;
+    ///** Distância à casa de destino do jogador atual */
+    //int dist_destino;
 
 } ESTADO;
 

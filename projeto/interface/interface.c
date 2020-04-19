@@ -152,6 +152,7 @@ int interpretador(ESTADO *e){
 
 	while((strlen(linha) > 2)                                  &&
 		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       ||
+		  (!strcmp(linha,"jog\n"))                             ||
 		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
 	      (!strcmp(linha,"movs\n"))                            ||
 	      (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
@@ -161,6 +162,26 @@ int interpretador(ESTADO *e){
 			jogar(e, coord);
 			replicaEstado(e);
 			boolPrompt = 1;
+		}
+
+		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
+			int coord_around;
+			coord_around = nr_coord_around(findBranca(e), e);
+			COORDENADA C[coord_around];
+			array_coord_around(findBranca(e), C, e);
+
+			LISTA l;
+			l = criar_lista();
+
+			for(int i = coord_around - 1; i >= 0; i--){
+				int dist = calcula_dist_dest(C[i], e);
+				l = insere_cabeca(l, dist);
+			}
+
+			int ind = indice_menorDist(l);
+			jogar(e, C[ind]);
+			free(l);
+
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
@@ -189,30 +210,22 @@ int interpretador(ESTADO *e){
 
 		int coord_around;
 		coord_around = nr_coord_around(findBranca(e), e);
-		COORDENADA A[coord_around];
-		array_coord_around(findBranca(e), A, e);
+		COORDENADA C[coord_around];
+		array_coord_around(findBranca(e), C, e);
 
-	LISTA l;
-	int V[4] = {40,30,20,10};
-	//l = malloc(sizeof(LISTA));
-	l = criar_lista();
-	//l = fromArray(V, 4, l);
-	//int *blah = malloc(sizeof(int));
-	//blah = devolve_cabeca(l);
-	//int y = 0;
-	//while(y < coord_around){
-	//	COORDENADA *blah = A[y];
-	//	l = insere_cabeca(l, blah);
-	//	y ++;
-	//}
-	//l = insere_cabeca(l,40);
-	//l = insere_cabeca(l,30);
-	//l = insere_cabeca(l,20);
-	//l = insere_cabeca(l,10);
+		LISTA l;
+		l = criar_lista();
+		l = NULL;
+		int dist;
 
-	//printListaCoord(l);
-	//printf("%d %d\n",l-> valor, l-> proximo-> valor);
-
+		for(int i = coord_around - 1; i >= 0; i--){
+			dist = calcula_dist_dest(C[i], e);
+			l = insere_cabeca(l, dist);
+		}
+		//l = lista_DistDest(coord_around, C, e);
+		printf("%d\n",indice_menorDist(l));
+		printListaCoord(l);
+		free(l);
 
 		x ++;
 		mostrar_tabuleiro(stdout, e);

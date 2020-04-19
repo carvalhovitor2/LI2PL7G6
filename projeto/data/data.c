@@ -129,7 +129,6 @@ void arrayJogadas(ESTADO *e){
 ESTADO *inicializar_estado(){
 	COORDENADA coordenadaInicial = {3,4};
 	ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
-	e-> lista_jogadas_possiveis = malloc(sizeof(NODO));
 	e->jogador_atual = 1;
 	e->num_jogadas = 0;
 	arrayJogadas(e);
@@ -251,54 +250,60 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 }
 
 
-LISTA lista_de_coord(COORDENADA *A, int N, LISTA L){
-	int i = 0;
+//LISTA lista_de_coord(COORDENADA *A, int N, LISTA L){
+//	int i = 0;
+//
+//	while(i < N){
+//		L = insere_cabeca(L,A + i);
+//		i ++;
+//	}
+//
+//	return L;
+//}
 
-	while(i < N){
-		L = insere_cabeca(L,A + i);
-		i ++;
-	}
-
-	return L;
-}
-
-
-LISTA fromArray2(int *A, int N){
-	LISTA l = NULL;
-	int i = 0;
-	int *blah; //= malloc(sizeof(int));
-	while(i < N){
-		blah = &A[i];
-		l = insere_cabeca(l, blah);
-		i ++;
-	}
-	return l;
-}
-
-
-void atualiza_lista(ESTADO *e){
-	COORDENADA A[nr_coord_around(findBranca(e),e)];
-}
-
-void calcula_dist_dest(ESTADO *e){
+int calcula_dist_dest(COORDENADA C, ESTADO *e){
 	int dist;
 	int player = obter_jogador_atual(e);
-
-	COORDENADA c = findBranca(e);
-	int x = c.linha,
-		y = c.coluna;
+	int x = C.linha,
+		y = C.coluna;
 
 	if (player == 1)
 		dist = sqrt(pow(7 - x, 2) + pow(0 - y, 2));
 	else
 		dist = sqrt(pow(0 - x, 2) + pow(7 - y, 2));
 
-	e-> dist_destino = dist;
+	return dist;
 }
 
-LISTA atualiza_LISTAS(ESTADO *e){
-	LISTA L;
-	L = e-> lista_jogadas_possiveis;
-	void *yo = devolve_cabeca(L);
-	ESTADO *yos = (ESTADO *)yo;
+int indice_menorDist(LISTA L){
+	int r = 0, i = 1;
+	LISTA fake = L;
+	int x;
+	x = devolve_cabeca(L);
+	int y; 
+
+	if (fake && fake-> proximo){
+		fake = fake-> proximo;
+		y = devolve_cabeca(fake);
+	}
+
+	while(fake){
+		if (x > y){
+			r = i;
+			x = y;
+		}
+		fake = fake-> proximo;
+		if (fake)
+			y = devolve_cabeca(fake);
+		i ++;
+	}
+
+	return r;
 }
+
+//LISTA atualiza_LISTAS(ESTADO *e){
+//	LISTA L;
+//	L = e-> lista_jogadas_possiveis;
+//	void *yo = devolve_cabeca(L);
+//	ESTADO *yos = (ESTADO *)yo;
+//}

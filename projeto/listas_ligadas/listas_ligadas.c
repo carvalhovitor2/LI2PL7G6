@@ -52,19 +52,6 @@ int lista_esta_vazia(LISTA L){
 		return 0;
 }
 
-
-void printArrayCoord(COORDENADA *A, int N){
-	int i = 0;
-
-	while (i < N){
-		char l = 'a' + A[i].linha;
-		printf("%c%d ", l, A[i].coluna);
-		i ++;
-	}
-	putchar('\n');
-}
-
-
 void printListaCoord(LISTA L){
 	while(L){
 		printf("%d ", L->valor);
@@ -73,33 +60,53 @@ void printListaCoord(LISTA L){
 	putchar('\n');
 }
 
-LISTA fromArray(COORDENADA *A, int N, int decider){
-	LISTA l = NULL;
-	int i = 0;
-	int *blah;
-	while(i < N){
-		if (decider)
-			blah = A[i].linha;
-		else
-			blah = A[i].coluna;
-		l = insere_cabeca(l, blah);
-		i ++;
+LISTA fromArray(int A[], int N){
+	LISTA r = NULL;
+	for(int i = N - 1; i >= 0; i--){
+		int *fake = A[i];
+		r = insere_cabeca(r, fake);
 	}
-	return l;
+	return r;
 }
 
-LISTA lista_estados_possiveis(int N, int L[], int C[], ESTADO *e){
+LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e){
 	LISTA l = NULL;
-	ESTADO *fake;
-	COORDENADA jog;
+	int *dist;
 
-	for(int i = 0; i < N; i++){
-		fake = e;
-		jog.linha = L[i];
-		jog.coluna = C[i];
-		jogar(fake, jog);
-		l = insere_cabeca(l,fake);
+	for(int i = N - 1; i >= 0; i--){
+		*dist = calcula_dist_dest(C[i], e);
+		l = insere_cabeca(l, dist);
 	}
 
 	return l;
 }
+
+
+//LISTA lista_estados_possiveis(int N, int L[], int C[], ESTADO *e){
+//	LISTA l = NULL;
+//	ESTADO *fake;
+//	COORDENADA jog;
+//
+//	for(int i = 0; i < N; i++){
+//		fake = e;
+//		jog.linha = L[i];
+//		jog.coluna = C[i];
+//		jogar(fake, jog);
+//		l = insere_cabeca(l,fake);
+//	}
+//
+//	return l;
+//}
+
+//LISTA lista_estados_possiveis(int N, COORDENADA A[], ESTADO *e){
+//	LISTA l = NULL;
+//	ESTADO *fake;
+//
+//	for(int i = 0; i < N; i++){
+//		fake = e;
+//		jogar(fake, A[i]);
+//		l = insere_cabeca(l,fake);
+//	}
+//
+//	return l;
+//}
