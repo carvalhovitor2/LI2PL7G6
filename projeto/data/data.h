@@ -134,4 +134,6 @@ void changeJogada(ESTADO *e, int x);
 int getLastPiece(ESTADO *e, int bool);
 void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 int nr_coord_around(COORDENADA c, ESTADO *e);
+int calcula_dist_dest(COORDENADA C, ESTADO *e);
+int indice_menorDist(LISTA L);
 #endif
