@@ -54,7 +54,7 @@ int lista_esta_vazia(LISTA L){
 
 void printListaCoord(LISTA L){
 	while(L){
-		printf("%d ", L->valor);
+		printf("%f ", L->valor);
 		L = L-> proximo;
 	}
 	putchar('\n');
@@ -81,32 +81,13 @@ LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e){
 	return l;
 }
 
-
-//LISTA lista_estados_possiveis(int N, int L[], int C[], ESTADO *e){
-//	LISTA l = NULL;
-//	ESTADO *fake;
-//	COORDENADA jog;
-//
-//	for(int i = 0; i < N; i++){
-//		fake = e;
-//		jog.linha = L[i];
-//		jog.coluna = C[i];
-//		jogar(fake, jog);
-//		l = insere_cabeca(l,fake);
-//	}
-//
-//	return l;
-//}
-
-//LISTA lista_estados_possiveis(int N, COORDENADA A[], ESTADO *e){
-//	LISTA l = NULL;
-//	ESTADO *fake;
-//
-//	for(int i = 0; i < N; i++){
-//		fake = e;
-//		jogar(fake, A[i]);
-//		l = insere_cabeca(l,fake);
-//	}
-//
-//	return l;
-//}
+void formar_LinCol(int decider, int A[], int N, COORDENADA C[]){
+	if (decider){
+		for(int i = 0; i < N; i ++)
+			A[i] = C[i].linha;
+	}
+	else{
+		for(int i = 0; i < N; i ++)
+			A[i] = C[i].coluna;
+	}
+}

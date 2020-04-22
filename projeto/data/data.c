@@ -280,6 +280,30 @@ int calcula_dist_dest(COORDENADA C, ESTADO *e){
 	return dist;
 }
 
+float calcula_dist_destF(COORDENADA C, ESTADO *e){
+	float dist;
+	int player = obter_jogador_atual(e);
+	int x = C.linha,
+		y = C.coluna;
+
+	if (player == 1)
+		dist = sqrt(pow(7 - x, 2) + pow(0 - y, 2));
+	else
+		dist = sqrt(pow(0 - x, 2) + pow(7 - y, 2));
+
+	return dist;
+}
+
+
+float calcula_dist_dest2(int x){
+	float dist;
+
+	dist = (powf(7 - x, 2.0) + powf(0 - x, 2.0));
+	//printf("%f\n", dist);
+
+	return dist;
+}
+
 int indice_menorDist(LISTA L){
 	int r = 0, i = 1;
 	LISTA fake = L;

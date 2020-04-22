@@ -153,6 +153,7 @@ int interpretador(ESTADO *e){
 	while((strlen(linha) > 2)                                  &&
 		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       ||
 		  (!strcmp(linha,"jog\n"))                             ||
+		  (!strcmp(linha,"jog2\n"))                            ||
 		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
 	      (!strcmp(linha,"movs\n"))                            ||
 	      (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
@@ -184,6 +185,48 @@ int interpretador(ESTADO *e){
 
 		}
 
+		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
+			srandom(time(NULL));
+			int coord_around;
+			coord_around = nr_coord_around(findBranca(e), e);
+			int rnd = random() % coord_around;
+			COORDENADA C[coord_around];
+			array_coord_around(findBranca(e), C, e);
+			int linhas[coord_around], colunas[coord_around];
+
+			formar_LinCol(1, linhas, coord_around, C);
+			formar_LinCol(0, colunas, coord_around, C);
+
+			LISTA l1, l2;
+			l1 = criar_lista();
+			l2 = criar_lista();
+
+			for(int i = coord_around - 1; i >= 0; i--){
+				int *fake = linhas[i];
+				int *fake2 = colunas[i];
+				l1 = insere_cabeca(l1, fake);
+				l2 = insere_cabeca(l2, fake2);
+			}
+
+			int xx, yy;
+			while(l1 && l2 && rnd >= 0){
+				l1 = remove_cabeca(l1);
+				l2 = remove_cabeca(l2);
+				rnd --;
+			}
+			
+			xx = devolve_cabeca(l1);
+			yy = devolve_cabeca(l2);
+			COORDENADA aleatoria;
+			aleatoria.linha = xx;
+			aleatoria.coluna = yy;
+
+			jogar(e, aleatoria);
+
+			free(l1);
+			free(l2);
+		}
+
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
 			movs(stdout,e);
 
@@ -207,25 +250,6 @@ int interpretador(ESTADO *e){
 				boolPrompt = 0;
 			}
 		}
-
-		int coord_around;
-		coord_around = nr_coord_around(findBranca(e), e);
-		COORDENADA C[coord_around];
-		array_coord_around(findBranca(e), C, e);
-
-		LISTA l;
-		l = criar_lista();
-		l = NULL;
-		int dist;
-
-		for(int i = coord_around - 1; i >= 0; i--){
-			dist = calcula_dist_dest(C[i], e);
-			l = insere_cabeca(l, dist);
-		}
-		//l = lista_DistDest(coord_around, C, e);
-		printf("%d\n",indice_menorDist(l));
-		printListaCoord(l);
-		free(l);
 
 		x ++;
 		mostrar_tabuleiro(stdout, e);
