@@ -91,3 +91,50 @@ void formar_LinCol(int decider, int A[], int N, COORDENADA C[]){
 			A[i] = C[i].coluna;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void printListaCoordenada(LISTA L){
+	while(L){
+		COORDENADA *blah;
+		blah = L-> valor;
+		L = L -> proximo;
+		printCoordenada(*blah);
+	}
+}
+
+void printCoordenada(COORDENADA c){
+	char a = 'a' + c.linha;
+	printf("%c%d\n", a, c.coluna);
+}
+
+LISTA fromArrayCoord(COORDENADA A[], int N){
+	LISTA l = NULL;
+	int i = N - 1;
+	while(i >= 0){
+		l = insere_cabeca(l, A + i);
+		i --;
+	}
+	return l;
+}
+
+void printArrayCoordenada(COORDENADA C[], int N){
+	int i = 0;
+	while (i < N){
+		char a = 'a' + C[i].linha;
+		printf("%c%d ", a, C[i].coluna + 1);
+		i ++;
+	}
+	putchar('\n');
+}

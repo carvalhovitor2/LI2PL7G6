@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 #define BUF_SIZE 1024
 
@@ -138,6 +139,7 @@ char* addStr(char* s, char* v){
 
 
 int interpretador(ESTADO *e){
+	srandom(time(NULL));
 	char linha[BUF_SIZE];
 	char col[2], lin[2];
 	int x = 1;
@@ -166,6 +168,31 @@ int interpretador(ESTADO *e){
 		}
 
 		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
+			int nrC = nr_coord_around(findBranca(e), e);
+			int rnd = random() % nrC;
+			COORDENADA C[nrC]; 
+			array_coord_around(findBranca(e), C, e);
+
+			LISTA lJog;
+			lJog = criar_lista();
+
+			int count = nrC;
+			for(int count = nrC; count >= 0; count --)
+				lJog = insere_cabeca(lJog, C + count);
+
+			while(lJog && rnd > 0){
+				lJog = remove_cabeca(lJog);
+				rnd --;
+			}
+			
+			COORDENADA *aleatoria;
+			aleatoria = devolve_cabeca(lJog);
+
+			jogar(e, *aleatoria);
+			free(lJog);
+		}
+
+		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
 			int coord_around;
 			coord_around = nr_coord_around(findBranca(e), e);
 			COORDENADA C[coord_around];
@@ -182,49 +209,6 @@ int interpretador(ESTADO *e){
 			int ind = indice_menorDist(l);
 			jogar(e, C[ind]);
 			free(l);
-
-		}
-
-		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
-			srandom(time(NULL));
-			int coord_around;
-			coord_around = nr_coord_around(findBranca(e), e);
-			int rnd = random() % coord_around;
-			COORDENADA C[coord_around];
-			array_coord_around(findBranca(e), C, e);
-			int linhas[coord_around], colunas[coord_around];
-
-			formar_LinCol(1, linhas, coord_around, C);
-			formar_LinCol(0, colunas, coord_around, C);
-
-			LISTA l1, l2;
-			l1 = criar_lista();
-			l2 = criar_lista();
-
-			for(int i = coord_around - 1; i >= 0; i--){
-				int *fake = linhas[i];
-				int *fake2 = colunas[i];
-				l1 = insere_cabeca(l1, fake);
-				l2 = insere_cabeca(l2, fake2);
-			}
-
-			int xx, yy;
-			while(l1 && l2 && rnd >= 0){
-				l1 = remove_cabeca(l1);
-				l2 = remove_cabeca(l2);
-				rnd --;
-			}
-			
-			xx = devolve_cabeca(l1);
-			yy = devolve_cabeca(l2);
-			COORDENADA aleatoria;
-			aleatoria.linha = xx;
-			aleatoria.coluna = yy;
-
-			jogar(e, aleatoria);
-
-			free(l1);
-			free(l2);
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))

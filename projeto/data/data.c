@@ -140,11 +140,6 @@ ESTADO *inicializar_estado(){
 			e->tab[linha][coluna] = VAZIO;
 		}
 	}
-	for(int linha = 0; linha < 8; linha++){
-		for(int coluna = 0; coluna < 8; coluna++){
-			e->floodTab[linha][coluna] = 1000;
-		}
-	}
 	changePiece(e, coordenadaInicial, BRANCA); 
 	return e;
 }

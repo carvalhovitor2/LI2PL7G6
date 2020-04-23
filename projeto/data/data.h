@@ -53,7 +53,7 @@ typedef struct {
     /** O jogador atual */
     int jogador_atual;
     ///** Lista de estados com  */
-    int floodTab[8][8];
+    //int floodTab[8][8];
     //LISTA lista_jogadas_possiveis;
     ///** Distância à casa de destino do jogador atual */
     //int dist_destino;
