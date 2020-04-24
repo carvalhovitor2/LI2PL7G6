@@ -1,0 +1,27 @@
+Pedro Miguel Ribeiro Ferreira -\/ A93282 Rui Miguel Borges Braga -\/ A93228 Vitor de Almeida de Carvalho -\/ A90648
+
+\subsection*{L\+I2 -\/ P\+L7 -\/ G\+R\+U\+PO 6 }
+
+\subsection*{Modus Operandi }
+
+As alterações devem ser feitas sempre nos modulos destinados para tais funções, ou seja\+:
+
+Funções que mexem com a lógica do programa ficam em D\+E\+F\+I\+N\+I\+D\+AS logic/logic.\+c e D\+E\+C\+L\+A\+R\+A\+D\+AS em \hyperlink{logic_8h}{logic/logic.\+h}
+
+Funções que mexem com a interface do programa ficam em D\+E\+F\+I\+N\+I\+D\+AS interface/interface.\+c e D\+E\+C\+L\+A\+R\+A\+D\+AS em \hyperlink{interface_8h}{interface/interface.\+h}
+
+Funções que mexem com os dados do programa ficam em D\+E\+F\+I\+N\+I\+D\+AS data/data.\+c e D\+E\+C\+L\+A\+R\+A\+D\+AS em \hyperlink{data_8h}{data/data.\+h}
+
+\subsection*{Compilação }
+
+Para compilar, execute o comando \textquotesingle{}make\textquotesingle{} de dentro do diretorio base do projeto. Isto é, em L\+I2/projeto.
+
+O output gerado pode ser algo como\+: 
+\begin{DoxyCode}
+gcc -o game main\_game.c data/data.c interface/interface.c logic/logic.c
+main\_game.c: In function ‘main’:
+main\_game.c:7:2: warning: implicit declaration of function ‘mostrar\_tabuleiro’
+       [-Wimplicit-function-declaration]
+  mostrar\_tabuleiro(e);
+\end{DoxyCode}
+ 
