@@ -1,8 +1,0 @@
-digraph "logic" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  dir_0f9694b8de2575528c6c0ae9f79dda65 [shape=box, label="logic", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0f9694b8de2575528c6c0ae9f79dda65.html"];
-  dir_472fafaf0f039b9e6b043966c1ef7dbf [shape=box label="data" URL="dir_472fafaf0f039b9e6b043966c1ef7dbf.html"];
-  dir_0f9694b8de2575528c6c0ae9f79dda65->dir_472fafaf0f039b9e6b043966c1ef7dbf [headlabel="1", labeldistance=1.5 headhref="dir_000002_000000.html"];
-}
