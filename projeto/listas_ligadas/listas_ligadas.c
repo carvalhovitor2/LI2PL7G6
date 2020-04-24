@@ -52,7 +52,7 @@ int lista_esta_vazia(LISTA L){
 
 void printListaCoord(LISTA L){
 	while(L){
-		printf("%f ", L->valor);
+		printf("%f ", *(float *)L->valor);
 		L = L-> proximo;
 	}
 	putchar('\n');
@@ -61,8 +61,8 @@ void printListaCoord(LISTA L){
 LISTA fromArray(int A[], int N){
 	LISTA r = NULL;
 	for(int i = N - 1; i >= 0; i--){
-		int *fake = A[i];
-		r = insere_cabeca(r, fake);
+		int fake = A[i];
+		r = insere_cabeca(r, &fake);
 	}
 	return r;
 }
@@ -98,7 +98,10 @@ void formar_LinCol(int decider, int A[], int N, COORDENADA C[]){
 
 
 
-
+void printCoordenada(COORDENADA c){
+        char a = 'a' + c.linha;
+        printf("%c%d\n", a, c.coluna);
+}
 
 
 
@@ -112,10 +115,6 @@ void printListaCoordenada(LISTA L){
 	}
 }
 
-void printCoordenada(COORDENADA c){
-	char a = 'a' + c.linha;
-	printf("%c%d\n", a, c.coluna);
-}
 
 LISTA fromArrayCoord(COORDENADA A[], int N){
 	LISTA l = NULL;

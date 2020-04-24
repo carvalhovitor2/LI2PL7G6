@@ -203,7 +203,7 @@ int interpretador(ESTADO *e){
 
 			for(int i = coord_around - 1; i >= 0; i--){
 				int dist = calcula_dist_dest(C[i], e);
-				l = insere_cabeca(l, dist);
+				l = insere_cabeca(l, &dist);
 			}
 
 			int ind = indice_menorDist(l);

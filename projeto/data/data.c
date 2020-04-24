@@ -302,9 +302,9 @@ float calcula_dist_dest2(int x){
 int indice_menorDist(LISTA L){
 	int r = 0, i = 1;
 	LISTA fake = L;
-	int x;
+	int *x;
 	x = devolve_cabeca(L);
-	int y; 
+	int *y; 
 
 	if (fake && fake-> proximo){
 		fake = fake-> proximo;
