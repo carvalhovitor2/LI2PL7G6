@@ -8,10 +8,9 @@ Definição do estado e das funções que o manipulam
 
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
-typedef struct nodo {
-   void *valor;
-   struct nodo *proximo;
-} NODO, *LISTA;
+
+typedef struct nodo *LISTA;
+
 
 /** 
 \brief Tipo de dados para as coordenadas

@@ -38,6 +38,7 @@ LISTA remove_cabeca(LISTA L){
 
 	if(L){
 		r = L -> proximo;
+		//free(L-> valor);
 		free(L);
 	}
 
@@ -46,10 +47,7 @@ LISTA remove_cabeca(LISTA L){
 
 
 int lista_esta_vazia(LISTA L){
-	if (L == NULL)
-		return 1;
-	else
-		return 0;
+	return (L == NULL);
 }
 
 void printListaCoord(LISTA L){
