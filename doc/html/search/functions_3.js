@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['jogadavalida',['jogadaValida',['../logic_8h.html#a29d47f0e43124e57b790efda4631e0ef',1,'logic.c']]],
-  ['jogar',['jogar',['../logic_8h.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logic.c']]]
+  ['incrjogada',['incrJogada',['../data_8h.html#a7165dae099a6650cab9974eb7de161e8',1,'data.c']]],
+  ['indice_5fmenordist',['indice_menorDist',['../data_8h.html#a17cc53c68e2dc2ef60ae7cb594626e82',1,'data.c']]],
+  ['inicializar_5festado',['inicializar_estado',['../data_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f',1,'data.c']]],
+  ['interpretador',['interpretador',['../interface_8h.html#a24da95ebeede4a540e37790ce8be359b',1,'interface.c']]]
 ];

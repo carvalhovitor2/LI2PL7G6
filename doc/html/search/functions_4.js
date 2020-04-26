@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ler',['ler',['../data_8h.html#a4637f9fb13c30f06d0262631ae38f14f',1,'interface.c']]]
+  ['jogadavalida',['jogadaValida',['../logic_8h.html#a29d47f0e43124e57b790efda4631e0ef',1,'logic.c']]],
+  ['jogar',['jogar',['../logic_8h.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logic.c']]]
 ];

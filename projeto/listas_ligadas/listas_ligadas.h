@@ -12,7 +12,7 @@ typedef struct nodo {
    struct nodo *proximo;
 } NODO;
 
-// Cria uma lista vazia
+// Cria uma lista vazia (aloca a memoria a um ponteiro do tipo lista)
 LISTA criar_lista();
 // Insere um valor na cabeça da lista
 LISTA insere_cabeca(LISTA L, void *valor);

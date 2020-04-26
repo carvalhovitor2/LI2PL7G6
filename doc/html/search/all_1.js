@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['calcula_5fdist_5fdest',['calcula_dist_dest',['../data_8h.html#a7375a1dec43eb36cf02c561809009a66',1,'data.c']]],
+  ['changejogada',['changeJogada',['../data_8h.html#a3d0f75bad2aeefde49ac020c719fc410',1,'data.c']]],
   ['changepiece',['changePiece',['../data_8h.html#a9d446372f8976c1b36da43d550c2207d',1,'data.c']]],
   ['changeplayer',['changePlayer',['../data_8h.html#a7df9c53e22befe94327ee92135e5c152',1,'data.c']]],
   ['coloca_5fjogada',['coloca_jogada',['../data_8h.html#a36f08da8c5096985e8b369c447c30039',1,'data.c']]],
