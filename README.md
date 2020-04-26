@@ -24,7 +24,7 @@ Funções que mexem com os dados do programa ficam em DEFINIDAS data/data.c e DE
 Compilação
 ------------  
 
-Para compilar, execute o comando 'make' de dentro do diretorio base do projeto. Isto é, em LI2/projeto.  
+Para compilar, execute o comando 'make' de dentro do diretorio base do projeto. Isto é, em LI2PL7G6.    
 
 O output gerado pode ser algo como:  
 ```
