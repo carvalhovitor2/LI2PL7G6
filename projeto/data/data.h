@@ -132,13 +132,67 @@ void gr(char *fileName, ESTADO *e);
 @param fileName o nome do ficheiro onde gravar o estado
 */
 void ler(char *fileName, ESTADO *e);
+
+
+/**
+\brief Obtem o numero de jogadas ocorridos num estado anterior
+@param Apontador para o estado
+*/
 int obter_numero_de_jogadasOLD(ESTADO *estado);
+
+
 void pos(ESTADO *e, int x);
+
+/**
+\brief Passa o numero de jogadas antigo para o numero de jogadas atual
+@param Apontador para o estado
+*/
 void replicaEstado(ESTADO *e);
+
+/**
+\brief Modifica uma jogada
+@param Apontador para o estado
+*/
 void changeJogada(ESTADO *e, int x);
+
+/**
+\brief Busca a ultima peca do tabuleiro
+@param Apontador para o estado
+@param Um inteiro que verifica o estado do ESTADO
+*/
 int getLastPiece(ESTADO *e, int bool);
+
+/**
+\brief Monta um array com as coordenadas que estao no entorno de um player
+@param A coordenada onde esta o player
+@param Um array de coordenadas
+@param Apontador para o estado do jogo
+*/
 void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
+
+/**
+\brief Retorna o numero de coordenadas vazias no entorno de um jogador
+@param A coordenada onde esta o jogador
+@param Apotador para o estado do jogo
+*/
 int nr_coord_around(COORDENADA c, ESTADO *e);
+
+/**
+\brief Calcula a distancia ate um destino utilizando INTS
+@param A coordenada onde esta o jogador
+@param Apontador para o estado do jogo
+*/
 int calcula_dist_dest(COORDENADA C, ESTADO *e);
+
+/**
+\brief Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia)
+@param Uma lista qualquer
+*/
 int indice_menorDist(LISTA L);
+
+/**
+\brief Inicializa o array de jogadas
+@param Um apontador para o estado do jogo
+*/
+void arrayJogadas(ESTADO *e);
 #endif

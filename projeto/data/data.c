@@ -77,20 +77,20 @@ void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
 }
 
 
-//Puts a black piece in a desired coordinate
+//Coloca uma peca preta no rastro deixado por uma branca
 void coloca_preta (ESTADO *e){
 	changePiece(e, findBranca(e), PRETA);
 }
 
 
-//Alternates current player
+//Altera o jogador atual
 void changePlayer(ESTADO *e){
 	if (e->jogador_atual == 1) e->jogador_atual = 2;
 	else e->jogador_atual = 1;
 }
 
 
-//Changes a board piece
+//Altera a peca de uma coordenada
 void changePiece(ESTADO *e, COORDENADA c, CASA piece){
 	e->tab[c.linha][c.coluna] = piece;
 }
@@ -144,6 +144,8 @@ ESTADO *inicializar_estado(){
 	return e;
 }
 
+
+//Faz a replica de um estado
 void replicaEstado(ESTADO *e){
 	int k = 0, n = 0;
 
@@ -160,6 +162,7 @@ void replicaEstado(ESTADO *e){
 	e -> num_jogadasOLD = e -> num_jogadas;
 }
 
+//Conta a quantidade de coordenadas vazias no entorno de um jogador
 int nr_coord_around(COORDENADA c, ESTADO *e){
 	int r = 0,
 		j = -1,
@@ -199,6 +202,8 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
 	return r;
 }
 
+
+//Coloca as coordenadas ao redor de um player num array
 void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 	int r = 0,
 		j = -1,
@@ -281,10 +286,7 @@ float calcula_dist_destF(COORDENADA C, ESTADO *e){
 
 float calcula_dist_dest2(int x){
 	float dist;
-
 	dist = (powf(7 - x, 2.0) + powf(0 - x, 2.0));
-	//printf("%f\n", dist);
-
 	return dist;
 }
 
