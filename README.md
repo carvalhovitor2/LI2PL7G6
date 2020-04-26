@@ -29,9 +29,6 @@ Para compilar, execute o comando 'make' de dentro do diretorio base do projeto. 
 O output gerado pode ser algo como:  
 ```
 gcc -o game main_game.c data/data.c interface/interface.c logic/logic.c
-main_game.c: In function ‘main’:
-main_game.c:7:2: warning: implicit declaration of function ‘mostrar_tabuleiro’ [-Wimplicit-function-declaration]
-  mostrar_tabuleiro(e);
 ```
 
 
