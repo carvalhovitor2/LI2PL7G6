@@ -1,8 +1,11 @@
 Autores
 =========  
-Pedro Miguel Ribeiro Ferreira - A93282    
+Pedro Miguel Ribeiro Ferreira - A93282   
+ 
 Rui Miguel Borges Braga       - A93228       
-Vitor de Almeida de Carvalho  - A90648    
+
+Vitor de Almeida de Carvalho  - A90648     
+
 
 LI2 - PL7 - GRUPO 6
 ------------
