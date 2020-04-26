@@ -1,3 +1,4 @@
+
 /**
 @file data.h
 Definição do estado e das funções que o manipulam
@@ -5,7 +6,7 @@ Definição do estado e das funções que o manipulam
 
 #ifndef HEADER_FILE
 #define HEADER_FILE
-
+#include <math.h>
 typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
 
@@ -143,4 +144,6 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 int nr_coord_around(COORDENADA c, ESTADO *e);
 int calcula_dist_dest(COORDENADA C, ESTADO *e);
 int indice_menorDist(LISTA L);
+TRIPLA* criaTripla(COORDENADA c, float dist);
+float calcula_dist(COORDENADA C, int player);
 #endif

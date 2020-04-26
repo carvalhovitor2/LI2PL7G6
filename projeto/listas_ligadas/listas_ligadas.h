@@ -26,3 +26,5 @@ LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
 //Print lista ligadas
 void printListaCoord(LISTA L);
+//Calcula a menor distancia dentro de uma lista de distancias
+int menorDist(LISTA L);
