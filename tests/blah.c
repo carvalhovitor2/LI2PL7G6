@@ -2,11 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 typedef struct nodo {
    void *valor;
    struct nodo *proximo;
 } NODO, *LISTA;
+
+typedef struct {
+	int linha;
+	int coluna;
+} COORDENADA;
 
 
 LISTA criar_lista(){
@@ -26,6 +32,17 @@ LISTA insere_cabeca(LISTA L, void *valor){
 	return r;
 }
 
+LISTA remove_cabeca(LISTA L){
+	LISTA r = NULL;
+
+	if(L){
+		r = L -> proximo;
+		free(L);
+	}
+
+	return r;
+}
+
 void *devolve_cabeca(LISTA L){
 	return (L -> valor);
 }
@@ -41,6 +58,17 @@ LISTA fromArray(int *A, int N){
 	}
 	return l;
 }
+
+LISTA fromArrayCoord(COORDENADA A[], int N){
+	LISTA l = NULL;
+	int i = N - 1;
+	while(i >= 0){
+		l = insere_cabeca(l, A + i);
+		i --;
+	}
+	return l;
+}
+
 
 
 LISTA fromArrayFloat(float *A, int N){
@@ -136,31 +164,67 @@ int indice_menorDist(LISTA L){
 	return r;
 }
 
-int main(){
-	LISTA l;
-	int x;
-	int v[4] = {40,30,20,10};
-	float f[4] = {40,30,20,10};
-	l = criar_lista();
-	
-	l = fromArray(v, 4);
-	//printListaCoord2(l);
-	printListaInt(l);
-	float t[4];
+void printCoordenada(COORDENADA c){
+	char a = 'a' + c.linha;
+	printf("%c%d\n", a, c.coluna);
+}
 
-	for(int j = 0; j < 4;j ++){
-		t[j] = (float)calcula_dist_dest(v[j]);
+void printArrayCoordenada(COORDENADA C[], int N){
+	int i = 0;
+	while (i < N){
+		char a = 'a' + C[i].linha;
+		printf("%c%d ", a, C[i].coluna);
+		i ++;
+	}
+	putchar('\n');
+}
+
+void printListaCoord(LISTA L){
+	while(L){
+		COORDENADA *blah;
+		blah = L-> valor;
+		L = L -> proximo;
+		printCoordenada(*blah);
+	}
+}
+
+int main(){
+	//srandom(time(NULL));
+	LISTA l;
+
+	//int x = random() % 5;
+
+	l = criar_lista();
+	COORDENADA r;
+	r.linha = 1;
+	r.coluna = 1;
+	COORDENADA A[5];
+
+	for(int i = 0; i <= 4; i ++){
+		r.linha ++;
+		r.coluna ++;
+		A[i] = r;
 	}
 
-    LISTA k;
-    k = criar_lista();
-    k = fromArrayFloat(t, 4);
-	printListaFloat(k);
+	l = fromArrayCoord(A, 5);
+	//printListaCoord(l);
 
-	//k = fromArrayINTTOFLOAT(v,4);
-	//printListaInt(k);
-	x = indice_menorDist(l);
-	printf("%d\n", x);
-	
+	//printf("\nx\n\n");
+
+	l = remove_cabeca(l);
+	l = remove_cabeca(l);
+
+	//printListaCoord(l);
+
+	COORDENADA *c;
+	c = devolve_cabeca(l);
+
+	//printf("\nx\n\n");
+
+	//printCoordenada(*c);
+
+	//printCoordenada(*(A + x));
+	//printArrayCoordenada(A, 5);
+
 	return 0;
 }

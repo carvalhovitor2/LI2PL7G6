@@ -20,6 +20,14 @@ typedef struct {
 	int coluna;
 } COORDENADA;
 
+
+/** 
+\yoyoyoyoyoyyoyoyoyoyoyoyoyoyoyoyoyoyoyoPLACEHOLDER.txt
+*/
+typedef struct {
+    COORDENADA c;
+    float dist;
+} TRIPLA;
 /**
 \brief Tipo de dados para a jogada
 */

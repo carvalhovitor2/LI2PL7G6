@@ -331,3 +331,36 @@ int indice_menorDist(LISTA L){
 //	void *yo = devolve_cabeca(L);
 //	ESTADO *yos = (ESTADO *)yo;
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+float calcula_dist(COORDENADA C, int player){
+	//float dist;
+
+	//if (player == 1)
+	//	dist = sqrt(pow(7 - C.linha, 2) + pow(0 - C.coluna, 2));
+	//else
+	//	dist = sqrt(pow(0 - C.linha, 2) + pow(7 - C.coluna, 2));
+
+	//return dist;
+	return 5;
+}
+
+TRIPLA* criaTripla(COORDENADA c, float dist){
+	TRIPLA *t;
+	t = malloc(sizeof(TRIPLA));
+	t-> c = c;
+	t-> dist = dist;
+
+	return t;
+}

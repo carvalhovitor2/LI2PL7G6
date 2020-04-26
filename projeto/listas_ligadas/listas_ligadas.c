@@ -104,8 +104,6 @@ void printCoordenada(COORDENADA c){
 }
 
 
-
-
 void printListaCoordenada(LISTA L){
 	while(L){
 		COORDENADA *blah;
@@ -134,4 +132,87 @@ void printArrayCoordenada(COORDENADA C[], int N){
 		i ++;
 	}
 	putchar('\n');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int menorDist(LISTA L){
+	int r = -1, i = 0;
+	float menor = 100;
+
+	while(L){
+		float *t;
+		t = L-> valor;
+		if(menor > *t){
+			r = i;
+			menor = *t;
+		}
+		i ++;
+		L = L-> proximo;
+	}
+
+	return r;
+}
+
+TRIPLA* retrieveMenor(LISTA L, int ind){
+	for(int i = 0; L && i < ind; i++, L = L-> proximo);
+
+	if(L){
+		TRIPLA *t;
+		t = malloc(sizeof(TRIPLA));
+		t = devolve_cabeca(L);
+		return t;
+	}
+	else
+		return NULL;
+}
+
+LISTA fromArrayTripla(COORDENADA C[], int N, int player){
+	LISTA l = NULL;
+
+	for(int i = N - 1; i >= 0; i --){
+		TRIPLA *t;
+		t = criaTripla(C[i], calcula_dist(C[i], player));
+		l = insere_cabeca(l, t);
+	}
+
+	return l;
+}
+
+void printTripla(TRIPLA t){
+	char a = 'a' + t.c.linha;
+	printf("%c%d - %f\n", a, t.c.coluna, t.dist);
+}
+
+void printListaTripla(LISTA L){
+	while(L){
+		TRIPLA *t;
+		t = devolve_cabeca(L);
+		printTripla(*t);
+		L = L-> proximo;
+	}
 }

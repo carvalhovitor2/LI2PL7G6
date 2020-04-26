@@ -150,8 +150,6 @@ int interpretador(ESTADO *e){
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
-
-
 	while((strlen(linha) > 2)                                  &&
 		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       ||
 		  (!strcmp(linha,"jog\n"))                             ||
@@ -193,23 +191,37 @@ int interpretador(ESTADO *e){
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
-			int coord_around;
-			coord_around = nr_coord_around(findBranca(e), e);
-			COORDENADA C[coord_around];
+			int nrC = nr_coord_around(findBranca(e), e);
+			int rnd = random() % nrC;
+			COORDENADA C[nrC]; 
 			array_coord_around(findBranca(e), C, e);
+			float F[nrC];
 
-			LISTA l;
-			l = criar_lista();
-
-			for(int i = coord_around - 1; i >= 0; i--){
-				int dist = calcula_dist_dest(C[i], e);
-				l = insere_cabeca(l, &dist);
+			for(int i = 0; i < nrC; i ++){
+				if (obter_jogador_atual(e) == 1)
+					F[i] = sqrt(pow(7 - C[i].linha, 2) + pow(0 - C[i].coluna, 2));
+				else
+					F[i] = sqrt(pow(0 - C[i].linha, 2) + pow(7 - C[i].coluna, 2));
 			}
 
-			int ind = indice_menorDist(l);
-			jogar(e, C[ind]);
-			free(l);
-		}
+			LISTA lC, lF;
+			lC = criar_lista();
+			lF = criar_lista();
+			for(int count = nrC - 1; count >= 0; count--){
+				lF = insere_cabeca(lF, F + count);
+				lC = insere_cabeca(lC, C + count);
+			}
+			
+			int indice = menorDist(lF);
+			for(indice; lC && indice > 0; lC = remove_cabeca(lC), indice --);
+
+			COORDENADA *menor;
+			menor = devolve_cabeca(lC);
+			jogar(e, *menor);
+
+			free(lF);
+			free(lC);
+			}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
 			movs(stdout,e);
