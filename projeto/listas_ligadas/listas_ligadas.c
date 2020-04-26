@@ -69,7 +69,7 @@ LISTA fromArray(int A[], int N){
 
 LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e){
 	LISTA l = NULL;
-	int *dist;
+	int *dist=malloc(sizeof(int));
 
 	for(int i = N - 1; i >= 0; i--){
 		*dist = calcula_dist_dest(C[i], e);
@@ -176,43 +176,4 @@ int menorDist(LISTA L){
 	}
 
 	return r;
-}
-
-TRIPLA* retrieveMenor(LISTA L, int ind){
-	for(int i = 0; L && i < ind; i++, L = L-> proximo);
-
-	if(L){
-		TRIPLA *t;
-		t = malloc(sizeof(TRIPLA));
-		t = devolve_cabeca(L);
-		return t;
-	}
-	else
-		return NULL;
-}
-
-LISTA fromArrayTripla(COORDENADA C[], int N, int player){
-	LISTA l = NULL;
-
-	for(int i = N - 1; i >= 0; i --){
-		TRIPLA *t;
-		t = criaTripla(C[i], calcula_dist(C[i], player));
-		l = insere_cabeca(l, t);
-	}
-
-	return l;
-}
-
-void printTripla(TRIPLA t){
-	char a = 'a' + t.c.linha;
-	printf("%c%d - %f\n", a, t.c.coluna, t.dist);
-}
-
-void printListaTripla(LISTA L){
-	while(L){
-		TRIPLA *t;
-		t = devolve_cabeca(L);
-		printTripla(*t);
-		L = L-> proximo;
-	}
 }

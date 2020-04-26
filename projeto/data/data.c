@@ -304,14 +304,15 @@ int indice_menorDist(LISTA L){
 	LISTA fake = L;
 	int *x;
 	x = devolve_cabeca(L);
-	int *y; 
+	int *y = 0; 
 
 	if (fake && fake-> proximo){
-		fake = fake-> proximo;
-		y = devolve_cabeca(fake);
-	}
+                fake = fake-> proximo;
+        	y = devolve_cabeca(fake);
+        }
 
 	while(fake){
+
 		if (x > y){
 			r = i;
 			x = y;
@@ -323,44 +324,4 @@ int indice_menorDist(LISTA L){
 	}
 
 	return r;
-}
-
-//LISTA atualiza_LISTAS(ESTADO *e){
-//	LISTA L;
-//	L = e-> lista_jogadas_possiveis;
-//	void *yo = devolve_cabeca(L);
-//	ESTADO *yos = (ESTADO *)yo;
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-float calcula_dist(COORDENADA C, int player){
-	//float dist;
-
-	//if (player == 1)
-	//	dist = sqrt(pow(7 - C.linha, 2) + pow(0 - C.coluna, 2));
-	//else
-	//	dist = sqrt(pow(0 - C.linha, 2) + pow(7 - C.coluna, 2));
-
-	//return dist;
-	return 5;
-}
-
-TRIPLA* criaTripla(COORDENADA c, float dist){
-	TRIPLA *t;
-	t = malloc(sizeof(TRIPLA));
-	t-> c = c;
-	t-> dist = dist;
-
-	return t;
 }

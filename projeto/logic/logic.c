@@ -156,10 +156,7 @@ int jogar(ESTADO *e, COORDENADA c) {
 //Validates a move
 int jogadaValida(ESTADO *e, COORDENADA going){
 	//Declaring used variables
-	int num_jogadas; JOGADA jogada; COORDENADA current = {3,4};
-
-	//Assigning values to declared variables
-	num_jogadas = (e->num_jogadas); jogada = e->jogadas[num_jogadas-1];
+	COORDENADA current = {3,4};
 
 	//Verifiy if its the first move. If it is, assume the gamer position is the first position. If not, use last move.
 	current = findBranca(e);

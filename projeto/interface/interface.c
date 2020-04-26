@@ -174,7 +174,6 @@ int interpretador(ESTADO *e){
 			LISTA lJog;
 			lJog = criar_lista();
 
-			int count = nrC;
 			for(int count = nrC; count >= 0; count --)
 				lJog = insere_cabeca(lJog, C + count);
 
@@ -192,7 +191,6 @@ int interpretador(ESTADO *e){
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
 			int nrC = nr_coord_around(findBranca(e), e);
-			int rnd = random() % nrC;
 			COORDENADA C[nrC]; 
 			array_coord_around(findBranca(e), C, e);
 			float F[nrC];
@@ -212,8 +210,8 @@ int interpretador(ESTADO *e){
 				lC = insere_cabeca(lC, C + count);
 			}
 			
-			int indice = menorDist(lF);
-			for(indice; lC && indice > 0; lC = remove_cabeca(lC), indice --);
+			//int indice = menorDist(lF);
+			//for(indice; lC && indice > 0; lC = remove_cabeca(lC), indice --);
 
 			COORDENADA *menor;
 			menor = devolve_cabeca(lC);
@@ -250,7 +248,8 @@ int interpretador(ESTADO *e){
 		x ++;
 		mostrar_tabuleiro(stdout, e);
 		prompt(e,x,boolPrompt);
-		fgets(linha, BUF_SIZE, stdin);
+		char *result = fgets(linha, BUF_SIZE, stdin);
+		if (!result)printf("couldn't read line\n");
 	}
 
 	if ((strlen(linha) > 3) && (!strcmp(linha, addStr("gr ",remStr(3,linha))))){
@@ -288,7 +287,7 @@ void ler(char *fileName, ESTADO *e){
     FILE *file = fopen(fileName, "r");
 
     //Auxiliar char to translate chars to integers
-    char *c, *b;
+    char *c=malloc(sizeof(char));
 
     //Iterates through lines
     for(int linha = 0; linha < 8; linha++){
@@ -299,7 +298,8 @@ void ler(char *fileName, ESTADO *e){
         for(int coluna = 0; coluna < 8; coluna++){
 
             //Reads a piece and stores it in game state
-            fscanf(file, "%c ", c);
+            int try = fscanf(file, "%c ", c);
+	    if(try != 1)printf("could read char\n");
             if( *c == '.') e->tab[linha][coluna] = VAZIO;
             if( *c == '#') e->tab[linha][coluna] = PRETA;
             if( *c == '*') e->tab[linha][coluna] = BRANCA;
@@ -308,7 +308,7 @@ void ler(char *fileName, ESTADO *e){
 
     //Discarding number line of the board (1, 2, 3 ...)
     //fscanf(file, "1 2 3 4 5 6 7 8 ");
-    char jogada, p1Linha, p1Coluna, p2Linha, p2Coluna;
+    char jogada='a', p1Linha='a', p1Coluna='a', p2Linha='a', p2Coluna='a';
     //Reads first 10 movs
     for(int buffer = 0, linha = 0;linha < 81 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
         switch(buffer){
@@ -337,7 +337,8 @@ void ler(char *fileName, ESTADO *e){
                 e->jogadas[jogada-'1'].jogador2 = *coord1;
 		incrJogada(e);
 		//Discards newline
-                fscanf(file, " ");
+                int try = fscanf(file, " ");
+		if (try != 1)printf("Couldnt read char\n 2");
 	}
     }
     //Reads other 20 movs
@@ -369,7 +370,8 @@ void ler(char *fileName, ESTADO *e){
 			changePlayer(e);
 	                incrJogada(e);
 	                //Discards newline
-	                fscanf(file, " ");
+	                int try = fscanf(file, " ");
+			if(try != 1)printf("Couldnt read char - 3\n");
 	        }
 	    }
 }
@@ -382,7 +384,6 @@ void pos(ESTADO *e, int x){
     int i = obter_numero_de_jogadasOLD(e);
     int j = obter_numero_de_jogadas(e);
 
-    int l1, l2, c1, c2;
     COORDENADA std, pl1, pl2;
     std.linha = 8;
     std.coluna = 8;

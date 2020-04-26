@@ -24,11 +24,8 @@ typedef struct {
 
 /** 
 \yoyoyoyoyoyyoyoyoyoyoyoyoyoyoyoyoyoyoyoPLACEHOLDER.txt
+
 */
-typedef struct {
-    COORDENADA c;
-    float dist;
-} TRIPLA;
 /**
 \brief Tipo de dados para a jogada
 */
@@ -144,6 +141,4 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 int nr_coord_around(COORDENADA c, ESTADO *e);
 int calcula_dist_dest(COORDENADA C, ESTADO *e);
 int indice_menorDist(LISTA L);
-TRIPLA* criaTripla(COORDENADA c, float dist);
-float calcula_dist(COORDENADA C, int player);
 #endif
