@@ -250,17 +250,6 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 }
 
 
-//LISTA lista_de_coord(COORDENADA *A, int N, LISTA L){
-//	int i = 0;
-//
-//	while(i < N){
-//		L = insere_cabeca(L,A + i);
-//		i ++;
-//	}
-//
-//	return L;
-//}
-
 int calcula_dist_dest(COORDENADA C, ESTADO *e){
 	int dist;
 	int player = obter_jogador_atual(e);
