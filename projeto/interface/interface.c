@@ -60,7 +60,7 @@ void prompt(ESTADO *e, int x, int bool){
 	else
 		jogada = obter_numero_de_jogadasOLD(e);
 
-	if (x<10)
+	if (x < 10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
 	else 
 		printf("# %d PL%d (%d)> ", x, gamer, jogada + 1);
@@ -139,24 +139,17 @@ char* addStr(char* s, char* v){
 
 
 int interpretador(ESTADO *e){
-	srandom(time(NULL));
-	char linha[BUF_SIZE];
-	char col[2], lin[2];
-	int x = 1;
-	int boolPrompt = 1;
-
+	char linha[BUF_SIZE], col[2], lin[2];
+	int x = 1, boolPrompt = 1;
 	prompt(e,x,1);
 
 	if(fgets(linha, BUF_SIZE, stdin) == NULL)
 		return 0;
 
 	while((strlen(linha) > 2)                                  &&
-		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       ||
-		  (!strcmp(linha,"jog\n"))                             ||
-		  (!strcmp(linha,"jog2\n"))                            ||
-		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
-	      (!strcmp(linha,"movs\n"))                            ||
-	      (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
+		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       || (!strcmp(linha,"jog\n"))                             ||
+		  (!strcmp(linha,"jog2\n"))                            || (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
+	      (!strcmp(linha,"movs\n"))                            || (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
@@ -166,60 +159,12 @@ int interpretador(ESTADO *e){
 		}
 
 		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
-			int nrC = nr_coord_around(findBranca(e), e);
-			int rnd = random() % nrC;
-			COORDENADA C[nrC]; 
-			array_coord_around(findBranca(e), C, e);
-
-			LISTA lJog;
-			lJog = criar_lista();
-
-			for(int count = nrC; count >= 0; count --)
-				lJog = insere_cabeca(lJog, C + count);
-
-			while(lJog && rnd > 0){
-				lJog = remove_cabeca(lJog);
-				rnd --;
-			}
-			
-			COORDENADA *aleatoria;
-			aleatoria = devolve_cabeca(lJog);
-
-			jogar(e, *aleatoria);
-			free(lJog);
+			jog(e);
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
-			int nrC = nr_coord_around(findBranca(e), e);
-			COORDENADA C[nrC]; 
-			array_coord_around(findBranca(e), C, e);
-			float F[nrC];
-
-			for(int i = 0; i < nrC; i ++){
-				if (obter_jogador_atual(e) == 1)
-					F[i] = sqrt(pow(7 - C[i].linha, 2) + pow(0 - C[i].coluna, 2));
-				else
-					F[i] = sqrt(pow(0 - C[i].linha, 2) + pow(7 - C[i].coluna, 2));
-			}
-
-			LISTA lC, lF;
-			lC = criar_lista();
-			lF = criar_lista();
-			for(int count = nrC - 1; count >= 0; count--){
-				lF = insere_cabeca(lF, F + count);
-				lC = insere_cabeca(lC, C + count);
-			}
-			
-			//int indice = menorDist(lF);
-			//for(indice; lC && indice > 0; lC = remove_cabeca(lC), indice --);
-
-			COORDENADA *menor;
-			menor = devolve_cabeca(lC);
-			jogar(e, *menor);
-
-			free(lF);
-			free(lC);
-			}
+			jog2(e);
+		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
 			movs(stdout,e);
@@ -231,12 +176,9 @@ int interpretador(ESTADO *e){
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
 			char* newLinha;
-
 			newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
-			
 			int posJogada = atoi(newLinha);
-
 			if (posJogada > obter_numero_de_jogadasOLD(e))
 				printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 			else{
@@ -262,6 +204,66 @@ int interpretador(ESTADO *e){
 		return 0;
 
 	return 1;
+}
+
+void jog(ESTADO *e){
+	srandom(time(NULL));
+
+	int nrC = nr_coord_around(findBranca(e), e);
+	int rnd = random() % nrC;
+	COORDENADA C[nrC]; 
+	array_coord_around(findBranca(e), C, e);
+
+	LISTA lJog;
+	lJog = criar_lista();
+
+	for(int count = nrC; count >= 0; count --)
+		lJog = insere_cabeca(lJog, C + count);
+
+	while(lJog && rnd > 0){
+		lJog = remove_cabeca(lJog);
+		rnd --;
+	}
+			
+	COORDENADA *aleatoria;
+	aleatoria = devolve_cabeca(lJog);
+
+	jogar(e, *aleatoria);
+	free(lJog);
+}
+
+void jog2(ESTADO *e){
+	int nrC = nr_coord_around(findBranca(e), e);
+	COORDENADA C[nrC]; 
+	array_coord_around(findBranca(e), C, e);
+	float F[nrC];
+
+	for(int i = 0; i < nrC; i ++){
+		if (obter_jogador_atual(e) == 1)
+			F[i] = sqrt(pow(7 - C[i].linha, 2) + pow(0 - C[i].coluna, 2));
+		else
+			F[i] = sqrt(pow(0 - C[i].linha, 2) + pow(7 - C[i].coluna, 2));
+	}
+
+	LISTA lC, lF;
+	lC = criar_lista();
+	lF = criar_lista();
+	for(int count = nrC - 1; count >= 0; count--){
+		lF = insere_cabeca(lF, F + count);
+		lC = insere_cabeca(lC, C + count);
+	}
+			
+	int indice = menorDist(lF);
+	for(; lC && indice > 0; indice --){
+		lC = remove_cabeca(lC);
+	}
+
+	COORDENADA *menor;
+	menor = devolve_cabeca(lC);
+	jogar(e, *menor);
+
+	free(lF);
+	free(lC);
 }
 
 //Writes in a file
