@@ -19,3 +19,8 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e);
 @param e Apontador para o estado
 */
 int interpretador(ESTADO *e);
+
+
+void jog2(ESTADO *e);
+
+void jog(ESTADO *e);
