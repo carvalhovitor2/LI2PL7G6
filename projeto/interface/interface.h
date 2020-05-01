@@ -15,12 +15,19 @@ Declare the functions that are defined in interface.c
 void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e);
 
 /**
-\brief Fucção que lê e executa o comando dado
+\brief Função que lê e executa o comando dado
 @param e Apontador para o estado
 */
 int interpretador(ESTADO *e);
 
-
+/**
+\brief Fucção que executa o comando jog2
+@param e Apontador para o estado
+*/
 void jog2(ESTADO *e);
 
+/**
+\brief Fucção que executa o comando jog
+@param e Apontador para o estado
+*/
 void jog(ESTADO *e);

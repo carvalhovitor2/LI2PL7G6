@@ -19,4 +19,8 @@ int jogar(ESTADO *e, COORDENADA c);
 */
 int jogadaValida(ESTADO *e, COORDENADA c);
 
+/**
+\brief Função que dado o estado devolve a coordenada onde se encontra a peça branca.
+@param e Apontador para o estado
+*/
 COORDENADA findBranca(ESTADO *e);
