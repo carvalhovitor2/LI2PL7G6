@@ -31,3 +31,25 @@ void jog2(ESTADO *e);
 @param e Apontador para o estado
 */
 void jog(ESTADO *e);
+
+/**
+\brief Grava o estado de jogo num ficheiro
+@param e Apontador para o estado
+@param fileName o nome do ficheiro onde gravar o estado
+*/
+void gr(char *fileName, ESTADO *e);
+
+
+/**
+\brief Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo
+@param e Apontador para o estado
+@param fileName o nome do ficheiro onde gravar o estado
+*/
+void ler(char *fileName, ESTADO *e);
+
+/**
+\brief Executa o comando pos
+@param e Apontador para o estado
+@param x O numero da jogada
+*/
+void pos(ESTADO *e, int x);

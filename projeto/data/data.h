@@ -119,29 +119,11 @@ void changePlayer(ESTADO *e);
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
 
 /**
-\brief Grava o estado de jogo num ficheiro
-@param e Apontador para o estado
-@param fileName o nome do ficheiro onde gravar o estado
-*/
-void gr(char *fileName, ESTADO *e);
-
-
-/**
-\brief Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo
-@param e Apontador para o estado
-@param fileName o nome do ficheiro onde gravar o estado
-*/
-void ler(char *fileName, ESTADO *e);
-
-
-/**
 \brief Obtem o numero de jogadas ocorridos num estado anterior
 @param Apontador para o estado
 */
 int obter_numero_de_jogadasOLD(ESTADO *estado);
 
-
-void pos(ESTADO *e, int x);
 
 /**
 \brief Passa o numero de jogadas antigo para o numero de jogadas atual
@@ -184,11 +166,7 @@ int nr_coord_around(COORDENADA c, ESTADO *e);
 */
 int calcula_dist_dest(COORDENADA C, ESTADO *e);
 
-/**
-\brief Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia)
-@param Uma lista qualquer
-*/
-int indice_menorDist(LISTA L);
+
 
 /**
 \brief Inicializa o array de jogadas
