@@ -330,17 +330,19 @@ void ler(char *fileName, ESTADO *e){
         }
         if (buffer == 6){
             	coord->linha = p1Linha - 'a';
+		changePlayer(e);
             	coord->coluna = p1Coluna - '1';
 		e->jogadas[jogada-'1'].jogador1 = *coord;
         }
 	if (buffer == 8){
                 coord1->linha = p2Linha - 'a';
+		changePlayer(e);
                 coord1->coluna = p2Coluna - '1';
                 e->jogadas[jogada-'1'].jogador2 = *coord1;
 		incrJogada(e);
 		//Discards newline
                 int try = fscanf(file, " ");
-		if (try != 1)printf("Couldnt read char\n 2");
+		if (try != 1 && try != 0)printf("Couldnt read char");
 	}
     }
     //Reads other 20 movs
@@ -369,8 +371,8 @@ void ler(char *fileName, ESTADO *e){
 	                coord1->linha = p2Linha - 'a';
 	                coord1->coluna = p2Coluna - '1';
 	                e->jogadas[jogada-'1'+10].jogador2 = *coord1;
-			changePlayer(e);
 	                incrJogada(e);
+			changePlayer(e);
 	                //Discards newline
 	                int try = fscanf(file, " ");
 			if(try != 1)printf("Couldnt read char - 3\n");
