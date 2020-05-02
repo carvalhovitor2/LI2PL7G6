@@ -22,6 +22,19 @@ Para compilar, execute o comando \textquotesingle{}make\textquotesingle{} de den
 
 O output gerado pode ser algo como\+: 
 \begin{DoxyCode}
-gcc -o game main\_game.c data/data.c interface/interface.c logic/logic.c
+gcc projeto/main\_game.c projeto/data/data.c projeto/interface/interface.c projeto/logic/logic.c
+       projeto/listas\_ligadas/listas\_ligadas.c -o game -lm -std=gnu11 -Wall -Wextra -pedantic-errors -O
+\end{DoxyCode}
+
+
+\subsection*{Bot }
+
+Para compilar o bot, execute o comando \textquotesingle{}make bot\textquotesingle{} de dentro do diretório base do projeto. Isto é, em L\+I2\+P\+L7\+G6.
+
+O output gerado pode ser algo como\+: 
+\begin{DoxyCode}
+vac@vac-ThinkPad-E490:~/Desktop/uMinho/periodo02/LI2PL7G6$ make bot
+gcc projeto/bot/bot.c projeto/data/data.c projeto/interface/interface.c projeto/logic/logic.c
+       projeto/listas\_ligadas/listas\_ligadas.c -lm -o bot
 \end{DoxyCode}
  

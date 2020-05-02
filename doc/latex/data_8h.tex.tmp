@@ -54,15 +54,8 @@ void \hyperlink{data_8h_a7df9c53e22befe94327ee92135e5c152}{change\+Player} (\hyp
 \begin{DoxyCompactList}\small\item\em Alter o jogador atual. \end{DoxyCompactList}\item 
 void \hyperlink{data_8h_a9d446372f8976c1b36da43d550c2207d}{change\+Piece} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c, C\+A\+SA piece)
 \begin{DoxyCompactList}\small\item\em Altera a peça da casa. \end{DoxyCompactList}\item 
-void \hyperlink{data_8h_ab707c0d203341662877e9e14a78a2e5e}{gr} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Grava o estado de jogo num ficheiro. \end{DoxyCompactList}\item 
-void \hyperlink{data_8h_a4637f9fb13c30f06d0262631ae38f14f}{ler} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. \end{DoxyCompactList}\item 
 int \hyperlink{data_8h_aff99e7d8afa0b0a109c5ea58bf7cc061}{obter\+\_\+numero\+\_\+de\+\_\+jogadas\+O\+LD} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
 \begin{DoxyCompactList}\small\item\em Obtem o numero de jogadas ocorridos num estado anterior. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{data_8h_a306916ce2a9f631bce8a813cf420b930}\label{data_8h_a306916ce2a9f631bce8a813cf420b930}} 
-void {\bfseries pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int x)
-\item 
 void \hyperlink{data_8h_a9b734ad0485b35b0d070f2d9ec836f7e}{replica\+Estado} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Passa o numero de jogadas antigo para o numero de jogadas atual. \end{DoxyCompactList}\item 
 void \hyperlink{data_8h_a3d0f75bad2aeefde49ac020c719fc410}{change\+Jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int x)
@@ -73,10 +66,6 @@ void \hyperlink{data_8h_a22e6bfd18dfae196a5219ef70be801aa}{array\+\_\+coord\+\_\
 \begin{DoxyCompactList}\small\item\em Monta um array com as coordenadas que estao no entorno de um player. \end{DoxyCompactList}\item 
 int \hyperlink{data_8h_af3b14dfca795d6064e0aaf30a9ee3f1a}{nr\+\_\+coord\+\_\+around} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Retorna o numero de coordenadas vazias no entorno de um jogador. \end{DoxyCompactList}\item 
-int \hyperlink{data_8h_a7375a1dec43eb36cf02c561809009a66}{calcula\+\_\+dist\+\_\+dest} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} C, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Calcula a distancia ate um destino utilizando I\+N\+TS. \end{DoxyCompactList}\item 
-int \hyperlink{data_8h_a17cc53c68e2dc2ef60ae7cb594626e82}{indice\+\_\+menor\+Dist} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) \end{DoxyCompactList}\item 
 void \hyperlink{data_8h_ae40a564f1c4845549ae4cb81366445ad}{array\+Jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Inicializa o array de jogadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -117,23 +106,6 @@ Inicializa o array de jogadas.
 
 \begin{DoxyParams}{Parameters}
 {\em Um} & apontador para o estado do jogo \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{data_8h_a7375a1dec43eb36cf02c561809009a66}\label{data_8h_a7375a1dec43eb36cf02c561809009a66}} 
-\index{data.\+h@{data.\+h}!calcula\+\_\+dist\+\_\+dest@{calcula\+\_\+dist\+\_\+dest}}
-\index{calcula\+\_\+dist\+\_\+dest@{calcula\+\_\+dist\+\_\+dest}!data.\+h@{data.\+h}}
-\subsubsection{\texorpdfstring{calcula\+\_\+dist\+\_\+dest()}{calcula\_dist\_dest()}}
-{\footnotesize\ttfamily int calcula\+\_\+dist\+\_\+dest (\begin{DoxyParamCaption}\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{C,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
-
-
-
-Calcula a distancia ate um destino utilizando I\+N\+TS. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em A} & coordenada onde esta o jogador \\
-\hline
-{\em Apontador} & para o estado do jogo \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{data_8h_a3d0f75bad2aeefde49ac020c719fc410}\label{data_8h_a3d0f75bad2aeefde49ac020c719fc410}} 
@@ -238,23 +210,6 @@ Busca a ultima peca do tabuleiro.
 {\em Um} & inteiro que verifica o estado do \hyperlink{structESTADO}{E\+S\+T\+A\+DO} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{data_8h_ab707c0d203341662877e9e14a78a2e5e}\label{data_8h_ab707c0d203341662877e9e14a78a2e5e}} 
-\index{data.\+h@{data.\+h}!gr@{gr}}
-\index{gr@{gr}!data.\+h@{data.\+h}}
-\subsubsection{\texorpdfstring{gr()}{gr()}}
-{\footnotesize\ttfamily void gr (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
-
-
-
-Grava o estado de jogo num ficheiro. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
-\hline
-{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{data_8h_a7165dae099a6650cab9974eb7de161e8}\label{data_8h_a7165dae099a6650cab9974eb7de161e8}} 
 \index{data.\+h@{data.\+h}!incr\+Jogada@{incr\+Jogada}}
 \index{incr\+Jogada@{incr\+Jogada}!data.\+h@{data.\+h}}
@@ -268,38 +223,6 @@ incrementa o valor do número de jogadas
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{data_8h_a17cc53c68e2dc2ef60ae7cb594626e82}\label{data_8h_a17cc53c68e2dc2ef60ae7cb594626e82}} 
-\index{data.\+h@{data.\+h}!indice\+\_\+menor\+Dist@{indice\+\_\+menor\+Dist}}
-\index{indice\+\_\+menor\+Dist@{indice\+\_\+menor\+Dist}!data.\+h@{data.\+h}}
-\subsubsection{\texorpdfstring{indice\+\_\+menor\+Dist()}{indice\_menorDist()}}
-{\footnotesize\ttfamily int indice\+\_\+menor\+Dist (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
-
-
-
-Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em Uma} & lista qualquer \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{data_8h_a4637f9fb13c30f06d0262631ae38f14f}\label{data_8h_a4637f9fb13c30f06d0262631ae38f14f}} 
-\index{data.\+h@{data.\+h}!ler@{ler}}
-\index{ler@{ler}!data.\+h@{data.\+h}}
-\subsubsection{\texorpdfstring{ler()}{ler()}}
-{\footnotesize\ttfamily void ler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
-
-
-
-Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
-\hline
-{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{data_8h_af3b14dfca795d6064e0aaf30a9ee3f1a}\label{data_8h_af3b14dfca795d6064e0aaf30a9ee3f1a}} 

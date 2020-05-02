@@ -6,5 +6,7 @@ digraph "/home/vac/Desktop/uMinho/periodo02/LI2PL7G6/projeto/logic/logic.h"
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="/home/vac/Desktop/uMinho\l/periodo02/LI2PL7G6/projeto\l/interface/interface.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_8h.html"];
   Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="/home/vac/Desktop/uMinho\l/periodo02/LI2PL7G6/projeto\l/listas_ligadas/listas_ligadas.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$listas__ligadas_8h.html"];
+  Node5 [label="/home/vac/Desktop/uMinho\l/periodo02/LI2PL7G6/projeto\l/bot/bot.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bot_8h_source.html"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="/home/vac/Desktop/uMinho\l/periodo02/LI2PL7G6/projeto\l/listas_ligadas/listas_ligadas.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$listas__ligadas_8h.html"];
 }

@@ -1,0 +1,11 @@
+digraph "/home/vac/Desktop/uMinho/periodo02/LI2PL7G6/projeto/bot" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7e5d7e004b344f685f59d01929914aa0 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="projeto" fontname="Helvetica", fontsize="10", URL="dir_7e5d7e004b344f685f59d01929914aa0.html"]
+  dir_7a9bf4d760dd128c8f8e9b96f7d1bfe5 [shape=box, label="bot", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_7a9bf4d760dd128c8f8e9b96f7d1bfe5.html"];
+  }
+  dir_3924cb794333f3827dc4f454bbc6e9ca [shape=box label="interface" URL="dir_3924cb794333f3827dc4f454bbc6e9ca.html"];
+  dir_7a9bf4d760dd128c8f8e9b96f7d1bfe5->dir_3924cb794333f3827dc4f454bbc6e9ca [headlabel="1", labeldistance=1.5 headhref="dir_000001_000003.html"];
+}

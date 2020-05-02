@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['jogadavalida',['jogadaValida',['../logic_8h.html#a29d47f0e43124e57b790efda4631e0ef',1,'logic.c']]],
-  ['jogar',['jogar',['../logic_8h.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logic.c']]]
+  ['gameover',['gameOver',['../logic_8h.html#af3e0a182844c20990e38725417c3b44d',1,'logic.c']]],
+  ['getlastpiece',['getLastPiece',['../data_8h.html#a0c3fc2995de1c836c19ac1c242ba211c',1,'data.c']]],
+  ['gr',['gr',['../interface_8h.html#a870b7b9e3f0a0cb5594e1e6a4f489228',1,'interface.c']]]
 ];

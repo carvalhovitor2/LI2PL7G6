@@ -20,30 +20,115 @@ typedef struct \hyperlink{structnodo}{nodo} {\bfseries N\+O\+DO}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}\label{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}} 
-\hyperlink{structnodo}{L\+I\+S\+TA} {\bfseries criar\+\_\+lista} ()
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}\label{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}} 
-\hyperlink{structnodo}{L\+I\+S\+TA} {\bfseries insere\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L, void $\ast$valor)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}\label{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}} 
-void $\ast$ {\bfseries devolve\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}\label{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}} 
-\hyperlink{structnodo}{L\+I\+S\+TA} {\bfseries proximo} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}\label{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}} 
-\hyperlink{structnodo}{L\+I\+S\+TA} {\bfseries remove\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}\label{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}} 
-int {\bfseries lista\+\_\+esta\+\_\+vazia} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_a955e93fa5565f3c20192fa3f87ed40bb}\label{listas__ligadas_8h_a955e93fa5565f3c20192fa3f87ed40bb}} 
-void {\bfseries print\+Lista\+Coord} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\item 
-\mbox{\Hypertarget{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}\label{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}} 
-int {\bfseries menor\+Dist} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\end{DoxyCompactItemize}
+\hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}{criar\+\_\+lista} ()
+\begin{DoxyCompactList}\small\item\em Função que cria uma lista. \end{DoxyCompactList}\item 
+\hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L, void $\ast$valor)
+\begin{DoxyCompactList}\small\item\em Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}{devolve\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
+\begin{DoxyCompactList}\small\item\em Função que diz qual é o valor na cabeça da lista. \end{DoxyCompactList}\item 
+\hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}{proximo} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
+\begin{DoxyCompactList}\small\item\em Função para passar para o proximo valor da lista. \end{DoxyCompactList}\item 
+\hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}{remove\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
+\begin{DoxyCompactList}\small\item\em Função que devolve a lista sem o elemento que se encontrava na cabeça. \end{DoxyCompactList}\item 
+int \hyperlink{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}{lista\+\_\+esta\+\_\+vazia} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
+\begin{DoxyCompactList}\small\item\em Função que retorna 1 se a lista se econtra vazia. \end{DoxyCompactList}\item 
+int \hyperlink{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}{menor\+Dist} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
+\begin{DoxyCompactList}\small\item\em Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Definição das listas ligadas e as funções que as manipulam 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}\label{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!devolve\+\_\+cabeca@{devolve\+\_\+cabeca}}
+\index{devolve\+\_\+cabeca@{devolve\+\_\+cabeca}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{devolve\+\_\+cabeca()}{devolve\_cabeca()}}
+{\footnotesize\ttfamily void$\ast$ devolve\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que diz qual é o valor na cabeça da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & A lista donde queremos devolver a cabeça \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}\label{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!insere\+\_\+cabeca@{insere\+\_\+cabeca}}
+\index{insere\+\_\+cabeca@{insere\+\_\+cabeca}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{insere\+\_\+cabeca()}{insere\_cabeca()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{L\+I\+S\+TA} insere\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L,  }\item[{void $\ast$}]{valor }\end{DoxyParamCaption})}
+
+
+
+Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & A lista onde colocar a nova cabeça \\
+\hline
+{\em valor} & O valor a inserir na cabeça da lista \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}\label{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!lista\+\_\+esta\+\_\+vazia@{lista\+\_\+esta\+\_\+vazia}}
+\index{lista\+\_\+esta\+\_\+vazia@{lista\+\_\+esta\+\_\+vazia}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{lista\+\_\+esta\+\_\+vazia()}{lista\_esta\_vazia()}}
+{\footnotesize\ttfamily int lista\+\_\+esta\+\_\+vazia (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que retorna 1 se a lista se econtra vazia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & A lista \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}\label{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!menor\+Dist@{menor\+Dist}}
+\index{menor\+Dist@{menor\+Dist}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{menor\+Dist()}{menorDist()}}
+{\footnotesize\ttfamily int menor\+Dist (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
+
+
+
+Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & Uma lista \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}\label{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!proximo@{proximo}}
+\index{proximo@{proximo}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{proximo()}{proximo()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{L\+I\+S\+TA} proximo (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função para passar para o proximo valor da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & A lista \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}\label{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}} 
+\index{listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}!remove\+\_\+cabeca@{remove\+\_\+cabeca}}
+\index{remove\+\_\+cabeca@{remove\+\_\+cabeca}!listas\+\_\+ligadas.\+h@{listas\+\_\+ligadas.\+h}}
+\subsubsection{\texorpdfstring{remove\+\_\+cabeca()}{remove\_cabeca()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{L\+I\+S\+TA} remove\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{L\+I\+S\+TA}}]{L }\end{DoxyParamCaption})}
+
+
+
+Função que devolve a lista sem o elemento que se encontrava na cabeça. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & A lista \\
+\hline
+\end{DoxyParams}
