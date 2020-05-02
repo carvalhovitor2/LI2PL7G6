@@ -22,7 +22,7 @@ COORDENADA findBranca(ESTADO *e){
     return branca;
 }
 
-int prototypeAroundBranca(ESTADO *e){
+int aroundBranca(ESTADO *e){
 	COORDENADA branca = findBranca(e);
 	COORDENADA teste = {branca.linha-1, branca.coluna-1};
 
@@ -37,63 +37,9 @@ int prototypeAroundBranca(ESTADO *e){
 	return 1;
 }
 
-int aroundBranca(ESTADO *e){
-    COORDENADA branca = findBranca(e);
-    int l = branca.linha, c = branca.coluna;
-
-    if (!l || l == 7){
-        switch(l){
-            case 0: if (e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA && 
-                        e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
-                        return 1; 
-            break;
-
-            case 7: if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
-                        e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA)
-                        return 1; 
-            break;
-        }
-    }
-    if (!c || c == 7){
-        switch(c){
-            case 0: if (e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
-                        e-> tab[l][c+1] == PRETA && 
-                        e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
-                        return 1; 
-            break;
-
-            case 7: if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA &&
-                        e-> tab[l][c-1] == PRETA &&
-                        e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA)
-                        return 1; 
-            break;
-        }
-    }
-    if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
-        e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA && 
-        e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
-        return 1;
-
-    return 0;
-}
-
-void printCASA(CASA c){
-    if (c == BRANCA)
-        printf("BRANCA\n");
-    if (c == VAZIO)
-        printf("VAZIO\n");
-    if (c == PRETA)
-        printf("PRETA\n");
-}
-
 int gameOver(ESTADO *e){
-    COORDENADA win1 = {7,0}, win2 = {0,7};
-    if ((obter_estado_casa(e,win1) != VAZIO) || (obter_estado_casa(e,win2) != VAZIO)){
-        printCASA(e-> tab[7][0]);
-        printCASA(e-> tab[0][7]);
-        printf("BLAG\n");
+    if (e-> tab[0][7] != VAZIO || e-> tab[7][0] != VAZIO)
         return 1;
-    }
     if (aroundBranca(e))
         return 1;
     if ((e-> tab[0][0] == BRANCA && e-> tab[0][1] == PRETA && e-> tab[1][1] == PRETA && e-> tab[1][0] == PRETA) ||
