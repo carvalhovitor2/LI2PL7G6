@@ -3,15 +3,16 @@
 @file data.h
 Definição do estado e das funções que o manipulam
 */
-
 #ifndef HEADER_FILE
 #define HEADER_FILE
 #include <math.h>
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
-
 
 typedef struct nodo *LISTA;
 
+/** 
+\brief Tipo de dados para diferenciar coordenadas no tabuleiro
+*/
+typedef enum {VAZIO, BRANCA, PRETA} CASA;
 
 /** 
 \brief Tipo de dados para as coordenadas
@@ -21,13 +22,8 @@ typedef struct {
 	int coluna;
 } COORDENADA;
 
-
-/** 
-\yoyoyoyoyoyyoyoyoyoyoyoyoyoyoyoyoyoyoyoPLACEHOLDER.txt
-
-*/
 /**
-\brief Tipo de dados para a jogada
+\brief Tipo de dados para uma jogada
 */
 typedef struct {
 	COORDENADA jogador1;
@@ -65,37 +61,42 @@ typedef struct {
 
 } ESTADO;
 
-
 /**
 \brief incrementa o valor do número de jogadas
 @param e Apontador para o estado
 */
 void incrJogada(ESTADO *e);
+
 /**
 \brief Muda o valor de uma casa
 @param e Apontador para o estado
 */
 void coloca_preta (ESTADO *e);
+
 /**
 \brief Cria o estado inicial do jogo
 */
 ESTADO *inicializar_estado();
+
 /**
 \brief Devolve o jogador atual a jogar
 @param e Apontador para o estado
 */
 int obter_jogador_atual(ESTADO *estado);
+
 /**
 \brief Devolve o número de jogadas do estado
 @param e Apontador para o estado
 */
 int obter_numero_de_jogadas(ESTADO *estado);
+
 /**
 \brief Obtém o estado atual da casa
 @param e Apontador para o estado
 @param c A coordenada
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+
 /**
 \brief coloca na posição num_jogadas do array JOGADAS no determinado jogador a coordenada c
 @param e Apontador para o estado
@@ -104,26 +105,27 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 @param num_player Jogador atual
 */
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player);
+
 /**
 \brief Alter o jogador atual
 @param e Apontador para o estado
 */
 void changePlayer(ESTADO *e);
+
 /**
 \brief Altera a peça da casa
 @param e Apontador para o estado
 @param c A coordenada
 @param piece A casa que vamos trocar pela que está naquela coordenada
 */
-
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
+
 
 /**
 \brief Obtem o numero de jogadas ocorridos num estado anterior
 @param Apontador para o estado
 */
 int obter_numero_de_jogadasOLD(ESTADO *estado);
-
 
 /**
 \brief Passa o numero de jogadas antigo para o numero de jogadas atual
@@ -158,11 +160,5 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 @param Apotador para o estado do jogo
 */
 int nr_coord_around(COORDENADA c, ESTADO *e);
-
-/**
-\brief Inicializa o array de jogadas
-@param Um apontador para o estado do jogo
-*/
-void arrayJogadas(ESTADO *e);
 
 #endif

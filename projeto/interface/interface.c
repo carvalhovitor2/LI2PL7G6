@@ -27,7 +27,7 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 			if(linha == 0 && coluna == 7) boardPiece = 4;
 			switch (boardPiece){
 				case 0: fprintf(whereToPrint, ".");
-				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
+				        if(whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
 				case 1: fprintf(whereToPrint, "*");
 				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
@@ -41,8 +41,7 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 				case 4: fprintf(whereToPrint, "2");
 				        if( whereToPrint == stdout) fprintf(whereToPrint, " ");
 					break;
-				default: break;	
-
+				default: break;
 			}
                 }
 		fprintf(whereToPrint, "\n");
@@ -54,11 +53,11 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 }
 
 
-void prompt(ESTADO *e, int x, int bool){
+void prompt(ESTADO *e, int x, int decider){
 	int gamer = obter_jogador_atual(e);
 	int jogada;
 
-	if (bool)
+	if (decider)
 		jogada = obter_numero_de_jogadas(e);
 	else
 		jogada = obter_numero_de_jogadasOLD(e);
@@ -70,16 +69,13 @@ void prompt(ESTADO *e, int x, int bool){
 }
 
 void movs(FILE *whereToPrint,ESTADO *e){
-	int i = 0, x;
+	int i = 0, x = obter_numero_de_jogadas(e);
 	char l1, l2;
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	x = obter_numero_de_jogadas(e);
-
 	if (e -> jogadas[x].jogador1.linha == 8)
 		x --;
-
 
 	while (i <= x){
 		c1 = e-> jogadas[i].jogador1;
@@ -106,7 +102,6 @@ void movs(FILE *whereToPrint,ESTADO *e){
 		i ++;
 	}
 }
-
 
 char* remStr(int x, char* s){
 	char* ret = malloc(strlen(s) - x);
@@ -146,8 +141,7 @@ int interpretador(ESTADO *e){
 	int x = 1, boolPrompt = 1;
 	prompt(e,x,1);
 
-	if(fgets(linha, BUF_SIZE, stdin) == NULL)
-		return 0;
+	if(fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
 
 	while((strlen(linha) > 2)                                  &&
 		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       || (!strcmp(linha,"jog\n"))                             ||
@@ -161,9 +155,7 @@ int interpretador(ESTADO *e){
 			boolPrompt = 1;
 		}
 
-		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
-			jog(e);
-		}
+		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")) jog(e);
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
 			COORDENADA C_escolhida;
@@ -171,8 +163,7 @@ int interpretador(ESTADO *e){
 			jogar(e, C_escolhida);
 		}
 
-		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
-			movs(stdout,e);
+		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))	movs(stdout,e);
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 				char* filename = remStr(4,linha);
@@ -187,16 +178,15 @@ int interpretador(ESTADO *e){
 			if (posJogada > obter_numero_de_jogadasOLD(e))
 				printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 			else{
-				pos(e,posJogada);
+				pos(e, posJogada);
 				boolPrompt = 0;
 			}
 		}
 
-		x ++;
 		mostrar_tabuleiro(stdout, e);
-		prompt(e,x,boolPrompt);
+		prompt(e, ++x, boolPrompt);
 		char *result = fgets(linha, BUF_SIZE, stdin);
-		if (!result)printf("couldn't read line\n");
+		if (!result) printf("couldn't read line\n");
 	}
 
 	if ((strlen(linha) > 3) && (!strcmp(linha, addStr("gr ",remStr(3,linha))))){
@@ -204,9 +194,7 @@ int interpretador(ESTADO *e){
 		gr(fileName, e, 0);
 	}
 
-	//Quits game
-	if (!strcmp(linha, "Q\n"))
-		return 0;
+	if (!strcmp(linha, "Q\n")) return 0;
 
 	return 1;
 }
@@ -214,8 +202,8 @@ int interpretador(ESTADO *e){
 void jog(ESTADO *e){
 	srandom(time(NULL));
 
-	int nrC = nr_coord_around(findBranca(e), e);
-	int rnd = random() % nrC;
+	int nrC = nr_coord_around(findBranca(e), e),
+		rnd = random() % nrC;
 	COORDENADA C[nrC]; 
 	array_coord_around(findBranca(e), C, e);
 
@@ -393,12 +381,10 @@ void ler(char *fileName, ESTADO *e, int bool_bot){
 
 
 void pos(ESTADO *e, int x){
-    int i = obter_numero_de_jogadasOLD(e);
-    int j = obter_numero_de_jogadas(e);
+    int i = obter_numero_de_jogadasOLD(e),
+    	j = obter_numero_de_jogadas(e);
 
-    COORDENADA std, pl1, pl2;
-    std.linha = 8;
-    std.coluna = 8;
+    COORDENADA pl1, pl2, std = {8,8};
 
     if (x == 0){
 
@@ -423,11 +409,10 @@ void pos(ESTADO *e, int x){
     	changePiece(e,inicial,BRANCA);
     	changeJogada(e,0);
 
-    	if (e->jogador_atual == 2)
+    	if (e-> jogador_atual == 2)
     		changePlayer(e);
      
     }
-
 	else{
 
     	if (x <= i){
@@ -486,7 +471,6 @@ void pos(ESTADO *e, int x){
     novaBranca.linha = getLastPiece(e,0);
     novaBranca.coluna = getLastPiece(e,1);
     changePiece(e,novaBranca,BRANCA);
-
 	}
 	}
 
