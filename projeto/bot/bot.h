@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../data/data.h"
+#include "../interface/interface.h"
 
 #endif
