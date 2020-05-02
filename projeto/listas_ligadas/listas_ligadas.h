@@ -53,7 +53,7 @@ int lista_esta_vazia(LISTA L);
 \brief Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia)
 @param L Uma lista
 */
-int indice_menorDist(LISTA L);
+int menorDist(LISTA L);
 
 
 LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e);

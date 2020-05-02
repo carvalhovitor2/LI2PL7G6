@@ -31,7 +31,7 @@ Para compilar, execute o comando 'make' de dentro do diretorio base do projeto. 
 
 O output gerado pode ser algo como:  
 ```
-gcc -o game main_game.c data/data.c interface/interface.c logic/logic.c
+gcc projeto/main_game.c projeto/data/data.c projeto/interface/interface.c projeto/logic/logic.c projeto/listas_ligadas/listas_ligadas.c -o game -lm -std=gnu11 -Wall -Wextra -pedantic-errors -O
 ```
 
 

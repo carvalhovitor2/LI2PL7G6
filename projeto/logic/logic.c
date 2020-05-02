@@ -140,7 +140,7 @@ int jogar(ESTADO *e, COORDENADA c) {
                 return 0;
             }
         }
-        printf("jogar %d %d\n", c.linha+1, c.coluna+1);
+        //printf("jogar %d %d\n", c.linha+1, c.coluna+1);
         return 1;
     }
     else{

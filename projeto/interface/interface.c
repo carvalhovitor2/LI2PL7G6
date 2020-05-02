@@ -171,7 +171,7 @@ int interpretador(ESTADO *e){
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 				char* filename = remStr(4,linha);
-				ler(filename,e);
+				ler(filename, e, 0);
 		}
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
@@ -196,7 +196,7 @@ int interpretador(ESTADO *e){
 
 	if ((strlen(linha) > 3) && (!strcmp(linha, addStr("gr ",remStr(3,linha))))){
 		char* fileName = remStr(3,linha);
-		gr(fileName,e);
+		gr(fileName, e, 0);
 	}
 
 	//Quits game
@@ -267,10 +267,10 @@ void jog2(ESTADO *e){
 }
 
 //Writes in a file
-void gr(char *fileName, ESTADO *e){
+void gr(char *fileName, ESTADO *e, int bool_bot){
     //Removes \n from string
-    fileName[strlen(fileName)-1] = 0;
-
+    if (!bool_bot)
+    	fileName[strlen(fileName)-1] = 0;
     //Opens the file
     FILE *file = fopen(fileName, "w+");
 
@@ -280,9 +280,10 @@ void gr(char *fileName, ESTADO *e){
 }
 
 
-void ler(char *fileName, ESTADO *e){
+void ler(char *fileName, ESTADO *e, int bool_bot){
     //Removes \n from string
-    fileName[strlen(fileName)-1] = 0;
+    if (!bool_bot)
+    	fileName[strlen(fileName)-1] = 0;
     COORDENADA *coord = malloc(sizeof(int)*2);
     COORDENADA *coord1 = malloc(sizeof(int)*2);
     //Opens the file
@@ -306,6 +307,7 @@ void ler(char *fileName, ESTADO *e){
             if( *c == '*') e->tab[linha][coluna] = BRANCA;
         }
     }
+
     //Discarding number line of the board (1, 2, 3 ...)
     //fscanf(file, "1 2 3 4 5 6 7 8 ");
     char jogada='a', p1Linha='a', p1Coluna='a', p2Linha='a', p2Coluna='a';
@@ -377,9 +379,6 @@ void ler(char *fileName, ESTADO *e){
 	        }
 	    }
 }
-
-
-//void pos2
 
 
 void pos(ESTADO *e, int x){
