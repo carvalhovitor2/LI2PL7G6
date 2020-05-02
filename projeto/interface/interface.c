@@ -54,9 +54,9 @@ void prompt(ESTADO *e, int x, int decider){
 	int jogada;
 
 	if (decider)
-		jogada = obter_numero_de_jogadas(e);
+		jogada = obter_numero_de_jogadas(e, 1);
 	else
-		jogada = obter_numero_de_jogadasOLD(e);
+		jogada = obter_numero_de_jogadas(e, 0);
 
 	if (x < 10)
 		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
@@ -65,15 +65,15 @@ void prompt(ESTADO *e, int x, int decider){
 }
 
 void movs(FILE *whereToPrint,ESTADO *e){
-	int i = 0, x = obter_numero_de_jogadas(e);
+	int i = 0, nr_jogadas = obter_numero_de_jogadas(e, 1);
 	char l1, l2;
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	if (obter_coord_deJogada(e, x, 1, 1) == 8)
-		x --;
+	if (obter_coord_deJogada(e, nr_jogadas, 1, 1) == 8)
+		nr_jogadas --;
 
-	while (i <= x){
+	while (i <= nr_jogadas){
 		c1.linha = obter_coord_deJogada(e, i, 1, 1), c1.coluna =  obter_coord_deJogada(e, i, 1, 0);//e-> jogadas[i].jogador1;
 		c2.linha = obter_coord_deJogada(e, i, 2, 1), c2.coluna =  obter_coord_deJogada(e, i, 2, 0); //e-> jogadas[i].jogador2;
 		l1 = 'a' + c1.linha;
@@ -171,7 +171,7 @@ int interpretador(ESTADO *e){
 			newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			int posJogada = atoi(newLinha);
-			if (posJogada > obter_numero_de_jogadasOLD(e))
+			if (posJogada > obter_numero_de_jogadas(e, 0))
 				printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 			else{
 				pos(e, posJogada);
@@ -343,8 +343,8 @@ void ler(char *fileName, ESTADO *e){
 
 
 void pos(ESTADO *e, int x){
-    int i = obter_numero_de_jogadasOLD(e),
-    	j = obter_numero_de_jogadas(e);
+    int i_OLD = obter_numero_de_jogadas(e, 0),
+    	i_New = obter_numero_de_jogadas(e, 1);
 
     COORDENADA pl1, pl2, std = {8,8};
 
@@ -377,9 +377,9 @@ void pos(ESTADO *e, int x){
     }
 	else{
 
-    	if (x <= i){
+    	if (x <= i_OLD){
 
-    		if (j < x){
+    		if (i_New < x){
 
         		changeJogada(e,x);
 
@@ -388,20 +388,20 @@ void pos(ESTADO *e, int x){
 
     			coloca_preta(e);
 
-        		while(j != x){
+        		while(i_New != x){
        		    	
-       		    	pl1.linha = e -> jogadasOLD[j].jogador1.linha;
-       				pl2.linha = e -> jogadasOLD[j].jogador2.linha;
-       				pl1.coluna = e -> jogadasOLD[j].jogador1.coluna;
-        			pl2.coluna = e -> jogadasOLD[j].jogador2.coluna;
+       		    	pl1.linha = e -> jogadasOLD[i_New].jogador1.linha;
+       				pl2.linha = e -> jogadasOLD[i_New].jogador2.linha;
+       				pl1.coluna = e -> jogadasOLD[i_New].jogador1.coluna;
+        			pl2.coluna = e -> jogadasOLD[i_New].jogador2.coluna;
 
         			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
 
-        			coloca_jogada(e, j, pl1, 1);
-            		coloca_jogada(e, j, pl2, 2);
+        			coloca_jogada(e, i_New, pl1, 1);
+            		coloca_jogada(e, i_New, pl2, 2);
         	
-        			j ++;
+        			i_New ++;
         			}  
     			}
 
@@ -409,20 +409,20 @@ void pos(ESTADO *e, int x){
 
         		changeJogada(e,x);
 
-        		while (j + 1 != x){
+        		while (i_New + 1 != x){
 
-            		pl1.linha = e -> jogadas[j].jogador1.linha;
-            		pl2.linha = e -> jogadas[j].jogador2.linha;
-            		pl1.coluna = e -> jogadas[j].jogador1.coluna;
-            		pl2.coluna = e -> jogadas[j].jogador2.coluna;
+            		pl1.linha = e -> jogadas[i_New].jogador1.linha;
+            		pl2.linha = e -> jogadas[i_New].jogador2.linha;
+            		pl1.coluna = e -> jogadas[i_New].jogador1.coluna;
+            		pl2.coluna = e -> jogadas[i_New].jogador2.coluna;
 
             		changePiece(e, pl1, VAZIO);
             		changePiece(e, pl2, VAZIO);
 
-            		coloca_jogada(e, j, std, 1);
-            		coloca_jogada(e, j, std, 2);
+            		coloca_jogada(e, i_New, std, 1);
+            		coloca_jogada(e, i_New, std, 2);
 
-        			j --;
+        			i_New --;
 
         			if (obter_jogador_atual(e) == 2)
 						changePlayer(e);

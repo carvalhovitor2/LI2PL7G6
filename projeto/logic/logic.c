@@ -66,7 +66,7 @@ int jogar(ESTADO *e, COORDENADA c) {
 	    coloca_preta(e);
 	    changePiece(e, c, BRANCA);
         if (obter_jogador_atual(e) == 1) {
-            coloca_jogada(e,obter_numero_de_jogadas(e),c,1);
+            coloca_jogada(e,obter_numero_de_jogadas(e, 1), c, 1);
             changePlayer(e);
             if (gameOver(e)){
                 x = winner(e);
@@ -75,7 +75,7 @@ int jogar(ESTADO *e, COORDENADA c) {
             }
         }
         else{
-            coloca_jogada(e,obter_numero_de_jogadas(e),c,2);
+            coloca_jogada(e,obter_numero_de_jogadas(e, 1),c,2);
             changePlayer(e);
             incrJogada(e);
             if (gameOver(e)){

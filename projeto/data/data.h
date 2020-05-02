@@ -53,11 +53,6 @@ typedef struct {
 	int num_jogadasOLD;
     /** O jogador atual */
     int jogador_atual;
-    ///** Lista de estados com  */
-    //int floodTab[8][8];
-    //LISTA lista_jogadas_possiveis;
-    ///** Distância à casa de destino do jogador atual */
-    //int dist_destino;
 
 } ESTADO;
 
@@ -88,7 +83,7 @@ int obter_jogador_atual(ESTADO *estado);
 \brief Devolve o número de jogadas do estado
 @param e Apontador para o estado
 */
-int obter_numero_de_jogadas(ESTADO *estado);
+int obter_numero_de_jogadas(ESTADO *estado, int new_or_old);
 
 /**
 \brief Obtém o estado atual da casa

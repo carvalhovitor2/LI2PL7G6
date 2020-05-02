@@ -10,29 +10,29 @@
 
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
-	if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) return PRETA;
+	if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) 
+		return PRETA;
 	int line = c.linha - 1;
 	int column = c.coluna - 1;
-	return ((*e).tab[line][column]);
+	return (e-> tab[line][column]);
 }
 
 //Gets current player
 int obter_jogador_atual(ESTADO *estado){
-	return ((*estado).jogador_atual);
+	return (estado-> jogador_atual);
 }
 
 //Gets current number of moves
-int obter_numero_de_jogadas(ESTADO *estado){
-	return ((*estado).num_jogadas);
-}
-
-int obter_numero_de_jogadasOLD(ESTADO *estado){
-	return ((*estado).num_jogadasOLD);
+int obter_numero_de_jogadas(ESTADO *estado, int new_or_old){
+	if (new_or_old)
+		return (estado-> num_jogadas);
+	else
+		return (estado-> num_jogadasOLD);
 }
 
 int getLastPiece(ESTADO *e, int decider){
 	int r;
-	int i = obter_numero_de_jogadas(e);
+	int i = obter_numero_de_jogadas(e, 1);
 
 	int l1 = e -> jogadas[i].jogador1.linha;
 	int l2 = e -> jogadas[i].jogador2.linha;
