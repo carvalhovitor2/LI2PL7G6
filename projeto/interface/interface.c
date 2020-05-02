@@ -290,7 +290,6 @@ void ler(char *fileName, ESTADO *e){
 
     //Auxiliar char to translate chars to integers
     char *c=malloc(sizeof(char));
-
     //Iterates through lines
     for(int linha = 0; linha < 8; linha++){
 
@@ -307,7 +306,6 @@ void ler(char *fileName, ESTADO *e){
             if( *c == '*') e->tab[linha][coluna] = BRANCA;
         }
     }
-
     //Discarding number line of the board (1, 2, 3 ...)
     //fscanf(file, "1 2 3 4 5 6 7 8 ");
     char jogada='a', p1Linha='a', p1Coluna='a', p2Linha='a', p2Coluna='a';
