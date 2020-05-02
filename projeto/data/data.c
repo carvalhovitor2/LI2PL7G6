@@ -10,6 +10,7 @@
 
 //Gets current piece
 CASA obter_estado_casa(ESTADO *e, COORDENADA c){
+	if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) return PRETA;
 	int line = c.linha - 1;
 	int column = c.coluna - 1;
 	return ((*e).tab[line][column]);

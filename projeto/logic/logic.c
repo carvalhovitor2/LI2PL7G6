@@ -22,6 +22,21 @@ COORDENADA findBranca(ESTADO *e){
     return branca;
 }
 
+int prototypeAroundBranca(ESTADO *e){
+	COORDENADA branca = findBranca(e);
+	COORDENADA teste = {branca.linha-1, branca.coluna-1};
+
+	for(int i = 0, max = 0; max < 8; max++, i = max % 3){
+		if( max != 0 && i%3 == 0){
+		       	teste.linha++;
+			teste.coluna = branca.coluna;
+		}
+		printf("O estado da casa eh: %d\n", obter_estado_casa(e, teste));
+		if (obter_estado_casa(e, teste) == VAZIO) return 0;
+		teste.coluna++;
+	}
+	return 1;
+}
 
 int aroundBranca(ESTADO *e){
     COORDENADA branca = findBranca(e);
@@ -67,7 +82,7 @@ int aroundBranca(ESTADO *e){
 int gameOver(ESTADO *e){
     if (e-> tab[0][7] != VAZIO || e-> tab[7][0] != VAZIO)
         return 1;
-    if (aroundBranca(e))
+    if (prototypeAroundBranca(e))
         return 1;
     if ((e-> tab[0][0] == BRANCA && e-> tab[0][1] == PRETA && e-> tab[1][1] == PRETA && e-> tab[1][0] == PRETA) ||
         (e-> tab[7][7] == BRANCA && e-> tab[6][7] == PRETA && e-> tab[6][6] == PRETA && e-> tab[7][6] == PRETA))
