@@ -45,9 +45,7 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 		fprintf(whereToPrint, "\n");
         } 
 
-	if ( whereToPrint == stdout ){
-		fprintf(whereToPrint, "  1 2 3 4 5 6 7 8\n");
-	}
+	if (whereToPrint == stdout) fprintf(whereToPrint, "  1 2 3 4 5 6 7 8\n");
 }
 
 
@@ -72,18 +70,18 @@ void movs(FILE *whereToPrint,ESTADO *e){
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	if (e -> jogadas[x].jogador1.linha == 8)
+	if (obter_coord_deJogada(e, x, 1, 1) == 8)
 		x --;
 
 	while (i <= x){
-		c1 = e-> jogadas[i].jogador1;
-		c2 = e-> jogadas[i].jogador2;
+		c1.linha = obter_coord_deJogada(e, i, 1, 1), c1.coluna =  obter_coord_deJogada(e, i, 1, 0);//e-> jogadas[i].jogador1;
+		c2.linha = obter_coord_deJogada(e, i, 2, 1), c2.coluna =  obter_coord_deJogada(e, i, 2, 0); //e-> jogadas[i].jogador2;
 		l1 = 'a' + c1.linha;
 		l2 = 'a' + c2.linha;
 		col1 = c1.coluna + 1;
 		col2 = c2.coluna + 1;
 
-		if (e -> jogadas[i].jogador2.coluna < 8){
+		if (obter_coord_deJogada(e, i, 2, 0) < 8){
 			if (i < 9)
 				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
 			else

@@ -64,7 +64,23 @@ int getLastPiece(ESTADO *e, int decider){
 	return r;
 }
 
-void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
+int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider){
+	if (player == 1){
+		if (decider)
+			return (e-> jogadas[jogada].jogador1.linha);
+		else
+			return (e-> jogadas[jogada].jogador1.coluna);
+	}
+	else{
+		if (decider)
+			return (e-> jogadas[jogada].jogador2.linha);
+		else
+			return (e-> jogadas[jogada].jogador2.coluna);
+	}
+}
+
+
+void coloca_jogada(ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) 
     	e->jogadas[num_jogadas].jogador1 = c;
     else  
