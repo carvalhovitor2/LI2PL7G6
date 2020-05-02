@@ -163,7 +163,7 @@ int interpretador(ESTADO *e){
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 				char* filename = remStr(4,linha);
-				ler(filename, e, 0);
+				ler(filename, e);
 		}
 
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
@@ -187,7 +187,7 @@ int interpretador(ESTADO *e){
 
 	if ((strlen(linha) > 3) && (!strcmp(linha, addStr("gr ",remStr(3,linha))))){
 		char* fileName = remStr(3,linha);
-		gr(fileName, e, 0);
+		gr(fileName, e);
 	}
 
 	if (!strcmp(linha, "Q\n")) return 0;
@@ -249,7 +249,6 @@ int jog2(ESTADO *e, int decider){
 
 	COORDENADA *menor;
 	menor = devolve_cabeca(lC);
-	//jogar(e, *menor);
 
 	free(lF);
 	free(lC);
@@ -261,24 +260,22 @@ int jog2(ESTADO *e, int decider){
 }
 
 //Writes in a file
-void gr(char *fileName, ESTADO *e, int bool_bot){
+void gr(char *fileName, ESTADO *e){
     //Removes \n from string
-    if (!bool_bot)
-    	fileName[strlen(fileName)-1] = 0;
+    fileName[strlen(fileName)-1] = 0;
     //Opens the file
     FILE *file = fopen(fileName, "w+");
 
     //Writes the board in the file instead of stdout
     mostrar_tabuleiro(file, e);
     fputc('\n', file);
-    movs(file,e);
+    movs(file, e);
 }
 
 
-void ler(char *fileName, ESTADO *e, int bool_bot){
+void ler(char *fileName, ESTADO *e){
     //Removes \n from string
-    if (!bool_bot)
-    	fileName[strlen(fileName)-1] = 0;
+    fileName[strlen(fileName)-1] = 0;
     COORDENADA *coord = malloc(sizeof(int)*2);
     COORDENADA *coord1 = malloc(sizeof(int)*2);
     //Opens the file

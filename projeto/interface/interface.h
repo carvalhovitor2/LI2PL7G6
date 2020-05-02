@@ -37,7 +37,7 @@ void jog(ESTADO *e);
 @param e Apontador para o estado
 @param fileName o nome do ficheiro onde gravar o estado
 */
-void gr(char *fileName, ESTADO *e, int bool_bot);
+void gr(char *fileName, ESTADO *e);
 
 
 /**
@@ -45,7 +45,7 @@ void gr(char *fileName, ESTADO *e, int bool_bot);
 @param e Apontador para o estado
 @param fileName o nome do ficheiro onde gravar o estado
 */
-void ler(char *fileName, ESTADO *e, int bool_bot);
+void ler(char *fileName, ESTADO *e);
 
 /**
 \brief Executa o comando pos
