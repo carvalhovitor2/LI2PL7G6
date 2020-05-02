@@ -42,9 +42,6 @@ int gameOver(ESTADO *e){
         return 1;
     if (aroundBranca(e))
         return 1;
-    if ((e-> tab[0][0] == BRANCA && e-> tab[0][1] == PRETA && e-> tab[1][1] == PRETA && e-> tab[1][0] == PRETA) ||
-        (e-> tab[7][7] == BRANCA && e-> tab[6][7] == PRETA && e-> tab[6][6] == PRETA && e-> tab[7][6] == PRETA))
-        return 1;
     return 0;
 }
 
