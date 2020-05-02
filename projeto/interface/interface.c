@@ -19,7 +19,10 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 	}
         for(int coluna = 0; coluna < 8; coluna++){
 		//Translate enum to chars
-                    boardPiece = e->tab[linha][coluna];
+		COORDENADA coord;
+		coord.linha = linha+1;
+		coord.coluna = coluna+1;
+                    boardPiece = obter_estado_casa(e, coord);
 			if(linha == 7 && coluna == 0) boardPiece = 3;
 			if(linha == 0 && coluna == 7) boardPiece = 4;
 			switch (boardPiece){
