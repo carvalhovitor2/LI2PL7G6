@@ -55,7 +55,6 @@ typedef struct {
     int jogador_atual;
 
 } ESTADO;
-
 /**
 \brief incrementa o valor do número de jogadas
 @param e Apontador para o estado
@@ -90,7 +89,7 @@ int obter_numero_de_jogadas(ESTADO *estado, int new_or_old);
 @param e Apontador para o estado
 @param c A coordenada
 */
-CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito);
 
 /**
 \brief coloca na posição num_jogadas do array JOGADAS no determinado jogador a coordenada c

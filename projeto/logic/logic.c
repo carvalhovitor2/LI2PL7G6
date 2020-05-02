@@ -27,7 +27,7 @@ int aroundBranca(ESTADO *e){
 	COORDENADA teste = {branca.linha-1, branca.coluna-1};
 
 	for(int i = 0, max = 0; max < 8; max++, i = max % 3){
-		if( max != 0 && i%3 == 0){
+		if(max != 0 && i%3 == 0){
 		       	teste.linha++;
 			teste.coluna = branca.coluna;
 		}
@@ -38,7 +38,8 @@ int aroundBranca(ESTADO *e){
 }
 
 int gameOver(ESTADO *e){
-    if (e-> tab[0][7] != VAZIO || e-> tab[7][0] != VAZIO)
+    COORDENADA win1 = {7,0}, win2 = {0,7};
+    if (obter_estado_casa(e, win1, 0) != VAZIO || obter_estado_casa(e, win2, 0) != VAZIO)
         return 1;
     if (aroundBranca(e))
         return 1;
@@ -48,9 +49,9 @@ int gameOver(ESTADO *e){
 int winner(ESTADO *e){
     COORDENADA win1 = {7,0}, win2 = {0,7};
 
-    if (obter_estado_casa(e,win2) == BRANCA)
+    if (obter_estado_casa(e, win2, 1) == BRANCA)
         return 2;
-    else if (obter_estado_casa(e,win1) == BRANCA)
+    else if (obter_estado_casa(e, win1, 1) == BRANCA)
             return 1;
 
     if (obter_jogador_atual(e) == 1)
@@ -118,9 +119,84 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 	//Ensures going piece is not BLACK or WHITE already
 	going.linha++;
 	going.coluna++;
-	if ( obter_estado_casa(e, going) == PRETA || obter_estado_casa(e, going) == BRANCA){
+	if (obter_estado_casa(e, going, 1) == PRETA || obter_estado_casa(e, going, 1) == BRANCA){
 	       	return 0;
 	}
 
 	return 1;
+}
+
+//Conta a quantidade de coordenadas vazias no entorno de um jogador
+int nr_coord_around(COORDENADA c, ESTADO *e){
+    int r = 0, j = -1, border = 1;
+    COORDENADA copycat;
+
+    if (c.coluna == 7) border = 0;
+    copycat.linha = c.linha - 1;
+    while(c.linha != 0 && j <= border){
+        copycat.coluna = c.coluna + j;
+        if (c.coluna + j != -1){
+            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+                r ++;
+        }
+        j ++;
+    }
+    j = -1; copycat.linha ++;
+    while(j <= border){
+        copycat.coluna = c.coluna + j;
+        if (c.coluna + j != -1){
+            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+                r ++;
+        }
+        j ++;
+    }
+    j = -1; copycat.linha ++;
+    while(c.linha != 7 && j <= border){
+        copycat.coluna = c.coluna + j;
+        if (c.coluna + j != -1){
+            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+                r ++;
+        }
+        j ++;
+    }
+
+    return r;
+}
+
+//Coloca as coordenadas ao redor de um player num array
+void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
+    int r = 0, j = -1, border = 1;
+    COORDENADA fake;
+    if (c.coluna == 7) border = 0;
+
+    fake.linha = c.linha - 1;
+    while(c.linha != 0 && j <= border){
+        if (c.coluna + j != -1){
+            fake.coluna = c.coluna + j;
+            if(obter_estado_casa(e, fake, 0) == VAZIO){
+                A[r++] = fake;
+            }
+        }
+        j ++;
+    }
+    j = -1; fake.linha ++;
+    while(j <= border){
+        if (c.coluna + j != -1){
+            fake.coluna = c.coluna + j;
+            if(obter_estado_casa(e, fake, 0) == VAZIO){
+                A[r++] = fake;
+            }
+        }
+        j ++;
+    }
+    j = -1; fake.linha ++;
+    while(c.linha != 7 && j <= border){
+        if (c.coluna + j != -1){
+            fake.coluna = c.coluna + j;
+            if(obter_estado_casa(e, fake, 0) == VAZIO){
+                A[r++] = fake;
+            }
+        }
+        j ++;
+    }   
 }
