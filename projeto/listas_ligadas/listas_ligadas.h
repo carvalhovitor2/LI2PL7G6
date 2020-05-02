@@ -54,15 +54,3 @@ int lista_esta_vazia(LISTA L);
 @param L Uma lista
 */
 int menorDist(LISTA L);
-
-
-LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e);
-
-void formar_LinCol(int decider, int A[], int N, COORDENADA C[]);
-
-/**
-\brief Transforma um array numa lista ligada
-@param A Um array
-@param N Número de elementos do array
-*/
-LISTA fromArray(int A[], int N);

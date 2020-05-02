@@ -24,7 +24,7 @@ int interpretador(ESTADO *e);
 \brief Fucção que executa o comando jog2
 @param e Apontador para o estado
 */
-void jog2(ESTADO *e);
+int jog2(ESTADO *e, int decider);
 
 /**
 \brief Fucção que executa o comando jog
