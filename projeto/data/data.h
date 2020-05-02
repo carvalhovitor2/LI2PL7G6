@@ -160,17 +160,9 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 int nr_coord_around(COORDENADA c, ESTADO *e);
 
 /**
-\brief Calcula a distancia ate um destino utilizando INTS
-@param A coordenada onde esta o jogador
-@param Apontador para o estado do jogo
-*/
-int calcula_dist_dest(COORDENADA C, ESTADO *e);
-
-
-
-/**
 \brief Inicializa o array de jogadas
 @param Um apontador para o estado do jogo
 */
 void arrayJogadas(ESTADO *e);
+
 #endif

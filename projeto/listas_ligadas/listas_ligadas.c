@@ -49,38 +49,6 @@ LISTA remove_cabeca(LISTA L){
 int lista_esta_vazia(LISTA L){
 	return (L == NULL);
 }
-
-LISTA lista_DistDest(int N, COORDENADA C[], ESTADO *e){
-    LISTA l = NULL;
-    int *dist=malloc(sizeof(int));
-
-    for(int i = N - 1; i >= 0; i--){
-        *dist = calcula_dist_dest(C[i], e);
-        l = insere_cabeca(l, dist);
-    }
-
-    return l;
-}
-
-void formar_LinCol(int decider, int A[], int N, COORDENADA C[]){
-    if (decider){
-        for(int i = 0; i < N; i ++)
-            A[i] = C[i].linha;
-    }
-    else{
-        for(int i = 0; i < N; i ++)
-            A[i] = C[i].coluna;
-    }
-}
-
-LISTA fromArray(int A[], int N){
-    LISTA r = NULL;
-    for(int i = N - 1; i >= 0; i--){
-        int fake = A[i];
-        r = insere_cabeca(r, &fake);
-    }
-    return r;
-}
 /**
 void printListaCoord(LISTA L){
 	while(L){

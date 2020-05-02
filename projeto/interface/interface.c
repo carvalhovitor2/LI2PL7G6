@@ -163,7 +163,9 @@ int interpretador(ESTADO *e){
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
-			jog2(e);
+			COORDENADA C_escolhida;
+			C_escolhida.linha = jog2(e, 1), C_escolhida.coluna = jog2(e, 0);
+			jogar(e, C_escolhida);
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))
@@ -232,7 +234,7 @@ void jog(ESTADO *e){
 	free(lJog);
 }
 
-void jog2(ESTADO *e){
+int jog2(ESTADO *e, int decider){
 	int nrC = nr_coord_around(findBranca(e), e);
 	COORDENADA C[nrC]; 
 	array_coord_around(findBranca(e), C, e);
@@ -260,10 +262,15 @@ void jog2(ESTADO *e){
 
 	COORDENADA *menor;
 	menor = devolve_cabeca(lC);
-	jogar(e, *menor);
+	//jogar(e, *menor);
 
 	free(lF);
 	free(lC);
+
+	if (decider)
+		return (menor-> linha);
+	else
+		return (menor-> coluna);
 }
 
 //Writes in a file
@@ -276,6 +283,7 @@ void gr(char *fileName, ESTADO *e, int bool_bot){
 
     //Writes the board in the file instead of stdout
     mostrar_tabuleiro(file, e);
+    fputc('\n', file);
     movs(file,e);
 }
 
