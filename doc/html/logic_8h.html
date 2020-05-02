@@ -93,13 +93,100 @@ Functions</h2></td></tr>
 <tr class="memitem:a29d47f0e43124e57b790efda4631e0ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a29d47f0e43124e57b790efda4631e0ef">jogadaValida</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
 <tr class="memdesc:a29d47f0e43124e57b790efda4631e0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador.  <a href="#a29d47f0e43124e57b790efda4631e0ef">More...</a><br /></td></tr>
 <tr class="separator:a29d47f0e43124e57b790efda4631e0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ac495d8157a1ef917a76c385a4f32b1"><td class="memItemLeft" align="right" valign="top"><a id="a9ac495d8157a1ef917a76c385a4f32b1"></a>
-<a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td><td class="memItemRight" valign="bottom"><b>findBranca</b> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memitem:a9ac495d8157a1ef917a76c385a4f32b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a9ac495d8157a1ef917a76c385a4f32b1">findBranca</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a9ac495d8157a1ef917a76c385a4f32b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dado o estado devolve a coordenada onde se encontra a peça branca.  <a href="#a9ac495d8157a1ef917a76c385a4f32b1">More...</a><br /></td></tr>
 <tr class="separator:a9ac495d8157a1ef917a76c385a4f32b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc5ee01a908fa9c344a0d3b217974cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#aefc5ee01a908fa9c344a0d3b217974cf">aroundBranca</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:aefc5ee01a908fa9c344a0d3b217974cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver.  <a href="#aefc5ee01a908fa9c344a0d3b217974cf">More...</a><br /></td></tr>
+<tr class="separator:aefc5ee01a908fa9c344a0d3b217974cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3e0a182844c20990e38725417c3b44d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#af3e0a182844c20990e38725417c3b44d">gameOver</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:af3e0a182844c20990e38725417c3b44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por verificar se o jogo se acabou.  <a href="#af3e0a182844c20990e38725417c3b44d">More...</a><br /></td></tr>
+<tr class="separator:af3e0a182844c20990e38725417c3b44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7e229be0513d84bfae07481bb8461cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ae7e229be0513d84bfae07481bb8461cc">winner</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:ae7e229be0513d84bfae07481bb8461cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por declarar o vencedor da partida.  <a href="#ae7e229be0513d84bfae07481bb8461cc">More...</a><br /></td></tr>
+<tr class="separator:ae7e229be0513d84bfae07481bb8461cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file is supposed to store the declarations of the logic functions used in our project </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="aefc5ee01a908fa9c344a0d3b217974cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc5ee01a908fa9c344a0d3b217974cf">&#9670;&nbsp;</a></span>aroundBranca()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int aroundBranca </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Apontador</td><td>para o estado do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9ac495d8157a1ef917a76c385a4f32b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ac495d8157a1ef917a76c385a4f32b1">&#9670;&nbsp;</a></span>findBranca()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCOORDENADA.html">COORDENADA</a> findBranca </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que dado o estado devolve a coordenada onde se encontra a peça branca. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af3e0a182844c20990e38725417c3b44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e0a182844c20990e38725417c3b44d">&#9670;&nbsp;</a></span>gameOver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gameOver </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por verificar se o jogo se acabou. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Apontador</td><td>para o estado do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a29d47f0e43124e57b790efda4631e0ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29d47f0e43124e57b790efda4631e0ef">&#9670;&nbsp;</a></span>jogadaValida()</h2>
 
@@ -168,6 +255,32 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
     <tr><td class="paramname">c</td><td>A coordenada </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7e229be0513d84bfae07481bb8461cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7e229be0513d84bfae07481bb8461cc">&#9670;&nbsp;</a></span>winner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int winner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função responsável por declarar o vencedor da partida. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Apontador</td><td>para o estado do jogo. </td></tr>
   </table>
   </dd>
 </dl>

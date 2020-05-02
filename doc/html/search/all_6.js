@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['jogada',['JOGADA',['../structJOGADA.html',1,'']]],
-  ['jogadas',['jogadas',['../structESTADO.html#afae43b87a488fad0f2b56a18bad31d18',1,'ESTADO::jogadas()'],['../data_8h.html#a94c221d29a1760f008b7834093259b7d',1,'JOGADAS():&#160;data.h']]],
-  ['jogadasold',['jogadasOLD',['../structESTADO.html#a5cbf631c8c361c07715518ef00fae06f',1,'ESTADO']]],
-  ['jogadavalida',['jogadaValida',['../logic_8h.html#a29d47f0e43124e57b790efda4631e0ef',1,'logic.c']]],
-  ['jogador_5fatual',['jogador_atual',['../structESTADO.html#a5dd28e2e68b7aef2b6b7ea88e02eff58',1,'ESTADO']]],
-  ['jogar',['jogar',['../logic_8h.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logic.c']]]
+  ['incrjogada',['incrJogada',['../data_8h.html#a7165dae099a6650cab9974eb7de161e8',1,'data.c']]],
+  ['inicializar_5festado',['inicializar_estado',['../data_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f',1,'data.c']]],
+  ['insere_5fcabeca',['insere_cabeca',['../listas__ligadas_8h.html#a37ba5fc3cfddb6bc94d4b54b00bc696e',1,'listas_ligadas.c']]],
+  ['interface_2eh',['interface.h',['../interface_8h.html',1,'']]],
+  ['interpretador',['interpretador',['../interface_8h.html#a24da95ebeede4a540e37790ce8be359b',1,'interface.c']]]
 ];

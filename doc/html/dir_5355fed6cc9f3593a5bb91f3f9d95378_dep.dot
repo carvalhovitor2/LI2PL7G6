@@ -7,6 +7,6 @@ digraph "/home/vac/Desktop/uMinho/periodo02/LI2PL7G6/projeto/listas_ligadas" {
   dir_5355fed6cc9f3593a5bb91f3f9d95378 [shape=box, label="listas_ligadas", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_5355fed6cc9f3593a5bb91f3f9d95378.html"];
   }
   dir_3924cb794333f3827dc4f454bbc6e9ca [shape=box label="interface" URL="dir_3924cb794333f3827dc4f454bbc6e9ca.html"];
-  dir_5355fed6cc9f3593a5bb91f3f9d95378->dir_3924cb794333f3827dc4f454bbc6e9ca [headlabel="1", labeldistance=1.5 headhref="dir_000003_000002.html"];
-  dir_3924cb794333f3827dc4f454bbc6e9ca->dir_5355fed6cc9f3593a5bb91f3f9d95378 [headlabel="1", labeldistance=1.5 headhref="dir_000002_000003.html"];
+  dir_5355fed6cc9f3593a5bb91f3f9d95378->dir_3924cb794333f3827dc4f454bbc6e9ca [headlabel="1", labeldistance=1.5 headhref="dir_000004_000003.html"];
+  dir_3924cb794333f3827dc4f454bbc6e9ca->dir_5355fed6cc9f3593a5bb91f3f9d95378 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000004.html"];
 }

@@ -1,0 +1,215 @@
+
+
+ title\+: Avaliação da Componente de Grupo author\+:
+\begin{DoxyItemize}
+\item Laboratório de Algoritmia I
+\item Laboratórios de Informática II \subsection*{-\/ Ano letivo 2019/20 }
+\end{DoxyItemize}
+
+\$file=\char`\"{}final\char`\"{};\$data = Get-\/date; pandoc -\/s \char`\"{}\$file.\+md\char`\"{} -\/M date=\char`\"{}\+Last Update\+: \$data\char`\"{} -\/o \char`\"{}\$file.\+html\char`\"{} )
+
+\section*{Plágio}
+
+Ao colocar o código num repositório público, é sempre possível que alguém possa copiar o código de outro projeto. De acordo com o código de ética da Universidade do Minho, tal ação é considerada plágio. Caso haja dúvida em relação a plágio, a equipa docente irá utilizar informação sobre os {\itshape commits} para decidir quem produziu o código e quem o copiou. Caso a equipa docente decida que houve plágio, os grupos que sejam considerados autores de plágio terão {\bfseries Z\+E\+RO} na componente de projeto.
+
+\section*{Avaliação da componente de grupo}
+
+A avaliação da componente de grupo é feita da seguinte forma\+:
+
+
+\begin{DoxyItemize}
+\item Cada um dos guiões 5, 6, 7, 8, 9 e 10 vale 1 ponto
+\item A avaliação final vale 6 pontos
+\item No máximo 2 pontos serão atribuídos pela participação no torneio
+\end{DoxyItemize}
+
+\section*{Avaliação final}
+
+A avaliação final será feita utilizando os seguintes critérios\+:
+
+
+\begin{DoxyItemize}
+\item Documentação (2 pontos)
+\item Modularidade e legibilidade (2 pontos)
+\item Deteção dos fins de jogo (1 ponto)
+\item Compilar sem warnings (1 ponto)
+\end{DoxyItemize}
+
+\subsection*{Documentação}
+
+Todas as funções do vosso projeto, assim como estruturas de dados e macros deverão ser documentadas. A percertagem da documentação será utilizada para a avaliação deste critério.
+
+Para gerar a documentação em X\+ML\+:
+
+
+\begin{DoxyItemize}
+\item editar o ficheiro de configuração \+\_\+\+\_\+{\ttfamily Doxyfile}\+\_\+\+\_\+
+\item mudar o nome da variável \+\_\+\+\_\+{\ttfamily G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+X\+ML}\+\_\+\+\_\+ para \+\_\+\+\_\+{\ttfamily Y\+ES}\+\_\+\+\_\+
+\item correr o comando \+\_\+\+\_\+{\ttfamily doxygen}\+\_\+\+\_\+
+\item mudar o nome da pasta \+\_\+\+\_\+{\ttfamily xml}\+\_\+\+\_\+ para \+\_\+\+\_\+{\ttfamily doc}\+\_\+\+\_\+ e colocá-\/la no github e no zip
+\end{DoxyItemize}
+
+\subsection*{Modularidade e legibilidade}
+
+Pretende-\/se que o código esteja bem escrito e legível. Isto implica\+:
+
+
+\begin{DoxyItemize}
+\item Não escrever código repetitivo
+\item Nao replicar código
+\item Não utilizar funções demasiado compridas (deverão caber num ecrã)
+\item Utilizar funções auxiliares com nomes sugestivos que ilustrem o que fazem
+\item As variáveis deverão ter nomes sugestivos
+\item Não aceder diretamente aos dados
+\item Estruturar o código em módulos estanques
+\item Não incluir código
+\item Não utilizar variáveis globais
+\item Haver coerência entre as camadas
+\end{DoxyItemize}
+
+\subsection*{Deteção dos fins de jogo}
+
+O vosso projeto deverá detetar todas as instâncias de fim de jogo.
+
+\subsection*{Compilar sem warnings}
+
+Pretende-\/se que o seu programa compile {\bfseries sem qualquer warning} ao compilar utilizando as seguintes opções\+: \begin{DoxyVerb}-std=gnu11 -Wall -Wextra -pedantic-errors -O
+\end{DoxyVerb}
+
+
+A título de exemplo, se todo o vosso código estiver numa única pasta e essa pasta não contiver outros ficheiros C, o seguinte comando \begin{DoxyVerb}gcc -std=gnu11 -Wall -Wextra -pedantic-errors -O *.c -lm
+\end{DoxyVerb}
+
+
+deveria compilar o vosso programa e gerar o executável {\bfseries a.\+out} sem mostrar {\itshape warnings}. A avaliação deste critério é binária\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries 100\%} da cotação se a compilação ocorreu sem qualquer warning
+\item {\bfseries 0\%} da cotação se ocorreu pelo menos um warning ao compilar
+\end{DoxyItemize}
+
+\section*{Bot}
+
+\subsection*{Introdução}
+
+A título de bonificação, os grupos que quiserem deverão submeter o seu programa para um torneio. Cada programa deverá\+:
+
+
+\begin{DoxyEnumerate}
+\item Ler o estado do jogo a partir de um ficheiro. O nome desse ficheiro deverá ser passado como parâmetro ao programa;
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Efetuar a melhor jogada no menor tempo possível ({\bfseries 2 segundos de C\+PU});
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Gravar o estado do jogo num ficheiro. O nome desse ficheiro deverá ser passado como parâmetro ao programa.
+\end{DoxyEnumerate}
+
+Assim, se o programa for invocado da seguinte forma\+:
+
+
+\begin{DoxyCode}
+./bot jog01 jog02
+\end{DoxyCode}
+
+
+Então ele deverá ler o estado do ficheiro {\bfseries jog01}, jogar e gravar o estado no ficheiro {\bfseries jog02}.
+
+\subsection*{Entrega}
+
+{\bfseries Só participa no Campeonato quem submeter o arquivo zip com o nome correto até 3 de Maio no Blackboard.}
+
+Quem quiser ter um {\bfseries logotipo personalizado} deve colocar no arquivo zip um ficheiro com o nome \+\_\+\+\_\+{\ttfamily logo.\+png}\+\_\+\+\_\+ de {\bfseries 40x40} pixeis.
+
+Para além de estar no {\itshape Github} na pasta {\itshape bot}, o código do bot é entregue também no Blackboard num link próprio para esse efeito para arquivo e para que nós saibamos quem pretende ir a jogo. Só um dos elementos do grupo deve submeter o arquivo. A entrega do bot deverá seguir exatamente as mesmas regras das da entrega do projeto\+: um arquivo {\itshape zip} cujo nome do ficheiro deverá ter o formato\+: \begin{DoxyVerb}<nome da UC>PL<número do turno prático>G<numéro do grupo com dois algarismos>.zip
+\end{DoxyVerb}
+
+
+Esse ficheiro deve simplesmente conter na raiz as fontes necessárias para compilar o bot.
+
+Todo o código para compilar o código do bot deve estar na raiz do arquivo e deve poder ser compilado fazendo simplesmente\+: \begin{DoxyVerb}gcc -std=gnu11 -Wall -Wextra -pedantic-errors -O *.c -lm
+\end{DoxyVerb}
+
+
+\subsection*{Avaliação}
+
+A competição será através de um campeonato. Este proceder-\/se-\/á da seguinte forma\+:
+
+
+\begin{DoxyItemize}
+\item Cada jogador jogará contra todos os outros duas vezes, uma como primeiro jogador e uma como segundo jogador
+\item Um jogador perde o jogo se criar uma jogada inválida, porque\+:
+\begin{DoxyItemize}
+\item demorou mais do que o tempo permitido, ou
+\item o formato do tabuleiro não está correto, ou
+\item o tabuleiro não corresponde a uma jogada válida
+\end{DoxyItemize}
+\item Cada jogo ganho vale 1 ponto
+\item Após todos os jogadores terem jogado contra os outros, ordenam-\/se pela pontuação obtida
+\item Caso vários grupos obtenham a mesma pontuação, eles partilharão a mesma posição
+\end{DoxyItemize}
+
+Cada grupo receberá\+:
+
+Posição Avaliação 
+
+ 1º lugar 2.\+00 pontos 2º lugar 1.\+75 pontos 3º e 4º lugares 1.\+50 pontos 5º ao 8º lugares 1.\+25 pontos 9º ao 16º lugares 1.\+00 pontos Derrotar o jogador aleatório 0.\+50 pontos
+
+\subsection*{Software}
+
+O software utilizado na avaliação está em \href{https://github.com/equipadocente-la1li21920/Torneio}{\tt https\+://github.\+com/equipadocente-\/la1li21920/\+Torneio}. O desenvolvimento ainda não acabou mas pensamos que já deve poder ser utilizado para experimentar (e reportar bugs, claro).
+
+\section*{Entrega}
+
+O projeto só será {\bfseries aceite} se se respeitarem as regras descritas abaixo. A entrega será feita até ao dia {\bfseries 3 de Maio} de duas formas (ambas {\bfseries obrigatórias})\+:
+
+
+\begin{DoxyItemize}
+\item através dos commits efetuados no {\bfseries Github}
+\item através de um arquivo Z\+IP (para arquivo)
+\end{DoxyItemize}
+
+As seguintes regras terão que ser respeitadas\+: O arquivo e o projeto no Github deverão {\bfseries obrigatóriamente} ter as seguintes pastas e ficheiros na sua raiz\+:
+
+
+\begin{DoxyItemize}
+\item ficheiro {\ttfamily R\+E\+A\+D\+M\+E.\+md} que deverá conter\+:
+\begin{DoxyItemize}
+\item o nome do curso, L\+CC ou M\+I\+EI
+\item o nome do turno, PL$<$n º=\char`\"{}\char`\"{} do=\char`\"{}\char`\"{} turno$>$=\char`\"{}\char`\"{}$>$, e.\+g., P\+L1
+\item o número do grupo
+\item o número de aluno de cada elemento seguido do seu nome completo
+\end{DoxyItemize}
+\item pasta {\ttfamily projeto} contendo todo o código do projeto
+\item pasta {\ttfamily bot} contendo todo o código correspondente ao bot (caso pretenda ser avaliado no torneio)
+\item pasta {\ttfamily doc} contendo toda a documentação do projeto (gerada utilizando o {\ttfamily Doxygen}) em formato {\ttfamily X\+ML}
+\end{DoxyItemize}
+
+O nome do arquivo submetido no {\itshape Blackboard} deverá ter o seguinte formato\+: \begin{DoxyVerb}<nome da UC>PL<número do turno prático>G<numéro do grupo com dois algarismos>.zip
+\end{DoxyVerb}
+
+
+O número nos casos dos grupos com um só algarismo é obtido colocando um zero como {\itshape padding}. Assim\+:
+
+{\ttfamily la1\+P\+L2\+G03.\+zip} \+: Será o projeto do grupo 3 do turno P\+L2 de Laboratório de Algoritmia I
+
+{\ttfamily li2\+P\+L4\+G09.\+zip} \+: Será o projeto do grupo 9 do turno P\+L4 de Laboratórios de Informática II
+
+Esse arquivo deverá ser submetido por um dos elementos do grupo na plataforma de Elearning (vulgo Blackboard) até ao dia {\bfseries 3 de Maio}.
+
+\section*{Defesa}
+
+As defesas ocorrerão na semana de {\bfseries 11 a 15 de Maio} para permitirem aos docentes avaliar os projetos e correr o torneio. As defesas decorrerão da seguinte forma\+:
+
+
+\begin{DoxyItemize}
+\item Cada grupo marcará um período na semana de 11 a 15 de Maio para a avaliação num link que será disponibilizado para esse efeito
+\item A defesa será no Blackboard Collaborate Ultra
+\item Estarão presentes dois docentes em cada defesa
+\item A defesa durará no máximo 20 minutos
+\item Para a defesa é necessário que os alunos possam utilizar o vídeo e o áudio
+\item Todos os elementos terão que comparecer à defesa para serem avaliados
+\item Serão feitas perguntas a cada um dos elementos do grupo para esclarecer dúvidas dos docentes sobre o trabalho, o seu funcionamento e a participação de cada um dos elementos na sua elaboração
+\item A avaliação de cada um dos elementos do grupo poderá ser diferente 
+\end{DoxyItemize}

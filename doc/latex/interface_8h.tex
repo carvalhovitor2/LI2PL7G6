@@ -13,13 +13,42 @@ This graph shows which files directly or indirectly include this file\+:
 void \hyperlink{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}{mostrar\+\_\+tabuleiro} (F\+I\+LE $\ast$where\+To\+Print, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que imprime o tabuleiro. \end{DoxyCompactList}\item 
 int \hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretador} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Fucção que lê e executa o comando dado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função que lê e executa o comando dado. \end{DoxyCompactList}\item 
+int \hyperlink{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}{jog2} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int decider)
+\begin{DoxyCompactList}\small\item\em Fucção que executa o comando jog2. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Fucção que executa o comando jog. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}{gr} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int bool\+\_\+bot)
+\begin{DoxyCompactList}\small\item\em Grava o estado de jogo num ficheiro. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}{ler} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int bool\+\_\+bot)
+\begin{DoxyCompactList}\small\item\em Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a306916ce2a9f631bce8a813cf420b930}{pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int x)
+\begin{DoxyCompactList}\small\item\em Executa o comando pos. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a24ebd76d052ecf68d39ee7da701da002}{movs} (F\+I\+LE $\ast$where\+To\+Print, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Declare the functions that are defined in interface.\+c 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}\label{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}} 
+\index{interface.\+h@{interface.\+h}!gr@{gr}}
+\index{gr@{gr}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{gr()}{gr()}}
+{\footnotesize\ttfamily void gr (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{bool\+\_\+bot }\end{DoxyParamCaption})}
+
+
+
+Grava o estado de jogo num ficheiro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
 \index{interface.\+h@{interface.\+h}!interpretador@{interpretador}}
 \index{interpretador@{interpretador}!interface.\+h@{interface.\+h}}
@@ -28,11 +57,58 @@ Declare the functions that are defined in interface.\+c
 
 
 
-Fucção que lê e executa o comando dado. 
+Função que lê e executa o comando dado. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}\label{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}} 
+\index{interface.\+h@{interface.\+h}!jog@{jog}}
+\index{jog@{jog}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{jog()}{jog()}}
+{\footnotesize\ttfamily void jog (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Fucção que executa o comando jog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}\label{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}} 
+\index{interface.\+h@{interface.\+h}!jog2@{jog2}}
+\index{jog2@{jog2}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{jog2()}{jog2()}}
+{\footnotesize\ttfamily int jog2 (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{decider }\end{DoxyParamCaption})}
+
+
+
+Fucção que executa o comando jog2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}\label{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}} 
+\index{interface.\+h@{interface.\+h}!ler@{ler}}
+\index{ler@{ler}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{ler()}{ler()}}
+{\footnotesize\ttfamily void ler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{bool\+\_\+bot }\end{DoxyParamCaption})}
+
+
+
+Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}\label{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}} 
@@ -50,5 +126,37 @@ Função que imprime o tabuleiro.
 {\em e} & Apontador para o estado \\
 \hline
 {\em where\+To\+Print} & Apontador para guardar o estado. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a24ebd76d052ecf68d39ee7da701da002}\label{interface_8h_a24ebd76d052ecf68d39ee7da701da002}} 
+\index{interface.\+h@{interface.\+h}!movs@{movs}}
+\index{movs@{movs}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{movs()}{movs()}}
+{\footnotesize\ttfamily void movs (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{where\+To\+Print,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a306916ce2a9f631bce8a813cf420b930}\label{interface_8h_a306916ce2a9f631bce8a813cf420b930}} 
+\index{interface.\+h@{interface.\+h}!pos@{pos}}
+\index{pos@{pos}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{pos()}{pos()}}
+{\footnotesize\ttfamily void pos (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Executa o comando pos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em x} & O numero da jogada \\
 \hline
 \end{DoxyParams}

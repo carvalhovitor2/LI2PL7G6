@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getlastpiece',['getLastPiece',['../data_8h.html#a0c3fc2995de1c836c19ac1c242ba211c',1,'data.c']]],
-  ['gr',['gr',['../data_8h.html#ab707c0d203341662877e9e14a78a2e5e',1,'interface.c']]]
+  ['findbranca',['findBranca',['../logic_8h.html#a9ac495d8157a1ef917a76c385a4f32b1',1,'logic.c']]]
 ];

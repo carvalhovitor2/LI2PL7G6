@@ -12,15 +12,65 @@ int \hyperlink{logic_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar} (\hyperlink{st
 \begin{DoxyCompactList}\small\item\em Função que faz a jogada e atualiza o estado com ajuda das funções dos dados. \end{DoxyCompactList}\item 
 int \hyperlink{logic_8h_a29d47f0e43124e57b790efda4631e0ef}{jogada\+Valida} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
 \begin{DoxyCompactList}\small\item\em Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}\label{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}} 
-\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} {\bfseries find\+Branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\end{DoxyCompactItemize}
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} \hyperlink{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}{find\+Branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que dado o estado devolve a coordenada onde se encontra a peça branca. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_aefc5ee01a908fa9c344a0d3b217974cf}{around\+Branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_af3e0a182844c20990e38725417c3b44d}{game\+Over} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função responsável por verificar se o jogo se acabou. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_ae7e229be0513d84bfae07481bb8461cc}{winner} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função responsável por declarar o vencedor da partida. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This file is supposed to store the declarations of the logic functions used in our project 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{logic_8h_aefc5ee01a908fa9c344a0d3b217974cf}\label{logic_8h_aefc5ee01a908fa9c344a0d3b217974cf}} 
+\index{logic.\+h@{logic.\+h}!around\+Branca@{around\+Branca}}
+\index{around\+Branca@{around\+Branca}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{around\+Branca()}{aroundBranca()}}
+{\footnotesize\ttfamily int around\+Branca (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Apontador} & para o estado do jogo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}\label{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}} 
+\index{logic.\+h@{logic.\+h}!find\+Branca@{find\+Branca}}
+\index{find\+Branca@{find\+Branca}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{find\+Branca()}{findBranca()}}
+{\footnotesize\ttfamily \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} find\+Branca (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que dado o estado devolve a coordenada onde se encontra a peça branca. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado do jogo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_af3e0a182844c20990e38725417c3b44d}\label{logic_8h_af3e0a182844c20990e38725417c3b44d}} 
+\index{logic.\+h@{logic.\+h}!game\+Over@{game\+Over}}
+\index{game\+Over@{game\+Over}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{game\+Over()}{gameOver()}}
+{\footnotesize\ttfamily int game\+Over (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função responsável por verificar se o jogo se acabou. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Apontador} & para o estado do jogo. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{logic_8h_a29d47f0e43124e57b790efda4631e0ef}\label{logic_8h_a29d47f0e43124e57b790efda4631e0ef}} 
 \index{logic.\+h@{logic.\+h}!jogada\+Valida@{jogada\+Valida}}
 \index{jogada\+Valida@{jogada\+Valida}!logic.\+h@{logic.\+h}}
@@ -53,5 +103,20 @@ Função que faz a jogada e atualiza o estado com ajuda das funções dos dados.
 {\em e} & Apontador para o estado \\
 \hline
 {\em c} & A coordenada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_ae7e229be0513d84bfae07481bb8461cc}\label{logic_8h_ae7e229be0513d84bfae07481bb8461cc}} 
+\index{logic.\+h@{logic.\+h}!winner@{winner}}
+\index{winner@{winner}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{winner()}{winner()}}
+{\footnotesize\ttfamily int winner (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função responsável por declarar o vencedor da partida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Apontador} & para o estado do jogo. \\
 \hline
 \end{DoxyParams}
