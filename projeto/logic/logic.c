@@ -78,11 +78,24 @@ int aroundBranca(ESTADO *e){
     return 0;
 }
 
+void printCASA(CASA c){
+    if (c == BRANCA)
+        printf("BRANCA\n");
+    if (c == VAZIO)
+        printf("VAZIO\n");
+    if (c == PRETA)
+        printf("PRETA\n");
+}
 
 int gameOver(ESTADO *e){
-    if (e-> tab[0][7] != VAZIO || e-> tab[7][0] != VAZIO)
+    COORDENADA win1 = {7,0}, win2 = {0,7};
+    if ((obter_estado_casa(e,win1) != VAZIO) || (obter_estado_casa(e,win2) != VAZIO)){
+        printCASA(e-> tab[7][0]);
+        printCASA(e-> tab[0][7]);
+        printf("BLAG\n");
         return 1;
-    if (prototypeAroundBranca(e))
+    }
+    if (aroundBranca(e))
         return 1;
     if ((e-> tab[0][0] == BRANCA && e-> tab[0][1] == PRETA && e-> tab[1][1] == PRETA && e-> tab[1][0] == PRETA) ||
         (e-> tab[7][7] == BRANCA && e-> tab[6][7] == PRETA && e-> tab[6][6] == PRETA && e-> tab[7][6] == PRETA))
@@ -91,10 +104,11 @@ int gameOver(ESTADO *e){
 }
 
 int winner(ESTADO *e){
+    COORDENADA win1 = {7,0}, win2 = {0,7};
 
-    if (e-> tab[0][7] == BRANCA)
+    if (obter_estado_casa(e,win2) == BRANCA)
         return 2;
-    else if (e-> tab[7][0] == BRANCA)
+    else if (obter_estado_casa(e,win1) == BRANCA)
             return 1;
 
     if (obter_jogador_atual(e) == 1)
