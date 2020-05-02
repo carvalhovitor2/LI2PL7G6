@@ -4,25 +4,6 @@
 #include "logic.h"
 
 
-COORDENADA findPreta(ESTADO *e){
-    int i = 0, j = 0, bool = 1;
-    COORDENADA preta;
-    while(i != 8 && bool){
-        while(j != 8 && bool){
-            if (e-> tab[i][j] == PRETA){
-                preta.linha = i;
-                preta.coluna = j;
-                bool = 0;
-            }
-            j ++;
-        }
-        i ++;
-        j = 0;
-    }
-    return preta;
-}
-
-
 COORDENADA findBranca(ESTADO *e){
     int i = 0, j = 0, bool = 1;
     COORDENADA branca;
@@ -140,7 +121,6 @@ int jogar(ESTADO *e, COORDENADA c) {
                 return 0;
             }
         }
-        //printf("jogar %d %d\n", c.linha+1, c.coluna+1);
         return 1;
     }
     else{
