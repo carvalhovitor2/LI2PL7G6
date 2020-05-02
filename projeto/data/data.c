@@ -185,9 +185,7 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
 
 //Coloca as coordenadas ao redor de um player num array
 void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
-	int r = 0,
-		j = -1,
-		border = 1;
+	int r = 0, j = -1, border = 1;
 	COORDENADA fake;
 
 	if (c.coluna == 7)
@@ -198,8 +196,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 			if(e-> tab[c.linha - 1][c.coluna + j] == VAZIO){
 				fake.linha = c.linha - 1;
 				fake.coluna = c.coluna + j;
-				A[r] = fake;
-				r ++;
+				A[r++] = fake;
 			}
 		}
 		j ++;
@@ -212,8 +209,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 			if(e-> tab[c.linha][c.coluna + j] == VAZIO){
 				fake.linha = c.linha;
 				fake.coluna = c.coluna + j;
-				A[r] = fake;
-				r ++;
+				A[r++] = fake;
 			}
 		}
 		j ++;
@@ -226,8 +222,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
 			if(e-> tab[c.linha + 1][c.coluna + j] == VAZIO){
 				fake.linha = c.linha + 1;
 				fake.coluna = c.coluna + j;
-				A[r] = fake;
-				r ++;
+				A[r++] = fake;
 			}
 		}
 		j ++;
