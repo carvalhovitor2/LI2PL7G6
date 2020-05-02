@@ -31,8 +31,7 @@ int prototypeAroundBranca(ESTADO *e){
 		       	teste.linha++;
 			teste.coluna = branca.coluna;
 		}
-		printf("O estado da casa eh: %d\n", obter_estado_casa(e, teste));
-		if (obter_estado_casa(e, teste) == VAZIO) return 0;
+		if (jogadaValida(e, teste)) return 0;
 		teste.coluna++;
 	}
 	return 1;
