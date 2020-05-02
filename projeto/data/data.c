@@ -15,25 +15,21 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c){
 	return ((*e).tab[line][column]);
 }
 
-
 //Gets current player
 int obter_jogador_atual(ESTADO *estado){
 	return ((*estado).jogador_atual);
 }
-
 
 //Gets current number of moves
 int obter_numero_de_jogadas(ESTADO *estado){
 	return ((*estado).num_jogadas);
 }
 
-
 int obter_numero_de_jogadasOLD(ESTADO *estado){
 	return ((*estado).num_jogadasOLD);
 }
 
-
-int getLastPiece(ESTADO *e, int bool){
+int getLastPiece(ESTADO *e, int decider){
 	int r;
 	int i = obter_numero_de_jogadas(e);
 
@@ -42,32 +38,30 @@ int getLastPiece(ESTADO *e, int bool){
 	int c1 = e -> jogadas[i].jogador1.coluna;
 	int c2 = e -> jogadas[i].jogador2.coluna;
 
-		if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
-			i --;
+	if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
+		i --;
 
-		l1 = e -> jogadas[i].jogador1.linha;
-		l2 = e -> jogadas[i].jogador2.linha;
-		c1 = e -> jogadas[i].jogador1.coluna;
-		c2 = e -> jogadas[i].jogador2.coluna;
+	l1 = e -> jogadas[i].jogador1.linha;
+	l2 = e -> jogadas[i].jogador2.linha;
+	c1 = e -> jogadas[i].jogador1.coluna;
+	c2 = e -> jogadas[i].jogador2.coluna;
 
-		if (l2 != 8 && c2 != 8){
-			if (bool)
-				r = c2;
-			else
-				r = l2;
-		}
+	if (l2 != 8 && c2 != 8){
+		if (decider)
+			r = c2;
+		else
+			r = l2;
+	}
 
-		else{
-			if (bool)
-				r = c1;
-			else
-				r = l1;
-		}
+	else{
+		if (decider)
+			r = c1;
+		else
+			r = l1;
+	}
 	
-
 	return r;
 }
-
 
 void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) 
@@ -76,19 +70,16 @@ void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     	e->jogadas[num_jogadas].jogador2 = c;
 }
 
-
 //Coloca uma peca preta no rastro deixado por uma branca
 void coloca_preta (ESTADO *e){
 	changePiece(e, findBranca(e), PRETA);
 }
-
 
 //Altera o jogador atual
 void changePlayer(ESTADO *e){
 	if (e->jogador_atual == 1) e->jogador_atual = 2;
 	else e->jogador_atual = 1;
 }
-
 
 //Altera a peca de uma coordenada
 void changePiece(ESTADO *e, COORDENADA c, CASA piece){
@@ -100,30 +91,19 @@ void changeJogada(ESTADO *e, int x){
 	(e-> num_jogadas) = x;
 }
 
-
 //Incrementa a jogada atual
 void incrJogada(ESTADO *e){
 	(e-> num_jogadas) ++;
 }
 
-
-//Diminui a jogada atual
-void dimJogada(ESTADO *e){
-	(e-> num_jogadas) --;
-}
-
-
 void arrayJogadas(ESTADO *e){
-	COORDENADA c;
-	c.linha = 8; 
-	c.coluna = 8;
+	COORDENADA c = {8,8};
 
-	for(int i = 0; i < 32 ;i ++){
+	for(int i = 0; i < 32; i ++){
 		e -> jogadas[i].jogador1 = c;
 		e -> jogadas[i].jogador2 = c; 
 	}
 }
-
 
 //Initializes the state
 ESTADO *inicializar_estado(){
@@ -144,13 +124,13 @@ ESTADO *inicializar_estado(){
 	return e;
 }
 
-
 //Faz a replica de um estado
 void replicaEstado(ESTADO *e){
 	int k = 0, n = 0;
 
 	for(int i = 0; i != 32; i ++)
 		e -> jogadasOLD[i] = e -> jogadas[i];
+
 	while(k != 8){
 		while(n != 8){
 			e -> tabOLD[k][n] = e -> tab[k][n];
@@ -159,6 +139,7 @@ void replicaEstado(ESTADO *e){
 		n = 0;
 		k ++;
 	}
+
 	e -> num_jogadasOLD = e -> num_jogadas;
 }
 
@@ -201,7 +182,6 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
 
 	return r;
 }
-
 
 //Coloca as coordenadas ao redor de um player num array
 void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){

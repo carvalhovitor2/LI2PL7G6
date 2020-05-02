@@ -25,44 +25,36 @@ COORDENADA findBranca(ESTADO *e){
 
 int aroundBranca(ESTADO *e){
     COORDENADA branca = findBranca(e);
-    int l = branca.linha;
-    int c = branca.coluna;
+    int l = branca.linha, c = branca.coluna;
 
     if (!l || l == 7){
         switch(l){
-            case 0:
-            if (e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA && 
-                e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
-                return 1;
+            case 0: if (e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA && 
+                        e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
+                        return 1; 
             break;
 
-            case 7:
-            if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
-                e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA)
-                return 1;
+            case 7: if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
+                        e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA)
+                        return 1; 
             break;
         }
     }
-
     if (!c || c == 7){
         switch(c){
-            case 0:
-            if (e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
-                e-> tab[l][c+1] == PRETA && 
-                e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
-                return 1;
+            case 0: if (e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
+                        e-> tab[l][c+1] == PRETA && 
+                        e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
+                        return 1; 
             break;
 
-            case 7:
-            if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA &&
-                e-> tab[l][c-1] == PRETA &&
-                e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA)
-                return 1;
+            case 7: if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA &&
+                        e-> tab[l][c-1] == PRETA &&
+                        e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA)
+                        return 1; 
             break;
         }
-
     }
-
     if (e-> tab[l-1][c-1] == PRETA && e-> tab[l-1][c] == PRETA && e-> tab[l-1][c+1] == PRETA &&
         e-> tab[l][c-1] == PRETA && e-> tab[l][c+1] == PRETA && 
         e-> tab[l+1][c-1] == PRETA && e-> tab[l+1][c] == PRETA && e-> tab[l+1][c+1] == PRETA)
