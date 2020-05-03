@@ -109,7 +109,7 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_o
 @param c A coordenada
 @param num_player Jogador atual
 */
-void coloca_jogada (ESTADO *e,int num_jogadas,COORDENADA c,int num_player);
+void coloca_jogada (ESTADO *e, int num_jogadas,COORDENADA c, int num_player);
 
 /**
 \brief Alter o jogador atual
@@ -161,4 +161,6 @@ int getLastPiece(ESTADO *e, int line_or_col);
 @param new_or_old Variavel a optar pelo array de jogadas actual ou antigo.
 */
 int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old);
+
+
 #endif

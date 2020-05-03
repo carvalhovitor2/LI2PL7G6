@@ -48,20 +48,7 @@ void gr(char *fileName, ESTADO *e);
 void ler(char *fileName, ESTADO *e);
 
 /**
-\brief Executa o comando pos
-@param e Apontador para o estado
-@param x O numero da jogada
-*/
-void pos(ESTADO *e, int x);
-
-/**
 \brief Função responsável por escrever as jogadas realizadas num jogo. Pode-se escolher o local de impressão das jogadas. (Ex: stdout ou um ficheiro)
 @param e Apontador para o estado.
 */
 void movs(FILE *whereToPrint,ESTADO *e);
-
-void posInicial(ESTADO *e);
-
-void posDireto(ESTADO *e, int i_New, int x);
-
-void posInBetween(ESTADO *e, int i_New, int x);

@@ -26,6 +26,43 @@ COORDENADA findBranca(ESTADO *e){
     return branca;
 }
 
+//Conta a quantidade de coordenadas vazias no entorno de um jogador
+int nr_coord_around(COORDENADA coord, ESTADO *e){
+    int ret = 0, count = -1, border = 1;
+    COORDENADA copycat;
+
+    if (coord.coluna == 7) border = 0;
+    copycat.linha = coord.linha - 1;
+    while(coord.linha != 0 && count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
+                ret ++;
+        }
+        count ++;
+    }
+    count = -1; copycat.linha ++;
+    while(count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
+                ret ++;
+        }
+        count ++;
+    }
+    count = -1; copycat.linha ++;
+    while(coord.linha != 7 && count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
+                ret ++;
+        }
+        count ++;
+    }
+
+    return ret;
+}
+
 int aroundBranca(ESTADO *e){
     COORDENADA branca = findBranca(e);
     if(nr_coord_around(branca, e) != 0) return 0;
@@ -57,7 +94,7 @@ int winner(ESTADO *e){
 }
 
 //Receives a coordinate and makes a move. (e.g changes the position of a player and leaves a black piece in its current position)
-int jogar(ESTADO *e, COORDENADA coord) {
+int jogar(ESTADO *e, COORDENADA coord){
     int vencedor;
     if (jogadaValida(e, coord) && !gameOver(e)){
 	    coloca_preta(e);
@@ -122,43 +159,6 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 	return 1;
 }
 
-//Conta a quantidade de coordenadas vazias no entorno de um jogador
-int nr_coord_around(COORDENADA coord, ESTADO *e){
-    int ret = 0, count = -1, border = 1;
-    COORDENADA copycat;
-
-    if (coord.coluna == 7) border = 0;
-    copycat.linha = coord.linha - 1;
-    while(coord.linha != 0 && count <= border){
-        copycat.coluna = coord.coluna + count;
-        if (coord.coluna + count != -1){
-            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                ret ++;
-        }
-        count ++;
-    }
-    count = -1; copycat.linha ++;
-    while(count <= border){
-        copycat.coluna = coord.coluna + count;
-        if (coord.coluna + count != -1){
-            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                ret ++;
-        }
-        count ++;
-    }
-    count = -1; copycat.linha ++;
-    while(coord.linha != 7 && count <= border){
-        copycat.coluna = coord.coluna + count;
-        if (coord.coluna + count != -1){
-            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                ret ++;
-        }
-        count ++;
-    }
-
-    return ret;
-}
-
 //Coloca as coordenadas ao redor de um player num array
 void array_coord_around(COORDENADA coord, COORDENADA *ARRAY, ESTADO *e){
     int ret = 0, count = -1, border = 1;
@@ -195,4 +195,91 @@ void array_coord_around(COORDENADA coord, COORDENADA *ARRAY, ESTADO *e){
         }
         count ++;
     }   
+}
+
+
+void posInicial(ESTADO *e){
+    COORDENADA coord_variavel, inicial = {3,4}, std = {8,8};
+
+    for(int k = 0; k != 8; k ++)
+        for(int l = 0; l != 8; l ++){
+            coord_variavel.linha = l; coord_variavel.coluna = k;
+            changePiece(e, coord_variavel, VAZIO);
+        }
+
+    for(int t = 0; t != 32; t ++){
+        coloca_jogada(e, t, std, 1); coloca_jogada(e, t, std, 2);
+    }
+
+    changePiece(e,inicial,BRANCA);
+    changeJogada(e,0);
+
+    if (obter_jogador_atual(e) == 2) 
+        changePlayer(e); 
+}
+
+void posDireto(ESTADO *e, int i_New, int posJogada){
+    COORDENADA player1, player2, std = {8,8};
+
+    changeJogada(e,posJogada);
+
+    while (i_New + 1 != posJogada){ 
+        player1.linha = obter_coord_deJogada(e, i_New, 1, 1, 1); player1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 1);
+        player2.linha = obter_coord_deJogada(e, i_New, 2, 1, 1); player2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 1);
+
+        changePiece(e, player1, VAZIO); 
+        changePiece(e, player2, VAZIO);
+
+        coloca_jogada(e, i_New, std, 1); 
+        coloca_jogada(e, i_New, std, 2);
+
+        i_New --;
+
+        if (obter_jogador_atual(e) == 2) 
+            changePlayer(e);
+    }
+}
+
+
+void posInBetween(ESTADO *e, int i_New, int posJogada){
+    COORDENADA player1, player2;
+
+    changeJogada(e,posJogada);
+
+    if (obter_jogador_atual(e) == 2) 
+        changePlayer(e);
+    
+    coloca_preta(e);
+
+    while(i_New != posJogada){
+
+        player1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); player1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
+        player2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); player2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
+
+        changePiece(e, player1, obter_estado_casa(e, player1, 0, 0)); 
+        changePiece(e, player2, obter_estado_casa(e, player2, 0, 0));
+
+        coloca_jogada(e, i_New, player1, 1); 
+        coloca_jogada(e, i_New, player2, 2);
+
+        i_New ++;
+    }  
+}
+
+void pos(ESTADO *e, int posJogada){
+    int i_OLD = obter_numero_de_jogadas(e, 0), i_New = obter_numero_de_jogadas(e, 1);
+
+    if (posJogada == 0)
+        posInicial(e); 
+    else{
+        if (posJogada <= i_OLD){
+            if (i_New < posJogada) posInBetween(e, i_New, posJogada);
+            else                   posDireto(e, i_New, posJogada);
+
+            COORDENADA novaBranca = {getLastPiece(e,0), getLastPiece(e,1)};
+            changePiece(e,novaBranca,BRANCA);
+        }
+        else
+            printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
+    }
 }
