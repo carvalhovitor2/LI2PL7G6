@@ -25,6 +25,20 @@ int nr_coord_around(COORDENADA coord, ESTADO *e);
 */
 int aroundBranca(ESTADO *e);
 
+/**
+\brief Retorna o numero de coordenadas vazias no entorno de um jogador
+@param A coordenada onde esta o jogador
+@param Apotador para o estado do jogo
+*/
+int nr_coord_around(COORDENADA c, ESTADO *e);
+
+/**
+\brief Monta um array com as coordenadas que estao no entorno de um player
+@param A coordenada onde esta o player
+@param Um array de coordenadas
+@param Apontador para o estado do jogo
+*/
+void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 
 /**
 \brief Função responsável por verificar se o jogo acabou.
