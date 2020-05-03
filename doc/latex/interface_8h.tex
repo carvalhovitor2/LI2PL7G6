@@ -12,31 +12,52 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 void \hyperlink{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}{mostrar\+\_\+tabuleiro} (F\+I\+LE $\ast$where\+To\+Print, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que imprime o tabuleiro. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a27f577e4376958142248759c36db085a}{prompt} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int nr\+\_\+comandos, int new\+\_\+or\+\_\+old)
+\begin{DoxyCompactList}\small\item\em Imprime o prompt de comandos. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_a24ebd76d052ecf68d39ee7da701da002}{movs} (F\+I\+LE $\ast$where\+To\+Print, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro). \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{interface_8h_a1f8c0ef6d45d0d102184ad254fc73bf5}{rem\+Str} (int nr\+\_\+para\+\_\+remover, char $\ast$original)
+\begin{DoxyCompactList}\small\item\em Remove um pedaço de uma string. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{interface_8h_a8f5d07035628d934f34aaf52baa408c5}{add\+Str} (char $\ast$str1, char $\ast$str2)
+\begin{DoxyCompactList}\small\item\em Junta duas strings. \end{DoxyCompactList}\item 
 int \hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretador} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que lê e executa o comando dado. \end{DoxyCompactList}\item 
-int \hyperlink{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}{jog2} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int decider)
-\begin{DoxyCompactList}\small\item\em Fucção que executa o comando jog2. \end{DoxyCompactList}\item 
 void \hyperlink{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Fucção que executa o comando jog. \end{DoxyCompactList}\item 
-void \hyperlink{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}{gr} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int bool\+\_\+bot)
+\begin{DoxyCompactList}\small\item\em Função que executa o comando jog. \end{DoxyCompactList}\item 
+int \hyperlink{interface_8h_abfdebec0d602553f86b4311624a7dbe2}{jog2} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int line\+\_\+or\+\_\+col)
+\begin{DoxyCompactList}\small\item\em Função que executa o comando jog2. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8h_ab707c0d203341662877e9e14a78a2e5e}{gr} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Grava o estado de jogo num ficheiro. \end{DoxyCompactList}\item 
-void \hyperlink{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}{ler} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int bool\+\_\+bot)
-\begin{DoxyCompactList}\small\item\em Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. \end{DoxyCompactList}\item 
-void \hyperlink{interface_8h_a306916ce2a9f631bce8a813cf420b930}{pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int x)
-\begin{DoxyCompactList}\small\item\em Executa o comando pos. \end{DoxyCompactList}\item 
-void \hyperlink{interface_8h_a24ebd76d052ecf68d39ee7da701da002}{movs} (F\+I\+LE $\ast$where\+To\+Print, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro) \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{interface_8h_a4637f9fb13c30f06d0262631ae38f14f}{ler} (char $\ast$file\+Name, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Lê um ficheiro e carrega as informações do ficheiro no estado do jogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Declare the functions that are defined in interface.\+c 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}\label{interface_8h_a870b7b9e3f0a0cb5594e1e6a4f489228}} 
+\mbox{\Hypertarget{interface_8h_a8f5d07035628d934f34aaf52baa408c5}\label{interface_8h_a8f5d07035628d934f34aaf52baa408c5}} 
+\index{interface.\+h@{interface.\+h}!add\+Str@{add\+Str}}
+\index{add\+Str@{add\+Str}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{add\+Str()}{addStr()}}
+{\footnotesize\ttfamily char$\ast$ add\+Str (\begin{DoxyParamCaption}\item[{char $\ast$}]{str1,  }\item[{char $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+
+
+Junta duas strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str1} & Apontador para a primeira string. \\
+\hline
+{\em str2} & Apontador para a segunda string. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_ab707c0d203341662877e9e14a78a2e5e}\label{interface_8h_ab707c0d203341662877e9e14a78a2e5e}} 
 \index{interface.\+h@{interface.\+h}!gr@{gr}}
 \index{gr@{gr}!interface.\+h@{interface.\+h}}
 \subsubsection{\texorpdfstring{gr()}{gr()}}
-{\footnotesize\ttfamily void gr (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{bool\+\_\+bot }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void gr (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
@@ -44,9 +65,9 @@ Grava o estado de jogo num ficheiro.
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
 \hline
-{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
+{\em file\+Name} & O nome do ficheiro onde gravar o estado. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
@@ -61,7 +82,7 @@ Função que lê e executa o comando dado.
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}\label{interface_8h_a9dfbc982d23a619e36575d8e7ec8e41c}} 
@@ -72,43 +93,45 @@ Função que lê e executa o comando dado.
 
 
 
-Fucção que executa o comando jog. 
+Função que executa o comando jog. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}\label{interface_8h_a6cfb0b2696ffdb74ce3899f360987208}} 
+\mbox{\Hypertarget{interface_8h_abfdebec0d602553f86b4311624a7dbe2}\label{interface_8h_abfdebec0d602553f86b4311624a7dbe2}} 
 \index{interface.\+h@{interface.\+h}!jog2@{jog2}}
 \index{jog2@{jog2}!interface.\+h@{interface.\+h}}
 \subsubsection{\texorpdfstring{jog2()}{jog2()}}
-{\footnotesize\ttfamily int jog2 (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{decider }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int jog2 (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{line\+\_\+or\+\_\+col }\end{DoxyParamCaption})}
 
 
 
-Fucção que executa o comando jog2. 
+Função que executa o comando jog2. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
+\hline
+{\em line\+\_\+or\+\_\+col} & Variável booleana para servir de escolha dos eixos de uma coordenada. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}\label{interface_8h_ab69c004e31bcd40e913e7930c8a89fba}} 
+\mbox{\Hypertarget{interface_8h_a4637f9fb13c30f06d0262631ae38f14f}\label{interface_8h_a4637f9fb13c30f06d0262631ae38f14f}} 
 \index{interface.\+h@{interface.\+h}!ler@{ler}}
 \index{ler@{ler}!interface.\+h@{interface.\+h}}
 \subsubsection{\texorpdfstring{ler()}{ler()}}
-{\footnotesize\ttfamily void ler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{bool\+\_\+bot }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+Name,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
-Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. 
+Lê um ficheiro e carrega as informações do ficheiro no estado do jogo. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
 \hline
-{\em file\+Name} & o nome do ficheiro onde gravar o estado \\
+{\em file\+Name} & O nome do ficheiro onde gravar o estado. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}\label{interface_8h_aac140becfd5ab21e9a28bc367b1dd414}} 
@@ -123,9 +146,9 @@ Função que imprime o tabuleiro.
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado. \\
 \hline
-{\em where\+To\+Print} & Apontador para guardar o estado. \\
+{\em where\+To\+Print} & Apontador para onde o tabuleiro vai ser imprimido. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{interface_8h_a24ebd76d052ecf68d39ee7da701da002}\label{interface_8h_a24ebd76d052ecf68d39ee7da701da002}} 
@@ -136,27 +159,48 @@ Função que imprime o tabuleiro.
 
 
 
-Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro) 
+Função responsável por escrever as jogadas realizadas num jogo. Pode-\/se escolher o local de impressão das jogadas. (Ex\+: stdout ou um ficheiro). 
 
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado. \\
 \hline
+{\em where\+To\+Print} & Apontador para o local de impressão. Pode ser stdout ou um ficheiro. \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{interface_8h_a306916ce2a9f631bce8a813cf420b930}\label{interface_8h_a306916ce2a9f631bce8a813cf420b930}} 
-\index{interface.\+h@{interface.\+h}!pos@{pos}}
-\index{pos@{pos}!interface.\+h@{interface.\+h}}
-\subsubsection{\texorpdfstring{pos()}{pos()}}
-{\footnotesize\ttfamily void pos (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{x }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{interface_8h_a27f577e4376958142248759c36db085a}\label{interface_8h_a27f577e4376958142248759c36db085a}} 
+\index{interface.\+h@{interface.\+h}!prompt@{prompt}}
+\index{prompt@{prompt}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{prompt()}{prompt()}}
+{\footnotesize\ttfamily void prompt (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{nr\+\_\+comandos,  }\item[{int}]{new\+\_\+or\+\_\+old }\end{DoxyParamCaption})}
 
 
 
-Executa o comando pos. 
+Imprime o prompt de comandos. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Apontador para o estado \\
+{\em e} & Apontador para o estado do jogo. \\
 \hline
-{\em x} & O numero da jogada \\
+{\em nr\+\_\+comandos} & O numero de comandos efetuados até então. \\
+\hline
+{\em new\+\_\+or\+\_\+old} & Variável booleana para decidir se o numero de comandos efetuados traduz-\/se no array de jogadas novo ou antigo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a1f8c0ef6d45d0d102184ad254fc73bf5}\label{interface_8h_a1f8c0ef6d45d0d102184ad254fc73bf5}} 
+\index{interface.\+h@{interface.\+h}!rem\+Str@{rem\+Str}}
+\index{rem\+Str@{rem\+Str}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{rem\+Str()}{remStr()}}
+{\footnotesize\ttfamily char$\ast$ rem\+Str (\begin{DoxyParamCaption}\item[{int}]{nr\+\_\+para\+\_\+remover,  }\item[{char $\ast$}]{original }\end{DoxyParamCaption})}
+
+
+
+Remove um pedaço de uma string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nr\+\_\+para\+\_\+remover} & O numero de chars para remover de uma string. \\
+\hline
+{\em original} & Apontador para a string original. \\
 \hline
 \end{DoxyParams}

@@ -8,18 +8,30 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{logic_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
-\begin{DoxyCompactList}\small\item\em Função que faz a jogada e atualiza o estado com ajuda das funções dos dados. \end{DoxyCompactList}\item 
-int \hyperlink{logic_8h_a29d47f0e43124e57b790efda4631e0ef}{jogada\+Valida} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
-\begin{DoxyCompactList}\small\item\em Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. \end{DoxyCompactList}\item 
 \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} \hyperlink{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}{find\+Branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que dado o estado devolve a coordenada onde se encontra a peça branca. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_aa152a6d6c4a73a2689bd12eabe13f3e3}{nr\+\_\+coord\+\_\+around} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} coord, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Conta o número de casas vazias à volta de uma certa coordenada. \end{DoxyCompactList}\item 
 int \hyperlink{logic_8h_aefc5ee01a908fa9c344a0d3b217974cf}{around\+Branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em É responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. \end{DoxyCompactList}\item 
+void \hyperlink{logic_8h_a22e6bfd18dfae196a5219ef70be801aa}{array\+\_\+coord\+\_\+around} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$A, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Monta um array com as coordenadas que estao no entorno de um player. \end{DoxyCompactList}\item 
 int \hyperlink{logic_8h_af3e0a182844c20990e38725417c3b44d}{game\+Over} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Função responsável por verificar se o jogo se acabou. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função responsável por verificar se o jogo acabou. \end{DoxyCompactList}\item 
 int \hyperlink{logic_8h_ae7e229be0513d84bfae07481bb8461cc}{winner} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Função responsável por declarar o vencedor da partida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tem o propósito de perceber qual o vencedor da partida. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_a26293fb262963585f16944baa50dd524}{jogar} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} coord)
+\begin{DoxyCompactList}\small\item\em Faz a jogada e atualiza o estado com ajuda das funções dos dados. \end{DoxyCompactList}\item 
+int \hyperlink{logic_8h_ab6065e6ea1a6e5967bc0c21eed79f938}{jogada\+Valida} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} going)
+\begin{DoxyCompactList}\small\item\em Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. \end{DoxyCompactList}\item 
+void \hyperlink{logic_8h_ac5101ba53ad5808b92a18fc947c32354}{pos\+Inicial} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar ao início do jogo. \end{DoxyCompactList}\item 
+void \hyperlink{logic_8h_abc81417ff7f76d73b373a040f4415b5b}{pos\+Direto} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int i\+\_\+\+New, int pos\+Jogada)
+\begin{DoxyCompactList}\small\item\em Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar atrás mas não ao início. \end{DoxyCompactList}\item 
+void \hyperlink{logic_8h_a9aeaae3580c28c3a4abca9fe38e2161f}{pos\+In\+Between} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int i\+\_\+\+New, int pos\+Jogada)
+\begin{DoxyCompactList}\small\item\em Auxiliar à função e comando pos, que executa o comando pos quando o jogador já o executou anteriormente e quer passar para uma jogada à frente. \end{DoxyCompactList}\item 
+void \hyperlink{logic_8h_ad27a09e9f7333a4ca872f52870aef90b}{pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int pos\+Jogada)
+\begin{DoxyCompactList}\small\item\em Função que executa o comando pos. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -34,11 +46,49 @@ This file is supposed to store the declarations of the logic functions used in o
 
 
 
-Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. 
+É responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função game\+Over. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado do jogo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_a22e6bfd18dfae196a5219ef70be801aa}\label{logic_8h_a22e6bfd18dfae196a5219ef70be801aa}} 
+\index{logic.\+h@{logic.\+h}!array\+\_\+coord\+\_\+around@{array\+\_\+coord\+\_\+around}}
+\index{array\+\_\+coord\+\_\+around@{array\+\_\+coord\+\_\+around}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{array\+\_\+coord\+\_\+around()}{array\_coord\_around()}}
+{\footnotesize\ttfamily void array\+\_\+coord\+\_\+around (\begin{DoxyParamCaption}\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$}]{A,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Monta um array com as coordenadas que estao no entorno de um player. 
+
+Modifica um array de coordenadas, depositando nele as casas vazias à volta de uma certa coordenada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & coordenada onde esta o player \\
+\hline
+{\em Um} & array de coordenadas \\
+\hline
+{\em Apontador} & para o estado do jogo\\
+\hline
+{\em coord} & A coordenada em questão \\
+\hline
+{\em A\+R\+R\+AY} & O array que vai ser modificado \\
+\hline
+{\em e} & Apontador para o estado\\
+\hline
+\end{DoxyParams}
+Monta um array com as coordenadas que estao no entorno de um player.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & A coordenada em questão \\
+\hline
+{\em A\+R\+R\+AY} & O array que vai ser modificado \\
+\hline
+{\em e} & Apontador para o estado \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}\label{logic_8h_a9ac495d8157a1ef917a76c385a4f32b1}} 
@@ -64,18 +114,18 @@ Função que dado o estado devolve a coordenada onde se encontra a peça branca.
 
 
 
-Função responsável por verificar se o jogo se acabou. 
+Função responsável por verificar se o jogo acabou. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado do jogo. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{logic_8h_a29d47f0e43124e57b790efda4631e0ef}\label{logic_8h_a29d47f0e43124e57b790efda4631e0ef}} 
+\mbox{\Hypertarget{logic_8h_ab6065e6ea1a6e5967bc0c21eed79f938}\label{logic_8h_ab6065e6ea1a6e5967bc0c21eed79f938}} 
 \index{logic.\+h@{logic.\+h}!jogada\+Valida@{jogada\+Valida}}
 \index{jogada\+Valida@{jogada\+Valida}!logic.\+h@{logic.\+h}}
 \subsubsection{\texorpdfstring{jogada\+Valida()}{jogadaValida()}}
-{\footnotesize\ttfamily int jogada\+Valida (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int jogada\+Valida (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{going }\end{DoxyParamCaption})}
 
 
 
@@ -85,24 +135,126 @@ Função que dado a coordenada vê se a jogada é válida e se não for avisa o 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado \\
 \hline
-{\em c} & A coordenada \\
+{\em c} & A coordenada escolhida para a jogada que vai ser testada \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{logic_8h_ac313d7e553b1e2b5f266acb9bfff8141}\label{logic_8h_ac313d7e553b1e2b5f266acb9bfff8141}} 
+\mbox{\Hypertarget{logic_8h_a26293fb262963585f16944baa50dd524}\label{logic_8h_a26293fb262963585f16944baa50dd524}} 
 \index{logic.\+h@{logic.\+h}!jogar@{jogar}}
 \index{jogar@{jogar}!logic.\+h@{logic.\+h}}
 \subsubsection{\texorpdfstring{jogar()}{jogar()}}
-{\footnotesize\ttfamily int jogar (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int jogar (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{coord }\end{DoxyParamCaption})}
 
 
 
-Função que faz a jogada e atualiza o estado com ajuda das funções dos dados. 
+Faz a jogada e atualiza o estado com ajuda das funções dos dados. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em e} & Apontador para o estado \\
 \hline
-{\em c} & A coordenada \\
+{\em c} & A coordenada para onde jogar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_aa152a6d6c4a73a2689bd12eabe13f3e3}\label{logic_8h_aa152a6d6c4a73a2689bd12eabe13f3e3}} 
+\index{logic.\+h@{logic.\+h}!nr\+\_\+coord\+\_\+around@{nr\+\_\+coord\+\_\+around}}
+\index{nr\+\_\+coord\+\_\+around@{nr\+\_\+coord\+\_\+around}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{nr\+\_\+coord\+\_\+around()}{nr\_coord\_around()}}
+{\footnotesize\ttfamily int nr\+\_\+coord\+\_\+around (\begin{DoxyParamCaption}\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{coord,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Conta o número de casas vazias à volta de uma certa coordenada. 
+
+Retorna o numero de coordenadas vazias no entorno de um jogador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & A coordenada em questão. \\
+\hline
+{\em e} & Apontador para o estado do jogo.\\
+\hline
+{\em A} & coordenada onde esta o jogador \\
+\hline
+{\em Apotador} & para o estado do jogo\\
+\hline
+\end{DoxyParams}
+Conta o número de casas vazias à volta de uma certa coordenada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & coordenada onde esta o jogador \\
+\hline
+{\em Apotador} & para o estado do jogo \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_ad27a09e9f7333a4ca872f52870aef90b}\label{logic_8h_ad27a09e9f7333a4ca872f52870aef90b}} 
+\index{logic.\+h@{logic.\+h}!pos@{pos}}
+\index{pos@{pos}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{pos()}{pos()}}
+{\footnotesize\ttfamily void pos (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{pos\+Jogada }\end{DoxyParamCaption})}
+
+
+
+Função que executa o comando pos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em pos\+Jogada} & A jogada que o utilizador quer reaver \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_abc81417ff7f76d73b373a040f4415b5b}\label{logic_8h_abc81417ff7f76d73b373a040f4415b5b}} 
+\index{logic.\+h@{logic.\+h}!pos\+Direto@{pos\+Direto}}
+\index{pos\+Direto@{pos\+Direto}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{pos\+Direto()}{posDireto()}}
+{\footnotesize\ttfamily void pos\+Direto (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{i\+\_\+\+New,  }\item[{int}]{pos\+Jogada }\end{DoxyParamCaption})}
+
+
+
+Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar atrás mas não ao início. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em i\+\_\+\+New} & A número de jogadas que estavam efetuados até então \\
+\hline
+{\em pos\+Jogada} & A jogada que o utilizador quer reaver \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_a9aeaae3580c28c3a4abca9fe38e2161f}\label{logic_8h_a9aeaae3580c28c3a4abca9fe38e2161f}} 
+\index{logic.\+h@{logic.\+h}!pos\+In\+Between@{pos\+In\+Between}}
+\index{pos\+In\+Between@{pos\+In\+Between}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{pos\+In\+Between()}{posInBetween()}}
+{\footnotesize\ttfamily void pos\+In\+Between (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{i\+\_\+\+New,  }\item[{int}]{pos\+Jogada }\end{DoxyParamCaption})}
+
+
+
+Auxiliar à função e comando pos, que executa o comando pos quando o jogador já o executou anteriormente e quer passar para uma jogada à frente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
+\hline
+{\em i\+\_\+\+New} & A jogada que o utilizador estaria a ver nesse momento \\
+\hline
+{\em pos\+Jogada} & A jogada que o utilizador quer reaver \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logic_8h_ac5101ba53ad5808b92a18fc947c32354}\label{logic_8h_ac5101ba53ad5808b92a18fc947c32354}} 
+\index{logic.\+h@{logic.\+h}!pos\+Inicial@{pos\+Inicial}}
+\index{pos\+Inicial@{pos\+Inicial}!logic.\+h@{logic.\+h}}
+\subsubsection{\texorpdfstring{pos\+Inicial()}{posInicial()}}
+{\footnotesize\ttfamily void pos\+Inicial (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar ao início do jogo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Apontador para o estado \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{logic_8h_ae7e229be0513d84bfae07481bb8461cc}\label{logic_8h_ae7e229be0513d84bfae07481bb8461cc}} 
@@ -113,7 +265,7 @@ Função que faz a jogada e atualiza o estado com ajuda das funções dos dados.
 
 
 
-Função responsável por declarar o vencedor da partida. 
+Tem o propósito de perceber qual o vencedor da partida. 
 
 
 \begin{DoxyParams}{Parameters}

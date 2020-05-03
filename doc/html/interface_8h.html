@@ -92,33 +92,76 @@ Functions</h2></td></tr>
 <tr class="memitem:aac140becfd5ab21e9a28bc367b1dd414"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#aac140becfd5ab21e9a28bc367b1dd414">mostrar_tabuleiro</a> (FILE *whereToPrint, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
 <tr class="memdesc:aac140becfd5ab21e9a28bc367b1dd414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que imprime o tabuleiro.  <a href="#aac140becfd5ab21e9a28bc367b1dd414">More...</a><br /></td></tr>
 <tr class="separator:aac140becfd5ab21e9a28bc367b1dd414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f577e4376958142248759c36db085a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a27f577e4376958142248759c36db085a">prompt</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int nr_comandos, int new_or_old)</td></tr>
+<tr class="memdesc:a27f577e4376958142248759c36db085a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime o prompt de comandos.  <a href="#a27f577e4376958142248759c36db085a">More...</a><br /></td></tr>
+<tr class="separator:a27f577e4376958142248759c36db085a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ebd76d052ecf68d39ee7da701da002"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a24ebd76d052ecf68d39ee7da701da002">movs</a> (FILE *whereToPrint, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a24ebd76d052ecf68d39ee7da701da002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por escrever as jogadas realizadas num jogo. Pode-se escolher o local de impressão das jogadas. (Ex: stdout ou um ficheiro).  <a href="#a24ebd76d052ecf68d39ee7da701da002">More...</a><br /></td></tr>
+<tr class="separator:a24ebd76d052ecf68d39ee7da701da002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8c0ef6d45d0d102184ad254fc73bf5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a1f8c0ef6d45d0d102184ad254fc73bf5">remStr</a> (int nr_para_remover, char *original)</td></tr>
+<tr class="memdesc:a1f8c0ef6d45d0d102184ad254fc73bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove um pedaço de uma string.  <a href="#a1f8c0ef6d45d0d102184ad254fc73bf5">More...</a><br /></td></tr>
+<tr class="separator:a1f8c0ef6d45d0d102184ad254fc73bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5d07035628d934f34aaf52baa408c5"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a8f5d07035628d934f34aaf52baa408c5">addStr</a> (char *str1, char *str2)</td></tr>
+<tr class="memdesc:a8f5d07035628d934f34aaf52baa408c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Junta duas strings.  <a href="#a8f5d07035628d934f34aaf52baa408c5">More...</a><br /></td></tr>
+<tr class="separator:a8f5d07035628d934f34aaf52baa408c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24da95ebeede4a540e37790ce8be359b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a24da95ebeede4a540e37790ce8be359b">interpretador</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
 <tr class="memdesc:a24da95ebeede4a540e37790ce8be359b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que lê e executa o comando dado.  <a href="#a24da95ebeede4a540e37790ce8be359b">More...</a><br /></td></tr>
 <tr class="separator:a24da95ebeede4a540e37790ce8be359b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cfb0b2696ffdb74ce3899f360987208"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a6cfb0b2696ffdb74ce3899f360987208">jog2</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int decider)</td></tr>
-<tr class="memdesc:a6cfb0b2696ffdb74ce3899f360987208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fucção que executa o comando jog2.  <a href="#a6cfb0b2696ffdb74ce3899f360987208">More...</a><br /></td></tr>
-<tr class="separator:a6cfb0b2696ffdb74ce3899f360987208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dfbc982d23a619e36575d8e7ec8e41c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a9dfbc982d23a619e36575d8e7ec8e41c">jog</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:a9dfbc982d23a619e36575d8e7ec8e41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fucção que executa o comando jog.  <a href="#a9dfbc982d23a619e36575d8e7ec8e41c">More...</a><br /></td></tr>
+<tr class="memdesc:a9dfbc982d23a619e36575d8e7ec8e41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que executa o comando jog.  <a href="#a9dfbc982d23a619e36575d8e7ec8e41c">More...</a><br /></td></tr>
 <tr class="separator:a9dfbc982d23a619e36575d8e7ec8e41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a870b7b9e3f0a0cb5594e1e6a4f489228"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a870b7b9e3f0a0cb5594e1e6a4f489228">gr</a> (char *fileName, <a class="el" href="structESTADO.html">ESTADO</a> *e, int bool_bot)</td></tr>
-<tr class="memdesc:a870b7b9e3f0a0cb5594e1e6a4f489228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava o estado de jogo num ficheiro.  <a href="#a870b7b9e3f0a0cb5594e1e6a4f489228">More...</a><br /></td></tr>
-<tr class="separator:a870b7b9e3f0a0cb5594e1e6a4f489228"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab69c004e31bcd40e913e7930c8a89fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#ab69c004e31bcd40e913e7930c8a89fba">ler</a> (char *fileName, <a class="el" href="structESTADO.html">ESTADO</a> *e, int bool_bot)</td></tr>
-<tr class="memdesc:ab69c004e31bcd40e913e7930c8a89fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo.  <a href="#ab69c004e31bcd40e913e7930c8a89fba">More...</a><br /></td></tr>
-<tr class="separator:ab69c004e31bcd40e913e7930c8a89fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a306916ce2a9f631bce8a813cf420b930"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a306916ce2a9f631bce8a813cf420b930">pos</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int x)</td></tr>
-<tr class="memdesc:a306916ce2a9f631bce8a813cf420b930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa o comando pos.  <a href="#a306916ce2a9f631bce8a813cf420b930">More...</a><br /></td></tr>
-<tr class="separator:a306916ce2a9f631bce8a813cf420b930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24ebd76d052ecf68d39ee7da701da002"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a24ebd76d052ecf68d39ee7da701da002">movs</a> (FILE *whereToPrint, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:a24ebd76d052ecf68d39ee7da701da002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por escrever as jogadas realizadas num jogo. Pode-se escolher o local de impressão das jogadas. (Ex: stdout ou um ficheiro)  <a href="#a24ebd76d052ecf68d39ee7da701da002">More...</a><br /></td></tr>
-<tr class="separator:a24ebd76d052ecf68d39ee7da701da002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdebec0d602553f86b4311624a7dbe2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#abfdebec0d602553f86b4311624a7dbe2">jog2</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int line_or_col)</td></tr>
+<tr class="memdesc:abfdebec0d602553f86b4311624a7dbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que executa o comando jog2.  <a href="#abfdebec0d602553f86b4311624a7dbe2">More...</a><br /></td></tr>
+<tr class="separator:abfdebec0d602553f86b4311624a7dbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab707c0d203341662877e9e14a78a2e5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#ab707c0d203341662877e9e14a78a2e5e">gr</a> (char *fileName, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:ab707c0d203341662877e9e14a78a2e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grava o estado de jogo num ficheiro.  <a href="#ab707c0d203341662877e9e14a78a2e5e">More...</a><br /></td></tr>
+<tr class="separator:ab707c0d203341662877e9e14a78a2e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4637f9fb13c30f06d0262631ae38f14f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8h.html#a4637f9fb13c30f06d0262631ae38f14f">ler</a> (char *fileName, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a4637f9fb13c30f06d0262631ae38f14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê um ficheiro e carrega as informações do ficheiro no estado do jogo.  <a href="#a4637f9fb13c30f06d0262631ae38f14f">More...</a><br /></td></tr>
+<tr class="separator:a4637f9fb13c30f06d0262631ae38f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declare the functions that are defined in interface.c </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a870b7b9e3f0a0cb5594e1e6a4f489228"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a870b7b9e3f0a0cb5594e1e6a4f489228">&#9670;&nbsp;</a></span>gr()</h2>
+<a id="a8f5d07035628d934f34aaf52baa408c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f5d07035628d934f34aaf52baa408c5">&#9670;&nbsp;</a></span>addStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* addStr </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Junta duas strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str1</td><td>Apontador para a primeira string. </td></tr>
+    <tr><td class="paramname">str2</td><td>Apontador para a segunda string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab707c0d203341662877e9e14a78a2e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab707c0d203341662877e9e14a78a2e5e">&#9670;&nbsp;</a></span>gr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,13 +176,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
-          <td class="paramname"><em>e</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bool_bot</em>&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -152,8 +189,8 @@ Functions</h2></td></tr>
 <p>Grava o estado de jogo num ficheiro. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">fileName</td><td>o nome do ficheiro onde gravar o estado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
+    <tr><td class="paramname">fileName</td><td>O nome do ficheiro onde gravar o estado. </td></tr>
   </table>
   </dd>
 </dl>
@@ -179,7 +216,7 @@ Functions</h2></td></tr>
 <p>Função que lê e executa o comando dado. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
   </table>
   </dd>
 </dl>
@@ -202,18 +239,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fucção que executa o comando jog. </p>
+<p>Função que executa o comando jog. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a6cfb0b2696ffdb74ce3899f360987208"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cfb0b2696ffdb74ce3899f360987208">&#9670;&nbsp;</a></span>jog2()</h2>
+<a id="abfdebec0d602553f86b4311624a7dbe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfdebec0d602553f86b4311624a7dbe2">&#9670;&nbsp;</a></span>jog2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +265,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>decider</em>&#160;</td>
+          <td class="paramname"><em>line_or_col</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -238,18 +275,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fucção que executa o comando jog2. </p>
+<p>Função que executa o comando jog2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
+    <tr><td class="paramname">line_or_col</td><td>Variável booleana para servir de escolha dos eixos de uma coordenada. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ab69c004e31bcd40e913e7930c8a89fba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab69c004e31bcd40e913e7930c8a89fba">&#9670;&nbsp;</a></span>ler()</h2>
+<a id="a4637f9fb13c30f06d0262631ae38f14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4637f9fb13c30f06d0262631ae38f14f">&#9670;&nbsp;</a></span>ler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,13 +302,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
-          <td class="paramname"><em>e</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bool_bot</em>&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -280,11 +312,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Le um ficheiro e carrega as informacoes do ficheiro no estado do jogo. </p>
+<p>Lê um ficheiro e carrega as informações do ficheiro no estado do jogo. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">fileName</td><td>o nome do ficheiro onde gravar o estado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
+    <tr><td class="paramname">fileName</td><td>O nome do ficheiro onde gravar o estado. </td></tr>
   </table>
   </dd>
 </dl>
@@ -320,8 +352,8 @@ Functions</h2></td></tr>
 <p>Função que imprime o tabuleiro. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">whereToPrint</td><td>Apontador para guardar o estado. </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
+    <tr><td class="paramname">whereToPrint</td><td>Apontador para onde o tabuleiro vai ser imprimido. </td></tr>
   </table>
   </dd>
 </dl>
@@ -354,24 +386,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função responsável por escrever as jogadas realizadas num jogo. Pode-se escolher o local de impressão das jogadas. (Ex: stdout ou um ficheiro) </p>
+<p>Função responsável por escrever as jogadas realizadas num jogo. Pode-se escolher o local de impressão das jogadas. (Ex: stdout ou um ficheiro). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado. </td></tr>
+    <tr><td class="paramname">whereToPrint</td><td>Apontador para o local de impressão. Pode ser stdout ou um ficheiro. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a306916ce2a9f631bce8a813cf420b930"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a306916ce2a9f631bce8a813cf420b930">&#9670;&nbsp;</a></span>pos()</h2>
+<a id="a27f577e4376958142248759c36db085a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f577e4376958142248759c36db085a">&#9670;&nbsp;</a></span>prompt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pos </td>
+          <td class="memname">void prompt </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
           <td class="paramname"><em>e</em>, </td>
@@ -380,7 +413,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
+          <td class="paramname"><em>nr_comandos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>new_or_old</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -390,11 +429,49 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Executa o comando pos. </p>
+<p>Imprime o prompt de comandos. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">x</td><td>O numero da jogada </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado do jogo. </td></tr>
+    <tr><td class="paramname">nr_comandos</td><td>O numero de comandos efetuados até então. </td></tr>
+    <tr><td class="paramname">new_or_old</td><td>Variável booleana para decidir se o numero de comandos efetuados traduz-se no array de jogadas novo ou antigo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f8c0ef6d45d0d102184ad254fc73bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8c0ef6d45d0d102184ad254fc73bf5">&#9670;&nbsp;</a></span>remStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* remStr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nr_para_remover</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>original</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove um pedaço de uma string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nr_para_remover</td><td>O numero de chars para remover de uma string. </td></tr>
+    <tr><td class="paramname">original</td><td>Apontador para a string original. </td></tr>
   </table>
   </dd>
 </dl>

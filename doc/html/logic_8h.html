@@ -87,24 +87,42 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac313d7e553b1e2b5f266acb9bfff8141"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
-<tr class="memdesc:ac313d7e553b1e2b5f266acb9bfff8141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que faz a jogada e atualiza o estado com ajuda das funções dos dados.  <a href="#ac313d7e553b1e2b5f266acb9bfff8141">More...</a><br /></td></tr>
-<tr class="separator:ac313d7e553b1e2b5f266acb9bfff8141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29d47f0e43124e57b790efda4631e0ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a29d47f0e43124e57b790efda4631e0ef">jogadaValida</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> c)</td></tr>
-<tr class="memdesc:a29d47f0e43124e57b790efda4631e0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador.  <a href="#a29d47f0e43124e57b790efda4631e0ef">More...</a><br /></td></tr>
-<tr class="separator:a29d47f0e43124e57b790efda4631e0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ac495d8157a1ef917a76c385a4f32b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a9ac495d8157a1ef917a76c385a4f32b1">findBranca</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
 <tr class="memdesc:a9ac495d8157a1ef917a76c385a4f32b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dado o estado devolve a coordenada onde se encontra a peça branca.  <a href="#a9ac495d8157a1ef917a76c385a4f32b1">More...</a><br /></td></tr>
 <tr class="separator:a9ac495d8157a1ef917a76c385a4f32b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa152a6d6c4a73a2689bd12eabe13f3e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#aa152a6d6c4a73a2689bd12eabe13f3e3">nr_coord_around</a> (<a class="el" href="structCOORDENADA.html">COORDENADA</a> coord, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:aa152a6d6c4a73a2689bd12eabe13f3e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conta o número de casas vazias à volta de uma certa coordenada.  <a href="#aa152a6d6c4a73a2689bd12eabe13f3e3">More...</a><br /></td></tr>
+<tr class="separator:aa152a6d6c4a73a2689bd12eabe13f3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefc5ee01a908fa9c344a0d3b217974cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#aefc5ee01a908fa9c344a0d3b217974cf">aroundBranca</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:aefc5ee01a908fa9c344a0d3b217974cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver.  <a href="#aefc5ee01a908fa9c344a0d3b217974cf">More...</a><br /></td></tr>
+<tr class="memdesc:aefc5ee01a908fa9c344a0d3b217974cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">É responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver.  <a href="#aefc5ee01a908fa9c344a0d3b217974cf">More...</a><br /></td></tr>
 <tr class="separator:aefc5ee01a908fa9c344a0d3b217974cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e6bfd18dfae196a5219ef70be801aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a22e6bfd18dfae196a5219ef70be801aa">array_coord_around</a> (<a class="el" href="structCOORDENADA.html">COORDENADA</a> c, <a class="el" href="structCOORDENADA.html">COORDENADA</a> *A, <a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a22e6bfd18dfae196a5219ef70be801aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monta um array com as coordenadas que estao no entorno de um player.  <a href="#a22e6bfd18dfae196a5219ef70be801aa">More...</a><br /></td></tr>
+<tr class="separator:a22e6bfd18dfae196a5219ef70be801aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3e0a182844c20990e38725417c3b44d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#af3e0a182844c20990e38725417c3b44d">gameOver</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:af3e0a182844c20990e38725417c3b44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por verificar se o jogo se acabou.  <a href="#af3e0a182844c20990e38725417c3b44d">More...</a><br /></td></tr>
+<tr class="memdesc:af3e0a182844c20990e38725417c3b44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por verificar se o jogo acabou.  <a href="#af3e0a182844c20990e38725417c3b44d">More...</a><br /></td></tr>
 <tr class="separator:af3e0a182844c20990e38725417c3b44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7e229be0513d84bfae07481bb8461cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ae7e229be0513d84bfae07481bb8461cc">winner</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
-<tr class="memdesc:ae7e229be0513d84bfae07481bb8461cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função responsável por declarar o vencedor da partida.  <a href="#ae7e229be0513d84bfae07481bb8461cc">More...</a><br /></td></tr>
+<tr class="memdesc:ae7e229be0513d84bfae07481bb8461cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tem o propósito de perceber qual o vencedor da partida.  <a href="#ae7e229be0513d84bfae07481bb8461cc">More...</a><br /></td></tr>
 <tr class="separator:ae7e229be0513d84bfae07481bb8461cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26293fb262963585f16944baa50dd524"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a26293fb262963585f16944baa50dd524">jogar</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> coord)</td></tr>
+<tr class="memdesc:a26293fb262963585f16944baa50dd524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faz a jogada e atualiza o estado com ajuda das funções dos dados.  <a href="#a26293fb262963585f16944baa50dd524">More...</a><br /></td></tr>
+<tr class="separator:a26293fb262963585f16944baa50dd524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6065e6ea1a6e5967bc0c21eed79f938"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ab6065e6ea1a6e5967bc0c21eed79f938">jogadaValida</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, <a class="el" href="structCOORDENADA.html">COORDENADA</a> going)</td></tr>
+<tr class="memdesc:ab6065e6ea1a6e5967bc0c21eed79f938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador.  <a href="#ab6065e6ea1a6e5967bc0c21eed79f938">More...</a><br /></td></tr>
+<tr class="separator:ab6065e6ea1a6e5967bc0c21eed79f938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5101ba53ad5808b92a18fc947c32354"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ac5101ba53ad5808b92a18fc947c32354">posInicial</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:ac5101ba53ad5808b92a18fc947c32354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar ao início do jogo.  <a href="#ac5101ba53ad5808b92a18fc947c32354">More...</a><br /></td></tr>
+<tr class="separator:ac5101ba53ad5808b92a18fc947c32354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc81417ff7f76d73b373a040f4415b5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#abc81417ff7f76d73b373a040f4415b5b">posDireto</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int i_New, int posJogada)</td></tr>
+<tr class="memdesc:abc81417ff7f76d73b373a040f4415b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar atrás mas não ao início.  <a href="#abc81417ff7f76d73b373a040f4415b5b">More...</a><br /></td></tr>
+<tr class="separator:abc81417ff7f76d73b373a040f4415b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aeaae3580c28c3a4abca9fe38e2161f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a9aeaae3580c28c3a4abca9fe38e2161f">posInBetween</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int i_New, int posJogada)</td></tr>
+<tr class="memdesc:a9aeaae3580c28c3a4abca9fe38e2161f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliar à função e comando pos, que executa o comando pos quando o jogador já o executou anteriormente e quer passar para uma jogada à frente.  <a href="#a9aeaae3580c28c3a4abca9fe38e2161f">More...</a><br /></td></tr>
+<tr class="separator:a9aeaae3580c28c3a4abca9fe38e2161f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27a09e9f7333a4ca872f52870aef90b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ad27a09e9f7333a4ca872f52870aef90b">pos</a> (<a class="el" href="structESTADO.html">ESTADO</a> *e, int posJogada)</td></tr>
+<tr class="memdesc:ad27a09e9f7333a4ca872f52870aef90b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que executa o comando pos.  <a href="#ad27a09e9f7333a4ca872f52870aef90b">More...</a><br /></td></tr>
+<tr class="separator:ad27a09e9f7333a4ca872f52870aef90b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file is supposed to store the declarations of the logic functions used in our project </p>
@@ -125,10 +143,67 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver. </p>
+<p>É responsável por verificar se uma peça está cercada. Caso esteja, o jogo é terminado. Esta função é uma dependência da função gameOver. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22e6bfd18dfae196a5219ef70be801aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22e6bfd18dfae196a5219ef70be801aa">&#9670;&nbsp;</a></span>array_coord_around()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void array_coord_around </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a> *&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monta um array com as coordenadas que estao no entorno de um player. </p>
+<p>Modifica um array de coordenadas, depositando nele as casas vazias à volta de uma certa coordenada.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>coordenada onde esta o player </td></tr>
+    <tr><td class="paramname">Um</td><td>array de coordenadas </td></tr>
+    <tr><td class="paramname">Apontador</td><td>para o estado do jogo</td></tr>
+    <tr><td class="paramname">coord</td><td>A coordenada em questão </td></tr>
+    <tr><td class="paramname">ARRAY</td><td>O array que vai ser modificado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Monta um array com as coordenadas que estao no entorno de um player.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>A coordenada em questão </td></tr>
+    <tr><td class="paramname">ARRAY</td><td>O array que vai ser modificado </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
   </table>
   </dd>
 </dl>
@@ -177,7 +252,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função responsável por verificar se o jogo se acabou. </p>
+<p>Função responsável por verificar se o jogo acabou. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado do jogo. </td></tr>
@@ -187,8 +262,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a29d47f0e43124e57b790efda4631e0ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29d47f0e43124e57b790efda4631e0ef">&#9670;&nbsp;</a></span>jogadaValida()</h2>
+<a id="ab6065e6ea1a6e5967bc0c21eed79f938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6065e6ea1a6e5967bc0c21eed79f938">&#9670;&nbsp;</a></span>jogadaValida()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,7 +278,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
+          <td class="paramname"><em>going</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -217,15 +292,15 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">c</td><td>A coordenada </td></tr>
+    <tr><td class="paramname">c</td><td>A coordenada escolhida para a jogada que vai ser testada </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac313d7e553b1e2b5f266acb9bfff8141"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac313d7e553b1e2b5f266acb9bfff8141">&#9670;&nbsp;</a></span>jogar()</h2>
+<a id="a26293fb262963585f16944baa50dd524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26293fb262963585f16944baa50dd524">&#9670;&nbsp;</a></span>jogar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +315,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
+          <td class="paramname"><em>coord</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -250,11 +325,210 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função que faz a jogada e atualiza o estado com ajuda das funções dos dados. </p>
+<p>Faz a jogada e atualiza o estado com ajuda das funções dos dados. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
-    <tr><td class="paramname">c</td><td>A coordenada </td></tr>
+    <tr><td class="paramname">c</td><td>A coordenada para onde jogar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa152a6d6c4a73a2689bd12eabe13f3e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa152a6d6c4a73a2689bd12eabe13f3e3">&#9670;&nbsp;</a></span>nr_coord_around()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nr_coord_around </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCOORDENADA.html">COORDENADA</a>&#160;</td>
+          <td class="paramname"><em>coord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conta o número de casas vazias à volta de uma certa coordenada. </p>
+<p>Retorna o numero de coordenadas vazias no entorno de um jogador.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>A coordenada em questão. </td></tr>
+    <tr><td class="paramname">e</td><td>Apontador para o estado do jogo.</td></tr>
+    <tr><td class="paramname">A</td><td>coordenada onde esta o jogador </td></tr>
+    <tr><td class="paramname">Apotador</td><td>para o estado do jogo</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Conta o número de casas vazias à volta de uma certa coordenada.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>coordenada onde esta o jogador </td></tr>
+    <tr><td class="paramname">Apotador</td><td>para o estado do jogo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad27a09e9f7333a4ca872f52870aef90b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27a09e9f7333a4ca872f52870aef90b">&#9670;&nbsp;</a></span>pos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>posJogada</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que executa o comando pos. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">posJogada</td><td>A jogada que o utilizador quer reaver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abc81417ff7f76d73b373a040f4415b5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc81417ff7f76d73b373a040f4415b5b">&#9670;&nbsp;</a></span>posDireto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void posDireto </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i_New</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>posJogada</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar atrás mas não ao início. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">i_New</td><td>A número de jogadas que estavam efetuados até então </td></tr>
+    <tr><td class="paramname">posJogada</td><td>A jogada que o utilizador quer reaver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9aeaae3580c28c3a4abca9fe38e2161f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aeaae3580c28c3a4abca9fe38e2161f">&#9670;&nbsp;</a></span>posInBetween()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void posInBetween </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i_New</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>posJogada</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auxiliar à função e comando pos, que executa o comando pos quando o jogador já o executou anteriormente e quer passar para uma jogada à frente. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
+    <tr><td class="paramname">i_New</td><td>A jogada que o utilizador estaria a ver nesse momento </td></tr>
+    <tr><td class="paramname">posJogada</td><td>A jogada que o utilizador quer reaver </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac5101ba53ad5808b92a18fc947c32354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5101ba53ad5808b92a18fc947c32354">&#9670;&nbsp;</a></span>posInicial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void posInicial </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structESTADO.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auxiliar à função e comando pos, que executa o comando pos quando o jogador pretende voltar ao início do jogo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Apontador para o estado </td></tr>
   </table>
   </dd>
 </dl>
@@ -277,7 +551,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função responsável por declarar o vencedor da partida. </p>
+<p>Tem o propósito de perceber qual o vencedor da partida. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Apontador para o estado do jogo. </td></tr>

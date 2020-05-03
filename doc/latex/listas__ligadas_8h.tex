@@ -21,19 +21,19 @@ typedef struct \hyperlink{structnodo}{nodo} {\bfseries N\+O\+DO}
 \item 
 \mbox{\Hypertarget{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}\label{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}} 
 \hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_ae3b99323b6f8f35d80bb69ff1a27985e}{criar\+\_\+lista} ()
-\begin{DoxyCompactList}\small\item\em Função que cria uma lista. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função que aloca o espaço e cria uma lista. \end{DoxyCompactList}\item 
 \hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L, void $\ast$valor)
-\begin{DoxyCompactList}\small\item\em Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função que insere um apontador na cabeça de uma lista já existente. \end{DoxyCompactList}\item 
 void $\ast$ \hyperlink{listas__ligadas_8h_abfcb205f3eb670157be0d1221021714b}{devolve\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Função que diz qual é o valor na cabeça da lista. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função que devolve um apontador que contém o primeiro elemento da lista. \end{DoxyCompactList}\item 
 \hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}{proximo} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Função para passar para o proximo valor da lista. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função para passar para o proximo valor da lista, devolvendo o parâmetro proximo da struct. \end{DoxyCompactList}\item 
 \hyperlink{structnodo}{L\+I\+S\+TA} \hyperlink{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}{remove\+\_\+cabeca} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Função que devolve a lista sem o elemento que se encontrava na cabeça. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função que retira o elemento que se encontra na cabeça da lista. \end{DoxyCompactList}\item 
 int \hyperlink{listas__ligadas_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}{lista\+\_\+esta\+\_\+vazia} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Função que retorna 1 se a lista se econtra vazia. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Função que retorna 1 se a lista se encontrar vazia. \end{DoxyCompactList}\item 
 int \hyperlink{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}{menor\+Dist} (\hyperlink{structnodo}{L\+I\+S\+TA} L)
-\begin{DoxyCompactList}\small\item\em Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Dada uma lista, calcula a posicão na lista que possui a menor distância (em float) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -48,11 +48,11 @@ Definição das listas ligadas e as funções que as manipulam
 
 
 
-Função que diz qual é o valor na cabeça da lista. 
+Função que devolve um apontador que contém o primeiro elemento da lista. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em L} & A lista donde queremos devolver a cabeça \\
+{\em L} & A lista na qual queremos recuperar o primeiro elemento \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}\label{listas__ligadas_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}} 
@@ -63,7 +63,7 @@ Função que diz qual é o valor na cabeça da lista.
 
 
 
-Função que dado a coordenada vê se a jogada é válida e se não for avisa o jogador. 
+Função que insere um apontador na cabeça de uma lista já existente. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -80,11 +80,11 @@ Função que dado a coordenada vê se a jogada é válida e se não for avisa o 
 
 
 
-Função que retorna 1 se a lista se econtra vazia. 
+Função que retorna 1 se a lista se encontrar vazia. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em L} & A lista \\
+{\em L} & A lista a testar \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}\label{listas__ligadas_8h_a873550fe94e2ab5c33ac87eebcce06e4}} 
@@ -95,11 +95,11 @@ Função que retorna 1 se a lista se econtra vazia.
 
 
 
-Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma distancia) 
+Dada uma lista, calcula a posicão na lista que possui a menor distância (em float) 
 
 
 \begin{DoxyParams}{Parameters}
-{\em L} & Uma lista \\
+{\em L} & A lista com as distàncias \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}\label{listas__ligadas_8h_ad9380152361127432c55c1c6067e05ae}} 
@@ -110,11 +110,11 @@ Dada uma lista, calcula a posicao na lista que possui o menor valor do data (uma
 
 
 
-Função para passar para o proximo valor da lista. 
+Função para passar para o proximo valor da lista, devolvendo o parâmetro proximo da struct. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em L} & A lista \\
+{\em L} & A lista original \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}\label{listas__ligadas_8h_a9026a681a68322b5ec7f07137b864cbd}} 
@@ -125,10 +125,10 @@ Função para passar para o proximo valor da lista.
 
 
 
-Função que devolve a lista sem o elemento que se encontrava na cabeça. 
+Função que retira o elemento que se encontra na cabeça da lista. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em L} & A lista \\
+{\em L} & A lista original \\
 \hline
 \end{DoxyParams}
