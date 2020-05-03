@@ -140,47 +140,35 @@ int interpretador(ESTADO *e){
 	if(fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
 
 	while((strlen(linha) > 2)                                  &&
-		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       || (!strcmp(linha,"jog\n"))                             ||
-		  (!strcmp(linha,"jog2\n"))                            || (!strcmp(linha, addStr("ler ",remStr(4,linha))))     ||
-	      (!strcmp(linha,"movs\n"))                            || (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
+		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       || (!strcmp(linha,"jog\n"))  || (!strcmp(linha,"jog2\n"))  || 
+		  (!strcmp(linha, addStr("ler ",remStr(4,linha))))     || (!strcmp(linha,"movs\n")) || (!strcmp(linha, addStr("pos ",remStr(4,linha)))))){
 		
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
-			replicaEstado(e);
-			boolPrompt = 1;
+			replicaEstado(e); boolPrompt = 1;
 		}
-
 		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
 			jog(e);
-			replicaEstado(e);
-			boolPrompt = 1;
+			replicaEstado(e); boolPrompt = 1;
 		}
-
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
-			COORDENADA C_escolhida;
-			C_escolhida.linha = jog2(e, 1), C_escolhida.coluna = jog2(e, 0);
+			COORDENADA C_escolhida = {jog2(e, 1), jog2(e, 0)};
 			jogar(e, C_escolhida);
-			replicaEstado(e);
-			boolPrompt = 1;
+			replicaEstado(e); boolPrompt = 1;
 		}
-
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))	movs(stdout,e);
-
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
 				char* filename = remStr(4,linha);
 				ler(filename, e);
 		}
-
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
-			char* newLinha;
-			newLinha = remStr(4,linha);
+			char* newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			int posJogada = atoi(newLinha);
 			pos(e, posJogada);
 			boolPrompt = 0;
 		}
-
 		mostrar_tabuleiro(stdout, e);
 		prompt(e, ++x, boolPrompt);
 		char *result = fgets(linha, BUF_SIZE, stdin);
@@ -334,16 +322,16 @@ void ler(char *fileName, ESTADO *e){
                 coord1->linha = p2Linha - 'a';
 		changePlayer(e);
                 coord1->coluna = p2Coluna - '1';
-<<<<<<< HEAD
-	    if(linha > 81) coloca_jogada(e, jogada-'1'+10, *coord, 2);
-		else           coloca_jogada(e, jogada-'1', *coord, 2);
-=======
-	        if(byte > 81)
-			coloca_jogada(e, jogada-'1'+10, *coord, 2);
-		else
-			coloca_jogada(e, jogada-'1', *coord, 2);
->>>>>>> 49877a2c448d3b03ee9b4d753e3b2f6e1fff5466
-		incrJogada(e);
+//<<<<<<< HEAD
+//	    if(linha > 81) coloca_jogada(e, jogada-'1'+10, *coord, 2);
+//		else           coloca_jogada(e, jogada-'1', *coord, 2);
+//=======
+//	        if(byte > 81)
+//			coloca_jogada(e, jogada-'1'+10, *coord, 2);
+//		else
+//			coloca_jogada(e, jogada-'1', *coord, 2);
+//>>>>>>> 49877a2c448d3b03ee9b4d753e3b2f6e1fff5466
+//		incrJogada(e);
 		//Discards newline
                 int try = fscanf(file, " ");
 		if (try != 1 && try != 0)printf("Couldnt read char");
