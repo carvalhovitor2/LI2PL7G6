@@ -27,18 +27,9 @@ COORDENADA findBranca(ESTADO *e){
 }
 
 int aroundBranca(ESTADO *e){
-	COORDENADA branca = findBranca(e);
-	COORDENADA teste = {branca.linha-1, branca.coluna-1};
-
-	for(int i = 0, max = 0; max < 8; max++, i = max % 3){
-		if(max != 0 && i%3 == 0){
-		       	teste.linha++;
-			teste.coluna = branca.coluna;
-		}
-		if (jogadaValida(e, teste)) return 0;
-		teste.coluna++;
-	}
-	return 1;
+    COORDENADA branca = findBranca(e);
+    if(nr_coord_around(branca, e) != 0) return 0;
+    else return 1;
 }
 
 int gameOver(ESTADO *e){
