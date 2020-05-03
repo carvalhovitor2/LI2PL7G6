@@ -305,7 +305,7 @@ void ler(char *fileName, ESTADO *e){
     char jogada='a', p1Linha='a', p1Coluna='a', p2Linha='a', p2Coluna='a';
 
     //Reads movs
-    for(int buffer = 0, linha = 0;linha < 281 && (fscanf(file, "%c", c) == 1); buffer++, linha++, buffer %=9){
+    for(int buffer = 0, byte = 0;byte < 281 && (fscanf(file, "%c", c) == 1); buffer++, byte++, buffer %=9){
         switch(buffer){
             case 1: jogada = *c;
                 break;
@@ -325,7 +325,7 @@ void ler(char *fileName, ESTADO *e){
             	coord->linha = p1Linha - 'a';
 		changePlayer(e);
             	coord->coluna = p1Coluna - '1';
-	        if(linha > 81)
+	        if(byte > 81)
 			coloca_jogada(e, jogada-'1'+10, *coord, 1);
 		else
 			coloca_jogada(e, jogada-'1', *coord, 1);
@@ -334,8 +334,15 @@ void ler(char *fileName, ESTADO *e){
                 coord1->linha = p2Linha - 'a';
 		changePlayer(e);
                 coord1->coluna = p2Coluna - '1';
+<<<<<<< HEAD
 	    if(linha > 81) coloca_jogada(e, jogada-'1'+10, *coord, 2);
 		else           coloca_jogada(e, jogada-'1', *coord, 2);
+=======
+	        if(byte > 81)
+			coloca_jogada(e, jogada-'1'+10, *coord, 2);
+		else
+			coloca_jogada(e, jogada-'1', *coord, 2);
+>>>>>>> 49877a2c448d3b03ee9b4d753e3b2f6e1fff5466
 		incrJogada(e);
 		//Discards newline
                 int try = fscanf(file, " ");
