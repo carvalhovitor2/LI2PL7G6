@@ -11,7 +11,7 @@ COORDENADA findBranca(ESTADO *e){
         branca.linha = i;
         while(j != 8 && bool){
             branca.coluna = j; 
-            if (obter_estado_casa(e, branca, 0) == BRANCA){
+            if (obter_estado_casa(e, branca, 0, 1) == BRANCA){
                 bool = 0;
             }
             j ++;
@@ -39,7 +39,7 @@ int aroundBranca(ESTADO *e){
 
 int gameOver(ESTADO *e){
     COORDENADA win1 = {7,0}, win2 = {0,7};
-    if (obter_estado_casa(e, win1, 0) != VAZIO || obter_estado_casa(e, win2, 0) != VAZIO)
+    if (obter_estado_casa(e, win1, 0, 1) != VAZIO || obter_estado_casa(e, win2, 0, 1) != VAZIO)
         return 1;
     if (aroundBranca(e))
         return 1;
@@ -49,9 +49,9 @@ int gameOver(ESTADO *e){
 int winner(ESTADO *e){
     COORDENADA win1 = {7,0}, win2 = {0,7};
 
-    if (obter_estado_casa(e, win2, 1) == BRANCA)
+    if (obter_estado_casa(e, win2, 1, 1) == BRANCA)
         return 2;
-    else if (obter_estado_casa(e, win1, 1) == BRANCA)
+    else if (obter_estado_casa(e, win1, 1, 1) == BRANCA)
             return 1;
 
     if (obter_jogador_atual(e) == 1)
@@ -119,7 +119,7 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 	//Ensures going piece is not BLACK or WHITE already
 	going.linha++;
 	going.coluna++;
-	if (obter_estado_casa(e, going, 1) == PRETA || obter_estado_casa(e, going, 1) == BRANCA){
+	if (obter_estado_casa(e, going, 1, 1) == PRETA || obter_estado_casa(e, going, 1, 1) == BRANCA){
 	       	return 0;
 	}
 
@@ -136,7 +136,7 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
     while(c.linha != 0 && j <= border){
         copycat.coluna = c.coluna + j;
         if (c.coluna + j != -1){
-            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
                 r ++;
         }
         j ++;
@@ -145,7 +145,7 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
     while(j <= border){
         copycat.coluna = c.coluna + j;
         if (c.coluna + j != -1){
-            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
                 r ++;
         }
         j ++;
@@ -154,7 +154,7 @@ int nr_coord_around(COORDENADA c, ESTADO *e){
     while(c.linha != 7 && j <= border){
         copycat.coluna = c.coluna + j;
         if (c.coluna + j != -1){
-            if(obter_estado_casa(e, copycat, 0) == VAZIO)
+            if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
                 r ++;
         }
         j ++;
@@ -173,7 +173,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
     while(c.linha != 0 && j <= border){
         if (c.coluna + j != -1){
             fake.coluna = c.coluna + j;
-            if(obter_estado_casa(e, fake, 0) == VAZIO){
+            if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
                 A[r++] = fake;
             }
         }
@@ -183,7 +183,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
     while(j <= border){
         if (c.coluna + j != -1){
             fake.coluna = c.coluna + j;
-            if(obter_estado_casa(e, fake, 0) == VAZIO){
+            if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
                 A[r++] = fake;
             }
         }
@@ -193,7 +193,7 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
     while(c.linha != 7 && j <= border){
         if (c.coluna + j != -1){
             fake.coluna = c.coluna + j;
-            if(obter_estado_casa(e, fake, 0) == VAZIO){
+            if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
                 A[r++] = fake;
             }
         }
