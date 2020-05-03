@@ -42,11 +42,12 @@ int gameOver(ESTADO *e){
 }
 
 int winner(ESTADO *e){
+
     COORDENADA win1 = {7,0}, win2 = {0,7};
 
-    if (obter_estado_casa(e, win2, 1, 1) == BRANCA)
+    if (obter_estado_casa(e, win2, 0, 1) == BRANCA)
         return 2;
-    else if (obter_estado_casa(e, win1, 1, 1) == BRANCA)
+    else if (obter_estado_casa(e, win1, 0, 1) == BRANCA)
             return 1;
 
     if (obter_jogador_atual(e) == 1)

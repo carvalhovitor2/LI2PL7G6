@@ -327,65 +327,86 @@ void ler(char *fileName, ESTADO *e){
 }
 
 void posInicial(ESTADO *e){
-	COORDENADA PL, inicial = {3,4}, std = {8,8};
+	COORDENADA coord_variavel, inicial = {3,4}, std = {8,8};
+
     for(int k = 0; k != 8; k ++)
     	for(int l = 0; l != 8; l ++){
-    		PL.linha = l; PL.coluna = k;
-			changePiece(e, PL, VAZIO);
+    		coord_variavel.linha = l; coord_variavel.coluna = k;
+			changePiece(e, coord_variavel, VAZIO);
     	}
+
     for(int t = 0; t != 32; t ++){
     	coloca_jogada(e, t, std, 1); coloca_jogada(e, t, std, 2);
     }
+
     changePiece(e,inicial,BRANCA);
     changeJogada(e,0);
-    if (e-> jogador_atual == 2) changePlayer(e); 
+
+    if (obter_jogador_atual(e) == 2) 
+    	changePlayer(e); 
 }
 
-void posDireto(ESTADO *e, int i_New, int x){
-	COORDENADA pl1, pl2;
+void posDireto(ESTADO *e, int i_New, int posJogada){
+	COORDENADA player1, player2;
 
-	changeJogada(e,x);
-    if (obter_jogador_atual(e) == 2) changePlayer(e);
+	changeJogada(e,posJogada);
+
+    if (obter_jogador_atual(e) == 2) 
+    	changePlayer(e);
+    
     coloca_preta(e);
-    while(i_New != x){
-	    pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
-	    pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
 
-	    changePiece(e, pl1, obter_estado_casa(e, pl1, 0, 0)); changePiece(e, pl2, obter_estado_casa(e, pl2, 0, 0));
-	    coloca_jogada(e, i_New, pl1, 1); coloca_jogada(e, i_New, pl2, 2);
+    while(i_New != posJogada){
+
+	    player1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); player1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
+	    player2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); player2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
+
+	    changePiece(e, player1, obter_estado_casa(e, player1, 0, 0)); 
+	    changePiece(e, player2, obter_estado_casa(e, player2, 0, 0));
+
+	    coloca_jogada(e, i_New, player1, 1); 
+	    coloca_jogada(e, i_New, player2, 2);
+
 	    i_New ++;
     }  
 }
 
-void posInBetween(ESTADO *e, int i_New, int x){
-	COORDENADA pl1, pl2, std = {8,8};
-	changeJogada(e,x);
-    while (i_New + 1 != x){	
-        pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 1); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 1);
-        pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 1); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 1);
+void posInBetween(ESTADO *e, int i_New, int posJogada){
+	COORDENADA player1, player2, std = {8,8};
 
-        changePiece(e, pl1, VAZIO); changePiece(e, pl2, VAZIO);
-        coloca_jogada(e, i_New, std, 1); coloca_jogada(e, i_New, std, 2);
+	changeJogada(e,posJogada);
+
+    while (i_New + 1 != posJogada){	
+        player1.linha = obter_coord_deJogada(e, i_New, 1, 1, 1); player1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 1);
+        player2.linha = obter_coord_deJogada(e, i_New, 2, 1, 1); player2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 1);
+
+        changePiece(e, player1, VAZIO); 
+        changePiece(e, player2, VAZIO);
+
+        coloca_jogada(e, i_New, std, 1); 
+        coloca_jogada(e, i_New, std, 2);
+
         i_New --;
-    if (obter_jogador_atual(e) == 2) changePlayer(e);
+
+   		if (obter_jogador_atual(e) == 2) 
+    		changePlayer(e);
     }
 }
 
-void pos(ESTADO *e, int x){
+void pos(ESTADO *e, int posJogada){
     int i_OLD = obter_numero_de_jogadas(e, 0), i_New = obter_numero_de_jogadas(e, 1);
 
-    if (x == 0){
+    if (posJogada == 0)
     	posInicial(e); 
-    }
 	else{
-    	if (x <= i_OLD){
-    		if (i_New < x) posDireto(e, i_New, x);
-    		else           posInBetween(e, i_New, x);
+    	if (posJogada <= i_OLD){
+    		if (i_New < posJogada) posDireto(e, i_New, posJogada);
+    		else          		   posInBetween(e, i_New, posJogada);
 
    			COORDENADA novaBranca = {getLastPiece(e,0), getLastPiece(e,1)};
     		changePiece(e,novaBranca,BRANCA);
 		}
 		else
-			printf("Comando inválido. %d é um número maior que a jogada atual.\n", x);
+			printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
 	}
 }
