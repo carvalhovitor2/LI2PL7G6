@@ -195,4 +195,3 @@ void array_coord_around(COORDENADA coord, COORDENADA *ARRAY, ESTADO *e){
         count ++;
     }   
 }
-
