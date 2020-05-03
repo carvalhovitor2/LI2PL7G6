@@ -12,14 +12,14 @@
 void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 	int boardPiece = 0;
     for(int linha = 0; linha < 8; linha++){
-    	char a = 'a' + linha;
+    	char letra_linha = 'a' + linha;
 	if ( whereToPrint == stdout ){
-		fprintf(whereToPrint, "%c", a);
+		fprintf(whereToPrint, "%c", letra_linha);
 		fprintf(whereToPrint, " ");
 	}
         for(int coluna = 0; coluna < 8; coluna++){
 		//Translate enum to chars
-		COORDENADA coord={linha+1, coluna+1};
+		COORDENADA coord = {linha+1, coluna+1};
                 boardPiece = obter_estado_casa(e, coord, 1, 1);
 			if(linha == 7 && coluna == 0) boardPiece = 3;
 			if(linha == 0 && coluna == 7) boardPiece = 4;
@@ -49,23 +49,20 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
 }
 
 
-void prompt(ESTADO *e, int x, int decider){
-	int gamer = obter_jogador_atual(e);
+void prompt(ESTADO *e, int nr_comandos, int new_or_old){
+	int player = obter_jogador_atual(e);
 	int jogada;
 
-	if (decider)
-		jogada = obter_numero_de_jogadas(e, 1);
-	else
-		jogada = obter_numero_de_jogadas(e, 0);
+	jogada = obter_numero_de_jogadas(e, new_or_old);
 
-	if (x < 10)
-		printf("# 0%d PL%d (%d)> ", x, gamer, jogada + 1);
+	if (nr_comandos < 10)
+		printf("# 0%d PL%d (%d)> ", nr_comandos, player, jogada + 1);
 	else 
-		printf("# %d PL%d (%d)> ", x, gamer, jogada + 1);
+		printf("# %d PL%d (%d)> ", nr_comandos, player, jogada + 1);
 }
 
 void movs(FILE *whereToPrint,ESTADO *e){
-	int i = 0, nr_jogadas = obter_numero_de_jogadas(e, 1);
+	int count = 0, nr_jogadas = obter_numero_de_jogadas(e, 1);
 	char l1, l2;
 	int col1, col2;
 	COORDENADA c1, c2;
@@ -73,60 +70,59 @@ void movs(FILE *whereToPrint,ESTADO *e){
 	if (obter_coord_deJogada(e, nr_jogadas, 1, 1, 1) == 8)
 		nr_jogadas --;
 
-	while (i <= nr_jogadas){
-		c1.linha = obter_coord_deJogada(e, i, 1, 1, 1), c1.coluna =  obter_coord_deJogada(e, i, 1, 0, 1);
-		c2.linha = obter_coord_deJogada(e, i, 2, 1, 1), c2.coluna =  obter_coord_deJogada(e, i, 2, 0, 1);
-		l1 = 'a' + c1.linha;
-		l2 = 'a' + c2.linha;
-		col1 = c1.coluna + 1;
-		col2 = c2.coluna + 1;
+	while (count <= nr_jogadas){
+		c1.linha = obter_coord_deJogada(e, count, 1, 1, 1), c1.coluna =  obter_coord_deJogada(e, count, 1, 0, 1);
+		c2.linha = obter_coord_deJogada(e, count, 2, 1, 1), c2.coluna =  obter_coord_deJogada(e, count, 2, 0, 1);
+		
+		l1 = 'a' + c1.linha;  l2 = 'a' + c2.linha;
+		col1 = c1.coluna + 1; col2 = c2.coluna + 1;
 
-		if (obter_coord_deJogada(e, i, 2, 0, 1) < 8){
-			if (i < 9)
-				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+		if (obter_coord_deJogada(e, count, 2, 0, 1) < 8){
+			if (count < 9)
+				fprintf(whereToPrint, "0%d: %c%d %c%d\n", count + 1, l1, col1, l2, col2);
 			else
-				fprintf(whereToPrint, "%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
+				fprintf(whereToPrint, "%d: %c%d %c%d\n", count + 1, l1, col1, l2, col2);
 		}
 
 		else{
-			if (i < 9)
-				fprintf(whereToPrint, "0%d: %c%d \n", i + 1, l1, col1);
+			if (count < 9)
+				fprintf(whereToPrint, "0%d: %c%d \n", count + 1, l1, col1);
 			else
-				fprintf(whereToPrint, "%d: %c%d \n", i + 1, l1, col1);
+				fprintf(whereToPrint, "%d: %c%d \n", count + 1, l1, col1);
 		}
 
-		i ++;
+		count ++;
 	}
 }
 
-char* remStr(int x, char* s){
-	char* ret = malloc(strlen(s) - x);
-	int i = 3;
+char* remStr(int nr_para_remover, char* original){
+	char* ret = malloc(strlen(original) - nr_para_remover);
+	int count = nr_para_remover;
 
-	while(s[i]){
-		ret[i - x] = s[i];
-		i ++;
+	while(original[count]){
+		ret[count - nr_para_remover] = original[count];
+		count ++;
 	}
 
-	ret[i] = '\0';
+	ret[count] = '\0';
 
 	return ret;
 }
 
 
-char* addStr(char* s, char* v){
-	char* ret = malloc(strlen(s) + strlen(v));
-	int i, j = 0;
+char* addStr(char* str1, char* str2){
+	char* ret = malloc(strlen(str1) + strlen(str2));
+	int count_ret, count_str2 = 0;
 
-	for(i = 0; s[i]; i ++)
-		ret[i] = s[i];
+	for(count_ret = 0; str1[count_ret]; count_ret ++)
+		ret[count_ret] = str1[count_ret];
 
-	while(v[j]){
-		ret[i] = v[j];
-		j ++;
-		i ++;
+	while(str2[count_str2]){
+		ret[count_ret] = str2[count_str2];
+		count_str2 ++;
+		count_ret ++;
 	}
-	ret[i] = '\0';
+	ret[count_ret] = '\0';
 
 	return ret;
 }
@@ -134,9 +130,9 @@ char* addStr(char* s, char* v){
 
 int interpretador(ESTADO *e){
 	char linha[BUF_SIZE], col[2], lin[2];
-	int x = 1, boolPrompt = 1;
-	prompt(e,x,1);
-	
+	int nr_comandos = 1, new_or_old = 1;
+	prompt(e, nr_comandos, 1);
+
 	if(fgets(linha, BUF_SIZE, stdin) == NULL) return 0;
 	while((strlen(linha) > 2)                                  &&
 		 ((sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2)       || (!strcmp(linha,"jog\n"))  || (!strcmp(linha,"jog2\n"))  || 
@@ -145,31 +141,31 @@ int interpretador(ESTADO *e){
 		if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", lin, col) == 2){
 			COORDENADA coord = {*lin - 'a', *col - '1'};
 			jogar(e, coord);
-			replicaEstado(e); boolPrompt = 1;
+			replicaEstado(e); new_or_old = 1;
 		}
 		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
 			jog(e);
-			replicaEstado(e); boolPrompt = 1;
+			replicaEstado(e); new_or_old = 1;
 		}
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
 			COORDENADA C_escolhida = {jog2(e, 1), jog2(e, 0)};
 			jogar(e, C_escolhida);
-			replicaEstado(e); boolPrompt = 1;
+			replicaEstado(e); new_or_old = 1;
 		}
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))	movs(stdout,e);
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("ler ",remStr(4,linha))))){
-				char* filename = remStr(4,linha);
-				ler(filename, e);
+			char* filename = remStr(4,linha);
+			ler(filename, e);
 		}
 		if ((strlen(linha) > 4) && (!strcmp(linha, addStr("pos ",remStr(4,linha))))){
 			char* newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			int posJogada = atoi(newLinha);
 			pos(e, posJogada);
-			boolPrompt = 0;
+			new_or_old = 0;
 		}
 		mostrar_tabuleiro(stdout, e);
-		prompt(e, ++x, boolPrompt);
+		prompt(e, ++nr_comandos, new_or_old);
 		char *result = fgets(linha, BUF_SIZE, stdin);
 		if (!result) printf("couldn't read line\n");
 	}
@@ -184,62 +180,62 @@ int interpretador(ESTADO *e){
 void jog(ESTADO *e){
 	srandom(time(NULL));
 
-	int nrC = nr_coord_around(findBranca(e), e),
-		rnd = random() % nrC;
-	COORDENADA C[nrC]; 
+	int nrCoord = nr_coord_around(findBranca(e), e),
+		rnd = random() % nrCoord;
+	COORDENADA C[nrCoord]; 
 	array_coord_around(findBranca(e), C, e);
 
-	LISTA lJog;
-	lJog = criar_lista();
+	LISTA lista_Jog;
+	lista_Jog = criar_lista();
 
-	for(int count = nrC; count >= 0; count --)
-		lJog = insere_cabeca(lJog, C + count);
+	for(int count = nrCoord; count >= 0; count --)
+		lista_Jog = insere_cabeca(lista_Jog, C + count);
 
-	while(lJog && rnd > 0){
-		lJog = remove_cabeca(lJog);
+	while(lista_Jog && rnd > 0){
+		lista_Jog = remove_cabeca(lista_Jog);
 		rnd --;
 	}
 			
 	COORDENADA *aleatoria;
-	aleatoria = devolve_cabeca(lJog);
+	aleatoria = devolve_cabeca(lista_Jog);
 
 	jogar(e, *aleatoria);
-	free(lJog);
+	free(lista_Jog);
 }
 
-int jog2(ESTADO *e, int decider){
-	int nrC = nr_coord_around(findBranca(e), e);
-	COORDENADA C[nrC]; 
-	array_coord_around(findBranca(e), C, e);
-	float F[nrC];
+int jog2(ESTADO *e, int lin_or_col){
+	int nrCoord = nr_coord_around(findBranca(e), e);
+	COORDENADA COORDS[nrCoord]; 
+	array_coord_around(findBranca(e), COORDS, e);
+	float DISTS[nrCoord];
 
-	for(int i = 0; i < nrC; i ++){
+	for(int ind_dists = 0; ind_dists < nrCoord; ind_dists ++){
 		if (obter_jogador_atual(e) == 1)
-			F[i] = sqrt(pow(7 - C[i].linha, 2) + pow(0 - C[i].coluna, 2));
+			DISTS[ind_dists] = sqrt(pow(7 - COORDS[ind_dists].linha, 2) + pow(0 - COORDS[ind_dists].coluna, 2));
 		else
-			F[i] = sqrt(pow(0 - C[i].linha, 2) + pow(7 - C[i].coluna, 2));
+			DISTS[ind_dists] = sqrt(pow(0 - COORDS[ind_dists].linha, 2) + pow(7 - COORDS[ind_dists].coluna, 2));
 	}
 
-	LISTA lC, lF;
-	lC = criar_lista();
-	lF = criar_lista();
-	for(int count = nrC - 1; count >= 0; count--){
-		lF = insere_cabeca(lF, F + count);
-		lC = insere_cabeca(lC, C + count);
+	LISTA lista_Coord, lista_Dist;
+	lista_Coord = criar_lista();
+	lista_Dist = criar_lista();
+	for(int count_listas = nrCoord - 1; count_listas >= 0; count_listas--){
+		lista_Dist = insere_cabeca(lista_Dist, DISTS + count_listas);
+		lista_Coord = insere_cabeca(lista_Coord, COORDS + count_listas);
 	}
 			
-	int indice = menorDist(lF);
-	for(; lC && indice > 0; indice --){
-		lC = remove_cabeca(lC);
+	int indice = menorDist(lista_Dist);
+	for(; lista_Coord && indice > 0; indice --){
+		lista_Coord = remove_cabeca(lista_Coord);
 	}
 
 	COORDENADA *menor;
-	menor = devolve_cabeca(lC);
+	menor = devolve_cabeca(lista_Coord);
 
-	free(lF);
-	free(lC);
+	free(lista_Dist);
+	free(lista_Coord);
 
-	if (decider)
+	if (lin_or_col)
 		return (menor-> linha);
 	else
 		return (menor-> coluna);

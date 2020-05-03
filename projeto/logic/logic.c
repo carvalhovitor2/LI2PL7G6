@@ -5,20 +5,24 @@
 
 
 COORDENADA findBranca(ESTADO *e){
-    int i = 0, j = 0, bool = 1;
+    int line = 0, 
+        column = 0, 
+        foundBranca = 0;
     COORDENADA branca;
-    while(i != 8 && bool){
-        branca.linha = i;
-        while(j != 8 && bool){
-            branca.coluna = j; 
+
+    while(line != 8 && !foundBranca){
+        branca.linha = line;
+        while(column != 8 && !foundBranca){   
+            branca.coluna = column;
             if (obter_estado_casa(e, branca, 0, 1) == BRANCA){
-                bool = 0;
+                foundBranca = 1;
             }
-            j ++;
+            column ++;
         }
-        i ++;
-        j = 0;
+        line ++;
+        column = 0;
     }
+
     return branca;
 }
 
@@ -61,27 +65,27 @@ int winner(ESTADO *e){
 }
 
 //Receives a coordinate and makes a move. (e.g changes the position of a player and leaves a black piece in its current position)
-int jogar(ESTADO *e, COORDENADA c) {
-    int x;
-    if (jogadaValida(e, c) && !gameOver(e)){
+int jogar(ESTADO *e, COORDENADA coord) {
+    int vencedor;
+    if (jogadaValida(e, coord) && !gameOver(e)){
 	    coloca_preta(e);
-	    changePiece(e, c, BRANCA);
+	    changePiece(e, coord, BRANCA);
         if (obter_jogador_atual(e) == 1) {
-            coloca_jogada(e,obter_numero_de_jogadas(e, 1), c, 1);
+            coloca_jogada(e,obter_numero_de_jogadas(e, 1), coord, 1);
             changePlayer(e);
             if (gameOver(e)){
-                x = winner(e);
-                printf("Game Over. Parábens jogador %d!\n",x);
+                vencedor = winner(e);
+                printf("Game Over. Parábens jogador %d!\n", vencedor);
                 return 0;
             }
         }
         else{
-            coloca_jogada(e,obter_numero_de_jogadas(e, 1),c,2);
+            coloca_jogada(e,obter_numero_de_jogadas(e, 1), coord, 2);
             changePlayer(e);
             incrJogada(e);
             if (gameOver(e)){
-                x = winner(e);
-                printf("Game Over. Parábens jogador %d!\n",x);
+                vencedor = winner(e);
+                printf("Game Over. Parábens jogador %d!\n", vencedor);
                 return 0;
             }
         }
@@ -107,12 +111,12 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 
 	//Here goes the actual function purpose
 	//Ensures move is in a maximum of 8x8 range
-	if ( going.linha > 7 || going.linha < 0 || going.coluna > 7 || going.coluna < 0){
+	if (going.linha > 7 || going.linha < 0 || going.coluna > 7 || going.coluna < 0){
 		return 0;
 	}
 
 	//Ensures player is going to a piece that is a valid distance (only 1 piece distance)
-	if( (abs(going.linha - current.linha) > 1) || (abs(going.coluna - current.coluna) > 1)){
+	if((abs(going.linha - current.linha) > 1) || (abs(going.coluna - current.coluna) > 1)){
 	       	return 0;
 	}
 
@@ -127,76 +131,77 @@ int jogadaValida(ESTADO *e, COORDENADA going){
 }
 
 //Conta a quantidade de coordenadas vazias no entorno de um jogador
-int nr_coord_around(COORDENADA c, ESTADO *e){
-    int r = 0, j = -1, border = 1;
+int nr_coord_around(COORDENADA coord, ESTADO *e){
+    int ret = 0, count = -1, border = 1;
     COORDENADA copycat;
 
-    if (c.coluna == 7) border = 0;
-    copycat.linha = c.linha - 1;
-    while(c.linha != 0 && j <= border){
-        copycat.coluna = c.coluna + j;
-        if (c.coluna + j != -1){
+    if (coord.coluna == 7) border = 0;
+    copycat.linha = coord.linha - 1;
+    while(coord.linha != 0 && count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
             if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                r ++;
+                ret ++;
         }
-        j ++;
+        count ++;
     }
-    j = -1; copycat.linha ++;
-    while(j <= border){
-        copycat.coluna = c.coluna + j;
-        if (c.coluna + j != -1){
+    count = -1; copycat.linha ++;
+    while(count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
             if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                r ++;
+                ret ++;
         }
-        j ++;
+        count ++;
     }
-    j = -1; copycat.linha ++;
-    while(c.linha != 7 && j <= border){
-        copycat.coluna = c.coluna + j;
-        if (c.coluna + j != -1){
+    count = -1; copycat.linha ++;
+    while(coord.linha != 7 && count <= border){
+        copycat.coluna = coord.coluna + count;
+        if (coord.coluna + count != -1){
             if(obter_estado_casa(e, copycat, 0, 1) == VAZIO)
-                r ++;
+                ret ++;
         }
-        j ++;
+        count ++;
     }
 
-    return r;
+    return ret;
 }
 
 //Coloca as coordenadas ao redor de um player num array
-void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e){
-    int r = 0, j = -1, border = 1;
+void array_coord_around(COORDENADA coord, COORDENADA *ARRAY, ESTADO *e){
+    int ret = 0, count = -1, border = 1;
     COORDENADA fake;
-    if (c.coluna == 7) border = 0;
+    if (coord.coluna == 7) border = 0;
 
-    fake.linha = c.linha - 1;
-    while(c.linha != 0 && j <= border){
-        if (c.coluna + j != -1){
-            fake.coluna = c.coluna + j;
+    fake.linha = coord.linha - 1;
+    while(coord.linha != 0 && count <= border){
+        if (coord.coluna + count != -1){
+            fake.coluna = coord.coluna + count;
             if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
-                A[r++] = fake;
+                ARRAY[ret++] = fake;
             }
         }
-        j ++;
+        count ++;
     }
-    j = -1; fake.linha ++;
-    while(j <= border){
-        if (c.coluna + j != -1){
-            fake.coluna = c.coluna + j;
+    count = -1; fake.linha ++;
+    while(count <= border){
+        if (coord.coluna + count != -1){
+            fake.coluna = coord.coluna + count;
             if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
-                A[r++] = fake;
+                ARRAY[ret++] = fake;
             }
         }
-        j ++;
+        count ++;
     }
-    j = -1; fake.linha ++;
-    while(c.linha != 7 && j <= border){
-        if (c.coluna + j != -1){
-            fake.coluna = c.coluna + j;
+    count = -1; fake.linha ++;
+    while(coord.linha != 7 && count <= border){
+        if (coord.coluna + count != -1){
+            fake.coluna = coord.coluna + count;
             if(obter_estado_casa(e, fake, 0, 1) == VAZIO){
-                A[r++] = fake;
+                ARRAY[ret++] = fake;
             }
         }
-        j ++;
+        count ++;
     }   
 }
+
