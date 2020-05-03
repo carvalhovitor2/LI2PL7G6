@@ -5,20 +5,20 @@
 
 
 LISTA criar_lista(){
-	LISTA r = malloc(sizeof(LISTA));
+	LISTA ret = malloc(sizeof(LISTA));
 
-	r = NULL;
+	ret = NULL;
 
-	return r;
+	return ret;
 }
 
 LISTA insere_cabeca(LISTA L, void *valor){
-	LISTA r = malloc(sizeof(LISTA));
+	LISTA ret = malloc(sizeof(LISTA));
 	
-	r -> proximo = L;
-	r -> valor = valor;
+	ret -> proximo = L;
+	ret -> valor = valor;
 
-	return r;
+	return ret;
 }
 
 void *devolve_cabeca(LISTA L){
@@ -30,14 +30,14 @@ LISTA proximo(LISTA L){
 }
 
 LISTA remove_cabeca(LISTA L){
-	LISTA r = NULL;
+	LISTA ret = NULL;
 
 	if(L){
-		r = L -> proximo;
+		ret = L -> proximo;
 		free(L);
 	}
 
-	return r;
+	return ret;
 }
 
 int lista_esta_vazia(LISTA L){
@@ -45,20 +45,20 @@ int lista_esta_vazia(LISTA L){
 }
 
 int menorDist(LISTA L){
-	int r = -1, i = 0;
+	int ret = -1, count = 0;
 	float menor = 100;
 
 	while(L){
-		float *t;
-		t = L-> valor;
+		float *tmp;
+		tmp = L-> valor;
 
-		if (menor > *t){
-			r = i;
-			menor = *t;
+		if (menor > *tmp){
+			ret = count;
+			menor = *tmp;
 		}
-		i ++;
+		count ++;
 		L = L-> proximo;
 	}
 
-	return r;
+	return ret;
 }
