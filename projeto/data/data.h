@@ -156,5 +156,5 @@ void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
 int nr_coord_around(COORDENADA c, ESTADO *e);
 
 
-int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider);
+int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old);
 #endif

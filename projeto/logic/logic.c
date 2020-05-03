@@ -8,10 +8,10 @@ COORDENADA findBranca(ESTADO *e){
     int i = 0, j = 0, bool = 1;
     COORDENADA branca;
     while(i != 8 && bool){
+        branca.linha = i;
         while(j != 8 && bool){
-            if (e-> tab[i][j] == BRANCA){
-                branca.linha = i;
-                branca.coluna = j;
+            branca.coluna = j; 
+            if (obter_estado_casa(e, branca, 0) == BRANCA){
                 bool = 0;
             }
             j ++;

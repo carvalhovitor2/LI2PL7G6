@@ -21,10 +21,6 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito){
 		return (e-> tab[c.linha][c.coluna]);
 }
 
-CASA obter_estado_casa2(ESTADO *e, COORDENADA c){
-	return (e-> tab[c.linha][c.coluna]);
-}
-
 //Gets current player
 int obter_jogador_atual(ESTADO *estado){
 	return (estado-> jogador_atual);
@@ -38,22 +34,49 @@ int obter_numero_de_jogadas(ESTADO *estado, int new_or_old){
 		return (estado-> num_jogadasOLD);
 }
 
+int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old){
+	if (new_or_old){
+		if (player == 1){
+			if (decider)
+				return (e-> jogadas[jogada].jogador1.linha);
+			else
+				return (e-> jogadas[jogada].jogador1.coluna);
+		}
+		else{
+			if (decider)
+				return (e-> jogadas[jogada].jogador2.linha);
+			else
+				return (e-> jogadas[jogada].jogador2.coluna);
+		}
+	}
+	else{
+		if (player == 1){
+			if (decider)
+				return (e-> jogadasOLD[jogada].jogador1.linha);
+			else
+				return (e-> jogadasOLD[jogada].jogador1.coluna);
+		}
+		else{
+			if (decider)
+				return (e-> jogadasOLD[jogada].jogador2.linha);
+			else
+				return (e-> jogadasOLD[jogada].jogador2.coluna);
+		}
+	}
+}
+
 int getLastPiece(ESTADO *e, int decider){
 	int r;
 	int i = obter_numero_de_jogadas(e, 1);
 
-	int l1 = e -> jogadas[i].jogador1.linha;
-	int l2 = e -> jogadas[i].jogador2.linha;
-	int c1 = e -> jogadas[i].jogador1.coluna;
-	int c2 = e -> jogadas[i].jogador2.coluna;
+	int l1 = e -> jogadas[i].jogador1.linha,   l2 = e -> jogadas[i].jogador2.linha;
+	int c1 = e -> jogadas[i].jogador1.coluna,  c2 = e -> jogadas[i].jogador2.coluna;
 
 	if (l1 == 8 && l2 == 8 && c1 == 8 && c2 == 8)
 		i --;
 
-	l1 = e -> jogadas[i].jogador1.linha;
-	l2 = e -> jogadas[i].jogador2.linha;
-	c1 = e -> jogadas[i].jogador1.coluna;
-	c2 = e -> jogadas[i].jogador2.coluna;
+	l1 = e -> jogadas[i].jogador1.linha; l2 = e -> jogadas[i].jogador2.linha;
+	c1 = e -> jogadas[i].jogador1.coluna; c2 = e -> jogadas[i].jogador2.coluna;
 
 	if (l2 != 8 && c2 != 8){
 		if (decider)
@@ -71,22 +94,6 @@ int getLastPiece(ESTADO *e, int decider){
 	
 	return r;
 }
-
-int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider){
-	if (player == 1){
-		if (decider)
-			return (e-> jogadas[jogada].jogador1.linha);
-		else
-			return (e-> jogadas[jogada].jogador1.coluna);
-	}
-	else{
-		if (decider)
-			return (e-> jogadas[jogada].jogador2.linha);
-		else
-			return (e-> jogadas[jogada].jogador2.coluna);
-	}
-}
-
 
 void coloca_jogada(ESTADO *e,int num_jogadas,COORDENADA c,int num_player){
     if (num_player==1) 

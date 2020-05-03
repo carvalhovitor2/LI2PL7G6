@@ -70,18 +70,18 @@ void movs(FILE *whereToPrint,ESTADO *e){
 	int col1, col2;
 	COORDENADA c1, c2;
 
-	if (obter_coord_deJogada(e, nr_jogadas, 1, 1) == 8)
+	if (obter_coord_deJogada(e, nr_jogadas, 1, 1, 1) == 8)
 		nr_jogadas --;
 
 	while (i <= nr_jogadas){
-		c1.linha = obter_coord_deJogada(e, i, 1, 1), c1.coluna =  obter_coord_deJogada(e, i, 1, 0);//e-> jogadas[i].jogador1;
-		c2.linha = obter_coord_deJogada(e, i, 2, 1), c2.coluna =  obter_coord_deJogada(e, i, 2, 0); //e-> jogadas[i].jogador2;
+		c1.linha = obter_coord_deJogada(e, i, 1, 1, 1), c1.coluna =  obter_coord_deJogada(e, i, 1, 0, 1);
+		c2.linha = obter_coord_deJogada(e, i, 2, 1, 1), c2.coluna =  obter_coord_deJogada(e, i, 2, 0, 1);
 		l1 = 'a' + c1.linha;
 		l2 = 'a' + c2.linha;
 		col1 = c1.coluna + 1;
 		col2 = c2.coluna + 1;
 
-		if (obter_coord_deJogada(e, i, 2, 0) < 8){
+		if (obter_coord_deJogada(e, i, 2, 0, 1) < 8){
 			if (i < 9)
 				fprintf(whereToPrint, "0%d: %c%d %c%d\n", i + 1, l1, col1, l2, col2);
 			else
@@ -151,12 +151,18 @@ int interpretador(ESTADO *e){
 			boolPrompt = 1;
 		}
 
-		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")) jog(e);
+		if (strlen(linha) == 4 && !strcmp(linha,"jog\n")){
+			jog(e);
+			replicaEstado(e);
+			boolPrompt = 1;
+		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"jog2\n")){
 			COORDENADA C_escolhida;
 			C_escolhida.linha = jog2(e, 1), C_escolhida.coluna = jog2(e, 0);
 			jogar(e, C_escolhida);
+			replicaEstado(e);
+			boolPrompt = 1;
 		}
 
 		if (strlen(linha) == 5 && !strcmp(linha,"movs\n"))	movs(stdout,e);
@@ -172,7 +178,7 @@ int interpretador(ESTADO *e){
 			newLinha[strlen(newLinha)-1] = 0;
 			int posJogada = atoi(newLinha);
 			if (posJogada > obter_numero_de_jogadas(e, 0))
-				printf("Comando inválido. %d é um número maior que a jogada atual.\n", posJogada);
+				printf("Comando inválido. %d é um número maior que a jogada atual.\n", obter_numero_de_jogadas(e, 0));
 			else{
 				pos(e, posJogada);
 				boolPrompt = 0;
@@ -343,36 +349,24 @@ void ler(char *fileName, ESTADO *e){
 
 
 void pos(ESTADO *e, int x){
-    int i_OLD = obter_numero_de_jogadas(e, 0),
-    	i_New = obter_numero_de_jogadas(e, 1);
-
-    COORDENADA pl1, pl2, std = {8,8};
+    int i_OLD = obter_numero_de_jogadas(e, 0), i_New = obter_numero_de_jogadas(e, 1);
+	COORDENADA pl1, pl2, std = {8,8};
 
     if (x == 0){
+    	COORDENADA PL, inicial = {3,4};
 
-    	int k;
-    	COORDENADA inicial, PL;
-    	inicial.linha = 3;
-    	inicial.coluna = 4;
-
-    	for(k = 0; k != 8; k ++)
+    	for(int k = 0; k != 8; k ++)
     		for(int l = 0; l != 8; l ++){
-    			PL.linha = l;
-    			PL.coluna = k;
-
-    			changePiece(e, PL, VAZIO);
+    			PL.linha = l; PL.coluna = k;
+				changePiece(e, PL, VAZIO);
     		}
-
     	for(int t = 0; t != 32; t ++){
     		coloca_jogada(e, t, std, 1);
         	coloca_jogada(e, t, std, 2);
         }
-
     	changePiece(e,inicial,BRANCA);
     	changeJogada(e,0);
-
-    	if (e-> jogador_atual == 2)
-    		changePlayer(e);
+    	if (e-> jogador_atual == 2) changePlayer(e);
      
     }
 	else{
@@ -429,9 +423,7 @@ void pos(ESTADO *e, int x){
         		}
 			}
 
-    COORDENADA novaBranca;
-    novaBranca.linha = getLastPiece(e,0);
-    novaBranca.coluna = getLastPiece(e,1);
+    COORDENADA novaBranca = {getLastPiece(e,0), getLastPiece(e,1)};
     changePiece(e,novaBranca,BRANCA);
 	}
 	}
