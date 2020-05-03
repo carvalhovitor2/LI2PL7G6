@@ -284,6 +284,7 @@ void ler(char *fileName, ESTADO *e){
     fileName[strlen(fileName)-1] = 0;
     COORDENADA *coord = malloc(sizeof(int)*2);
     COORDENADA *coord1 = malloc(sizeof(int)*2);
+    COORDENADA peca;
     //Opens the file
     FILE *file = fopen(fileName, "r");
 
@@ -292,14 +293,16 @@ void ler(char *fileName, ESTADO *e){
 
     //Iterates trough board lines
     for(int linha = 0; linha < 8; linha++){
+	peca.linha = linha;
         //Iterates through board columns
         for(int coluna = 0; coluna < 8; coluna++){
+	    peca.coluna = coluna;
             //Reads a piece and stores it in game state
             int try = fscanf(file, "%c ", c);
 	    if(try != 1)printf("could read char\n");
-            if( *c == '.') e->tab[linha][coluna] = VAZIO;
-            if( *c == '#') e->tab[linha][coluna] = PRETA;
-            if( *c == '*') e->tab[linha][coluna] = BRANCA;
+            if( *c == '.') changePiece(e, peca, VAZIO);
+            if( *c == '#') changePiece(e, peca, PRETA);
+            if( *c == '*') changePiece(e, peca, BRANCA);
         }
     }
 
@@ -327,18 +330,18 @@ void ler(char *fileName, ESTADO *e){
 		changePlayer(e);
             	coord->coluna = p1Coluna - '1';
 	        if(linha > 81)
-			e->jogadas[jogada-'1'+10].jogador1 = *coord;
+			coloca_jogada(e, jogada-'1'+10, *coord, 1);
 		else
-			e->jogadas[jogada-'1'].jogador1 = *coord;
+			coloca_jogada(e, jogada-'1', *coord, 1);
         }
 	if (buffer == 8){
                 coord1->linha = p2Linha - 'a';
 		changePlayer(e);
                 coord1->coluna = p2Coluna - '1';
 	        if(linha > 81)
-			e->jogadas[jogada-'1'+10].jogador2 = *coord1;
+			coloca_jogada(e, jogada-'1'+10, *coord, 2);
 		else
-		       	e->jogadas[jogada-'1'].jogador2 = *coord1;
+			coloca_jogada(e, jogada-'1', *coord, 2);
 		incrJogada(e);
 		//Discards newline
                 int try = fscanf(file, " ");
