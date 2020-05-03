@@ -59,3 +59,9 @@ void pos(ESTADO *e, int x);
 @param e Apontador para o estado.
 */
 void movs(FILE *whereToPrint,ESTADO *e);
+
+void posInicial(ESTADO *e);
+
+void posDireto(ESTADO *e, int i_New, int x);
+
+void posInBetween(ESTADO *e, int i_New, int x);

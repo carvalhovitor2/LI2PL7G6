@@ -177,12 +177,8 @@ int interpretador(ESTADO *e){
 			newLinha = remStr(4,linha);
 			newLinha[strlen(newLinha)-1] = 0;
 			int posJogada = atoi(newLinha);
-			if (posJogada > obter_numero_de_jogadas(e, 0))
-				printf("Comando inválido. %d é um número maior que a jogada atual.\n", obter_numero_de_jogadas(e, 0));
-			else{
-				pos(e, posJogada);
-				boolPrompt = 0;
-			}
+			pos(e, posJogada);
+			boolPrompt = 0;
 		}
 
 		mostrar_tabuleiro(stdout, e);
@@ -338,10 +334,8 @@ void ler(char *fileName, ESTADO *e){
                 coord1->linha = p2Linha - 'a';
 		changePlayer(e);
                 coord1->coluna = p2Coluna - '1';
-	        if(linha > 81)
-			coloca_jogada(e, jogada-'1'+10, *coord, 2);
-		else
-			coloca_jogada(e, jogada-'1', *coord, 2);
+	    if(linha > 81) coloca_jogada(e, jogada-'1'+10, *coord, 2);
+		else           coloca_jogada(e, jogada-'1', *coord, 2);
 		incrJogada(e);
 		//Discards newline
                 int try = fscanf(file, " ");
@@ -350,82 +344,66 @@ void ler(char *fileName, ESTADO *e){
     }
 }
 
+void posInicial(ESTADO *e){
+	COORDENADA PL, inicial = {3,4}, std = {8,8};
+    for(int k = 0; k != 8; k ++)
+    	for(int l = 0; l != 8; l ++){
+    		PL.linha = l; PL.coluna = k;
+			changePiece(e, PL, VAZIO);
+    	}
+    for(int t = 0; t != 32; t ++){
+    	coloca_jogada(e, t, std, 1); coloca_jogada(e, t, std, 2);
+    }
+    changePiece(e,inicial,BRANCA);
+    changeJogada(e,0);
+    if (e-> jogador_atual == 2) changePlayer(e); 
+}
+
+void posDireto(ESTADO *e, int i_New, int x){
+	COORDENADA pl1, pl2;
+
+	changeJogada(e,x);
+    if (obter_jogador_atual(e) == 2) changePlayer(e);
+    coloca_preta(e);
+    while(i_New != x){
+	    pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
+	    pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
+
+	    changePiece(e, pl1, obter_estado_casa(e, pl1, 0, 0)); changePiece(e, pl2, obter_estado_casa(e, pl2, 0, 0));
+	    coloca_jogada(e, i_New, pl1, 1); coloca_jogada(e, i_New, pl2, 2);
+	    i_New ++;
+    }  
+}
+
+void posInBetween(ESTADO *e, int i_New, int x){
+	COORDENADA pl1, pl2, std = {8,8};
+	changeJogada(e,x);
+    while (i_New + 1 != x){	
+        pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 1); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 1);
+        pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 1); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 1);
+
+        changePiece(e, pl1, VAZIO); changePiece(e, pl2, VAZIO);
+        coloca_jogada(e, i_New, std, 1); coloca_jogada(e, i_New, std, 2);
+        i_New --;
+    if (obter_jogador_atual(e) == 2) changePlayer(e);
+    }
+}
 
 void pos(ESTADO *e, int x){
     int i_OLD = obter_numero_de_jogadas(e, 0), i_New = obter_numero_de_jogadas(e, 1);
-	COORDENADA pl1, pl2, std = {8,8};
 
     if (x == 0){
-    	COORDENADA PL, inicial = {3,4};
-
-    	for(int k = 0; k != 8; k ++)
-    		for(int l = 0; l != 8; l ++){
-    			PL.linha = l; PL.coluna = k;
-				changePiece(e, PL, VAZIO);
-    		}
-    	for(int t = 0; t != 32; t ++){
-    		coloca_jogada(e, t, std, 1);
-        	coloca_jogada(e, t, std, 2);
-        }
-    	changePiece(e,inicial,BRANCA);
-    	changeJogada(e,0);
-    	if (e-> jogador_atual == 2) changePlayer(e);
-     
+    	posInicial(e); 
     }
 	else{
-
     	if (x <= i_OLD){
+    		if (i_New < x) posDireto(e, i_New, x);
+    		else           posInBetween(e, i_New, x);
 
-    		if (i_New < x){
-
-        		changeJogada(e,x);
-
-        		if (obter_jogador_atual(e) == 2)
-    				changePlayer(e);
-
-    			coloca_preta(e);
-
-        		while(i_New != x){
-       		    	pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
-       				pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
-
-        			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);//obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_old)
-        			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
-
-        			coloca_jogada(e, i_New, pl1, 1);
-            		coloca_jogada(e, i_New, pl2, 2);
-        	
-        			i_New ++;
-        			}  
-    			}
-
-    		else{
-
-        		changeJogada(e,x);
-
-        		while (i_New + 1 != x){
-
-            		pl1.linha = e -> jogadas[i_New].jogador1.linha;
-            		pl2.linha = e -> jogadas[i_New].jogador2.linha;
-            		pl1.coluna = e -> jogadas[i_New].jogador1.coluna;
-            		pl2.coluna = e -> jogadas[i_New].jogador2.coluna;
-
-            		changePiece(e, pl1, VAZIO);
-            		changePiece(e, pl2, VAZIO);
-
-            		coloca_jogada(e, i_New, std, 1);
-            		coloca_jogada(e, i_New, std, 2);
-
-        			i_New --;
-
-        			if (obter_jogador_atual(e) == 2)
-						changePlayer(e);
-        		}
-			}
-
-    COORDENADA novaBranca = {getLastPiece(e,0), getLastPiece(e,1)};
-    changePiece(e,novaBranca,BRANCA);
+   			COORDENADA novaBranca = {getLastPiece(e,0), getLastPiece(e,1)};
+    		changePiece(e,novaBranca,BRANCA);
+		}
+		else
+			printf("Comando inválido. %d é um número maior que a jogada atual.\n", x);
 	}
-	}
-
 }
