@@ -9,16 +9,29 @@
 #include "../listas_ligadas/listas_ligadas.h"
 
 //Gets current piece
-CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito){
-	if (decider_efeito){
-		if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) 
-			return PRETA;
-		int line = c.linha - 1;
-		int column = c.coluna - 1;
-		return (e-> tab[line][column]);
+CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_old){
+	if (new_or_old){
+		if (decider_efeito){
+			if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) 
+				return PRETA;
+			int line = c.linha - 1;
+			int column = c.coluna - 1;
+			return (e-> tab[line][column]);
+		}
+		else
+			return (e-> tab[c.linha][c.coluna]);
 	}
-	else
-		return (e-> tab[c.linha][c.coluna]);
+	else{
+		if (decider_efeito){
+			if (c.linha <= 0 || c.linha > 8 || c.coluna <= 0 || c.coluna > 8) 
+				return PRETA;
+			int line = c.linha - 1;
+			int column = c.coluna - 1;
+			return (e-> tabOLD[line][column]);
+		}
+		else
+			return (e-> tabOLD[c.linha][c.coluna]);
+	}
 }
 
 //Gets current player

@@ -20,7 +20,7 @@ void mostrar_tabuleiro(FILE *whereToPrint, ESTADO *e){
         for(int coluna = 0; coluna < 8; coluna++){
 		//Translate enum to chars
 		COORDENADA coord={linha+1, coluna+1};
-                boardPiece = obter_estado_casa(e, coord, 1);
+                boardPiece = obter_estado_casa(e, coord, 1, 1);
 			if(linha == 7 && coluna == 0) boardPiece = 3;
 			if(linha == 0 && coluna == 7) boardPiece = 4;
 			switch (boardPiece){
@@ -383,11 +383,9 @@ void pos(ESTADO *e, int x){
     			coloca_preta(e);
 
         		while(i_New != x){
-       		    	
-       		    	pl1.linha = e -> jogadasOLD[i_New].jogador1.linha;
-       				pl2.linha = e -> jogadasOLD[i_New].jogador2.linha;
-       				pl1.coluna = e -> jogadasOLD[i_New].jogador1.coluna;
-        			pl2.coluna = e -> jogadasOLD[i_New].jogador2.coluna;
+       		    	//int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old)
+       		    	pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
+       				pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
 
         			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
         			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);

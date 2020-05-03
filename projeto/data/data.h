@@ -89,7 +89,7 @@ int obter_numero_de_jogadas(ESTADO *estado, int new_or_old);
 @param e Apontador para o estado
 @param c A coordenada
 */
-CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito);
+CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_old);
 
 /**
 \brief coloca na posição num_jogadas do array JOGADAS no determinado jogador a coordenada c
