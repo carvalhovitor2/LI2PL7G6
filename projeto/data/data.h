@@ -56,10 +56,18 @@ typedef struct {
 
 } ESTADO;
 /**
-\brief incrementa o valor do número de jogadas
-@param e Apontador para o estado
+\brief Incrementa o valor do número de jogadas.
+@param e Apontador para o estado do jogo.
 */
 void incrJogada(ESTADO *e);
+
+
+/**
+\brief Inicializa o array de jogadas.
+@param e Apontador para o estado do jogo.
+*/
+void arrayJogadas(ESTADO *e);
+
 
 /**
 \brief Muda o valor de uma casa
@@ -81,6 +89,7 @@ int obter_jogador_atual(ESTADO *estado);
 /**
 \brief Devolve o número de jogadas do estado
 @param e Apontador para o estado
+@param new_or_old Variavel booleana que decide opta por ver a quantidade de jogadas no array de jogadas actual ou o antigo.
 */
 int obter_numero_de_jogadas(ESTADO *estado, int new_or_old);
 
@@ -88,6 +97,8 @@ int obter_numero_de_jogadas(ESTADO *estado, int new_or_old);
 \brief Obtém o estado atual da casa
 @param e Apontador para o estado
 @param c A coordenada
+@param decider_efeito Variavel utilizada para parametrizar a chamada de coordenadas quando necessario
+@param new_or_old A coordenada Variavel utilizada para modularizar a funcao obter_estado_casa. Isto pois pode-se escolher se queremos o estado de uma peca do array de casas velhos ou novos.
 */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_old);
 
@@ -110,7 +121,7 @@ void changePlayer(ESTADO *e);
 \brief Altera a peça da casa
 @param e Apontador para o estado
 @param c A coordenada
-@param piece A casa que vamos trocar pela que está naquela coordenada
+@param piece A casa que vamos trocar pela que está naquela coordenada.
 */
 void changePiece(ESTADO *e, COORDENADA c, CASA piece);
 
@@ -128,33 +139,26 @@ int obter_numero_de_jogadasOLD(ESTADO *estado);
 void replicaEstado(ESTADO *e);
 
 /**
-\brief Modifica uma jogada
+\brief Modifica o numero de jogadas
 @param Apontador para o estado
+@param new_num_jogadas O novo numero de jogadas
 */
-void changeJogada(ESTADO *e, int x);
+void changeJogada(ESTADO *e, int new_num_jogadas);
 
 /**
-\brief Busca a ultima peca do tabuleiro
-@param Apontador para o estado
-@param Um inteiro que verifica o estado do ESTADO
+\brief Busca o valor de um eixo da coordenada da ultima jogada.
+@param e Apontador para o estado
+@param line_or_col Inteiro usado para optar pelo eixo das linhas ou colunas.
 */
-int getLastPiece(ESTADO *e, int bool);
+int getLastPiece(ESTADO *e, int line_or_col);
 
 /**
-\brief Monta um array com as coordenadas que estao no entorno de um player
-@param A coordenada onde esta o player
-@param Um array de coordenadas
-@param Apontador para o estado do jogo
+\brief Busca por um dos eixos da coordenada de uma jogada. Por exemplo, se a jogada foi d4, pode-se buscar ou pelo d ou pelo 4.
+@param e Apontador para o estado do jogo.
+@param jogada O numero da jogada
+@param player O jogador que efetuou a jogada
+@param decider Variavel a decidir se o eixo sera o dos X ou dos Y.
+@param new_or_old Variavel a optar pelo array de jogadas actual ou antigo.
 */
-void array_coord_around(COORDENADA c, COORDENADA *A, ESTADO *e);
-
-/**
-\brief Retorna o numero de coordenadas vazias no entorno de um jogador
-@param A coordenada onde esta o jogador
-@param Apotador para o estado do jogo
-*/
-int nr_coord_around(COORDENADA c, ESTADO *e);
-
-
 int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old);
 #endif

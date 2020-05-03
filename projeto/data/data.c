@@ -133,7 +133,7 @@ void changePiece(ESTADO *e, COORDENADA coord, CASA piece){
 	e->tab[coord.linha][coord.coluna] = piece;
 }
 
-//Muda a jogada atual
+//Muda o numero de jogadas
 void changeJogada(ESTADO *e, int new_num_jogada){
 	(e-> num_jogadas) = new_num_jogada;
 }
