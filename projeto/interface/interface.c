@@ -383,11 +383,10 @@ void pos(ESTADO *e, int x){
     			coloca_preta(e);
 
         		while(i_New != x){
-       		    	//int obter_coord_deJogada(ESTADO *e, int jogada, int player, int decider, int new_or_old)
        		    	pl1.linha = obter_coord_deJogada(e, i_New, 1, 1, 0); pl1.coluna = obter_coord_deJogada(e, i_New, 1, 0, 0);
        				pl2.linha = obter_coord_deJogada(e, i_New, 2, 1, 0); pl2.coluna = obter_coord_deJogada(e, i_New, 2, 0, 0);
 
-        			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);
+        			changePiece(e, pl1, e -> tabOLD[pl1.linha][pl1.coluna]);//obter_estado_casa(ESTADO *e, COORDENADA c, int decider_efeito, int new_or_old)
         			changePiece(e, pl2, e -> tabOLD[pl2.linha][pl2.coluna]);
 
         			coloca_jogada(e, i_New, pl1, 1);
